@@ -1,0 +1,111 @@
+"Character Name",           STRING
+"Player Name",              STRING
+"Class1 Level",             INT
+"Class2 Level",             INT
+"Alignment",                STRING
+"Diety",                    STRING
+"Gender",                   STRING
+"Age",                      STRING
+"Height",                   STRING
+"Weight",                   STRING
+"Skin",                     STRING
+"Hair",                     STRING
+"Eyes",                     STRING
+"Exp",                      INT
+"Saving Throw STR",         INT
+"Saving Throw DEX",         INT
+"Saving Throw CON",         INT
+"Saving Throw INT",         INT
+"Saving Throw WIS",         INT
+"Saving Throw CHA",         INT
+"Acrobatics",               INT
+"Animal Handling",          INT
+"Arcana",                   INT
+"Athletics",                INT
+"Deception",                INT
+"History",                  INT
+"Insight",                  INT
+"Intimidation",             INT
+"Investigation",            INT
+"Medicine",                 INT
+"Nature",                   INT
+"Perception",               INT
+"Performance",              INT
+"Persuasion",               INT
+"Religion",                 INT
+"Slight Of Hand",           INT
+"Stealth",                  INT
+"Survival",                 INT
+Inspiration,                BOOL
+"Armor Class",              INT
+"Temp AC Bonus",            INT
+"Max HP",                   INT
+"Current HP",               INT
+"Temporary HP",             INT
+"Fly",                      INT
+"Swim",                     INT
+"Long Jump",                INT
+"High Jump",                INT
+"Crawl",                    INT
+"Climb",                    INT
+"HitDie1",                  INT
+"HitDie2",                  INT
+"Resistance",               STRING
+"Exhaustion",               INT
+Success1,                   BOOL
+Success2,                   BOOL
+Success3,                   BOOL
+Failures1,                  BOOL
+Failures2,                  BOOL
+Failures3,                  BOOL
+Light Armor,                BOOL
+Medium Armor,               BOOL
+Heavy Armor,                BOOL
+Shields,                    BOOL
+Simple,                     BOOL
+Martial,                    BOOL
+Other,                      BOOL
+"Weapons",                  STRING
+"Tools",                    STRING
+"Languages",                STRING
+"Copper",                   INT
+"Silver",                   INT
+"Electrum",                 INT
+"Gold",                     INT
+"Platinum",                 INT
+"weapon1",                  STRING
+"weapon2",                  STRING
+"weapon3",                  STRING
+"weapon4",                  STRING
+"weapon5",                  STRING
+"Ammo1",                    INT
+"Ammo2",                    INT
+"Ammo3",                    INT
+"Potion1",                  INT
+"Potion2",                  INT
+"Potion3",                  INT
+"Potion4",                  INT
+Saving Throw STR Prof,      BOOL
+Saving Throw DEX Prof,      BOOL
+Saving Throw CON Prof,      BOOL
+Saving Throw INT Prof,      BOOL
+Saving Throw WIS Prof,      BOOL
+Saving Throw CHA Prof,      BOOL
+Acrobatics Prof,            BOOL
+Animal Handling Prof,       BOOL
+Arcana Prof,                BOOL
+Athletics Prof,             BOOL
+Deception Prof,             BOOL
+History Prof,               BOOL
+Insight Prof,               BOOL
+Intimidation Prof,          BOOL
+Investigation Prof,         BOOL
+Medicine Prof,              BOOL
+Nature Prof,                BOOL
+Perception Prof,            BOOL
+Performance Prof,           BOOL
+Persuasion Prof,            BOOL
+Religion Prof,              BOOL
+Sleight of Hand Prof,       BOOL
+Stealth Prof,               BOOL
+Survival Prof               BOOL
