@@ -245,18 +245,7 @@ messageSkill = ""
 
 global_characterStats = {};
 
-function serialize_SavedData(saved_data)
-    --[[
-        Need to define every stat here plus all the new stats
-        saved_data needs to be serialized in order to be used
-        properly
-    --]]
-    --print("ENCODED")
-    --print(saved_data)
-    --print(saved_data[3])
-    saved_data = JSON.decode(saved_data);
-    --print("DECODED")
-    --print(saved_data)
+function characterStats_Structure()
     characterStats = {
         ["characterName"] = "",
         ["playerName"] = "",
@@ -413,24 +402,21 @@ function serialize_SavedData(saved_data)
         ["WISsaveItem"] = 0,
         ["CHAsaveItem"] = 0
     }
-    -- Decoded JSON can use dot notation
     --print("JSON ENCODED")
     --print(JSON.encode(characterStats))
-    --print("JSON DECODED")
+    --print("LUA TABLE")
     --print(characterStats)
-    -- Encoded JSON cannot use dot notation
     --print("TESTING VALUE WRITING")
-    --characterStats.STRscore = 11
-    --print(characterStats.STRscore)
     return characterStats;
 end
 
 function onload(saved_data)
-    global_characterStats = serialize_SavedData(saved_data)
+    global_characterStats = characterStats_Structure()
     if disableSave==true then saved_data="" end
-    if saved_data ~= "" then
+    savedDataNotBlank = saved_data ~= ""
+    if savedDataNotBlank then
         local loaded_data = JSON.decode(saved_data)
-        savedDataTable = global_characterStats
+        savedDataTable = loaded_data
         isSavedDataAvailable = true
     end
     populateUiElements()
@@ -445,12 +431,10 @@ function updateSheet()
 end
 
 function updateSave()
-    saved_data = JSON.encode(savedDataTable)
+    saved_data = JSON.encode(global_characterStats)
     self.script_state = saved_data
 end
 
--- Loads all of the UI elements into the character sheet board
--- and nothing else
 function populateUiElements()
     local UI_Y_COORD = 0.04
     local LEFT_ALIGNED_TEXT = 2
@@ -1116,8 +1100,9 @@ function updateCalculatedValues()
     if allUiElementsLoaded == true then
         totalLVL = 0
         ExpLVLUP = 0
-        classLVL1 = tonumber(savedDataTable[classLVL1TxtEntry])
-        classLVL2 = tonumber(savedDataTable[classLVL2TxtEntry])
+        print(JSON.encode(savedDataTable))
+        classLVL1 = tonumber(savedDataTable.class1Level)
+        classLVL2 = tonumber(savedDataTable.class2Level)
         if classLVL1 == nil then classLVL1 = 0 end
         if classLVL2 == nil then classLVL2 = 0 end
         totalLVL = classLVL1 + classLVL2
@@ -1145,18 +1130,18 @@ function updateCalculatedValues()
         self.editButton({index = totalLVLDisplayIdx, label = tostring(totalLVL)})
         self.editButton({index = ExpLVLUPDisplayIdx, label = tostring(ExpLVLUP)})
         -- STR, DEX, CON, INT, WIS, CHA
-        STRmod = math.floor(STRscore/2) - 5
-        DEXmod = math.floor(DEXscore/2) - 5
-        CONmod = math.floor(CONscore/2) - 5
-        INTmod = math.floor(INTscore/2) - 5
-        WISmod = math.floor(WISscore/2) - 5
-        CHAmod = math.floor(CHAscore/2) - 5
-        self.editButton({index = STRscoreDisplayIdx, label = tostring(STRscore)})
-        self.editButton({index = DEXscoreDisplayIdx, label = tostring(DEXscore)})
-        self.editButton({index = CONscoreDisplayIdx, label = tostring(CONscore)})
-        self.editButton({index = INTscoreDisplayIdx, label = tostring(INTscore)})
-        self.editButton({index = WISscoreDisplayIdx, label = tostring(WISscore)})
-        self.editButton({index = CHAscoreDisplayIdx, label = tostring(CHAscore)})
+        STRmod = math.floor(global_characterStats.STRscore/2) - 5
+        DEXmod = math.floor(global_characterStats.DEXscore/2) - 5
+        CONmod = math.floor(global_characterStats.CONscore/2) - 5
+        INTmod = math.floor(global_characterStats.INTscore/2) - 5
+        WISmod = math.floor(global_characterStats.WISscore/2) - 5
+        CHAmod = math.floor(global_characterStats.CHAscore/2) - 5
+        self.editButton({index = STRscoreDisplayIdx, label = tostring(global_characterStats.STRscore)})
+        self.editButton({index = DEXscoreDisplayIdx, label = tostring(global_characterStats.DEXscore)})
+        self.editButton({index = CONscoreDisplayIdx, label = tostring(global_characterStats.CONscore)})
+        self.editButton({index = INTscoreDisplayIdx, label = tostring(global_characterStats.INTscore)})
+        self.editButton({index = WISscoreDisplayIdx, label = tostring(global_characterStats.WISscore)})
+        self.editButton({index = CHAscoreDisplayIdx, label = tostring(global_characterStats.CHAscore)})
         self.editButton({index = STRmodDisplayIdx, label = tostring(STRmod)})
         self.editButton({index = DEXmodDisplayIdx, label = tostring(DEXmod)})
         self.editButton({index = CONmodDisplayIdx, label = tostring(CONmod)})
@@ -1172,36 +1157,37 @@ function updateCalculatedValues()
         if totalLVL >= 21 then ProfBonus = 0 end
         self.editButton({index = ProfBonusDisplayIdx, label = tostring(ProfBonus)})
         -- Saving Throws
-        STRsaveItem = tonumber(savedDataTable[STRsaveItemDisplayIdx])
-        DEXsaveItem = tonumber(savedDataTable[DEXsaveItemDisplayIdx])
-        CONsaveItem = tonumber(savedDataTable[CONsaveItemDisplayIdx])
-        INTsaveItem = tonumber(savedDataTable[INTsaveItemDisplayIdx])
-        WISsaveItem = tonumber(savedDataTable[WISsaveItemDisplayIdx])
-        CHAsaveItem = tonumber(savedDataTable[CHAsaveItemDisplayIdx])
-        if STRsaveItem == nil then STRsaveItem = 0 end
-        if DEXsaveItem == nil then DEXsaveItem = 0 end
-        if CONsaveItem == nil then CONsaveItem = 0 end
-        if INTsaveItem == nil then INTsaveItem = 0 end
-        if WISsaveItem == nil then WISsaveItem = 0 end
-        if CHAsaveItem == nil then CHAsaveItem = 0 end
-        STRsaveTotal = STRsaveItem + STRmod
-        DEXsaveTotal = DEXsaveItem + DEXmod
-        CONsaveTotal = CONsaveItem + CONmod
-        INTsaveTotal = INTsaveItem + INTmod
-        WISsaveTotal = WISsaveItem + WISmod
-        CHAsaveTotal = CHAsaveItem + CHAmod
-        if STRsaveCheck ~= nil and STRsaveCheck == string.char(10008) then STRsaveTotal = STRsaveTotal + ProfBonus end
-        if DEXsaveCheck ~= nil and DEXsaveCheck == string.char(10008) then DEXsaveTotal = DEXsaveTotal + ProfBonus end
-        if CONsaveCheck ~= nil and CONsaveCheck == string.char(10008) then CONsaveTotal = CONsaveTotal + ProfBonus end
-        if INTsaveCheck ~= nil and INTsaveCheck == string.char(10008) then INTsaveTotal = INTsaveTotal + ProfBonus end
-        if WISsaveCheck ~= nil and WISsaveCheck == string.char(10008) then WISsaveTotal = WISsaveTotal + ProfBonus end
-        if CHAsaveCheck ~= nil and CHAsaveCheck == string.char(10008) then CHAsaveTotal = CHAsaveTotal + ProfBonus end
-        self.editButton({index = STRsaveCheckDisplayIdx, label = tostring(STRsaveCheck)})
-        self.editButton({index = DEXsaveCheckDisplayIdx, label = tostring(DEXsaveCheck)})
-        self.editButton({index = CONsaveCheckDisplayIdx, label = tostring(CONsaveCheck)})
-        self.editButton({index = INTsaveCheckDisplayIdx, label = tostring(INTsaveCheck)})
-        self.editButton({index = WISsaveCheckDisplayIdx, label = tostring(WISsaveCheck)})
-        self.editButton({index = CHAsaveCheckDisplayIdx, label = tostring(CHAsaveCheck)})
+        print(STRsaveItemDisplayIdx)
+        global_characterStats.STRsaveItem = tonumber(savedDataTable.savingThrowSTR)
+        global_characterStats.DEXsaveItem = tonumber(savedDataTable.savingThrowDEX)
+        global_characterStats.CONsaveItem = tonumber(savedDataTable.savingThrowCON)
+        global_characterStats.INTsaveItem = tonumber(savedDataTable.savingThrowINT)
+        global_characterStats.WISsaveItem = tonumber(savedDataTable.savingThrowWIS)
+        global_characterStats.CHAsaveItem = tonumber(savedDataTable.savingThrowCHA)
+        if global_characterStats.STRsaveItem == nil then global_characterStats.STRsaveItem = 0 end
+        if global_characterStats.DEXsaveItem == nil then global_characterStats.DEXsaveItem = 0 end
+        if global_characterStats.CONsaveItem == nil then global_characterStats.CONsaveItem = 0 end
+        if global_characterStats.INTsaveItem == nil then global_characterStats.INTsaveItem = 0 end
+        if global_characterStats.WISsaveItem == nil then global_characterStats.WISsaveItem = 0 end
+        if global_characterStats.CHAsaveItem == nil then global_characterStats.CHAsaveItem = 0 end
+        STRsaveTotal = global_characterStats.STRsaveItem + STRmod
+        DEXsaveTotal = global_characterStats.DEXsaveItem + DEXmod
+        CONsaveTotal = global_characterStats.CONsaveItem + CONmod
+        INTsaveTotal = global_characterStats.INTsaveItem + INTmod
+        WISsaveTotal = global_characterStats.WISsaveItem + WISmod
+        CHAsaveTotal = global_characterStats.CHAsaveItem + CHAmod
+        if global_characterStats.STRsaveCheck ~= nil and global_characterStats.STRsaveCheck == string.char(10008) then STRsaveTotal = STRsaveTotal + ProfBonus end
+        if global_characterStats.DEXsaveCheck ~= nil and global_characterStats.DEXsaveCheck == string.char(10008) then DEXsaveTotal = DEXsaveTotal + ProfBonus end
+        if global_characterStats.CONsaveCheck ~= nil and global_characterStats.CONsaveCheck == string.char(10008) then CONsaveTotal = CONsaveTotal + ProfBonus end
+        if global_characterStats.INTsaveCheck ~= nil and global_characterStats.INTsaveCheck == string.char(10008) then INTsaveTotal = INTsaveTotal + ProfBonus end
+        if global_characterStats.WISsaveCheck ~= nil and global_characterStats.WISsaveCheck == string.char(10008) then WISsaveTotal = WISsaveTotal + ProfBonus end
+        if global_characterStats.CHAsaveCheck ~= nil and global_characterStats.CHAsaveCheck == string.char(10008) then CHAsaveTotal = CHAsaveTotal + ProfBonus end
+        self.editButton({index = STRsaveCheckDisplayIdx, label = tostring(global_characterStats.STRsaveCheck)})
+        self.editButton({index = DEXsaveCheckDisplayIdx, label = tostring(global_characterStats.DEXsaveCheck)})
+        self.editButton({index = CONsaveCheckDisplayIdx, label = tostring(global_characterStats.CONsaveCheck)})
+        self.editButton({index = INTsaveCheckDisplayIdx, label = tostring(global_characterStats.INTsaveCheck)})
+        self.editButton({index = WISsaveCheckDisplayIdx, label = tostring(global_characterStats.WISsaveCheck)})
+        self.editButton({index = CHAsaveCheckDisplayIdx, label = tostring(global_characterStats.CHAsaveCheck)})
 
         self.editButton({index = STRsaveTotalDisplayIdx, label = tostring(STRsaveTotal)})
         self.editButton({index = STRsaveModDisplayIdx, label = tostring(STRmod)})
@@ -1270,96 +1256,96 @@ function updateCalculatedValues()
         SleightofHandTotal =  SleightofHandItem + DEXmod
         StealthTotal = StealthItem + DEXmod
         SurvivalTotal = SurvivalItem + WISmod
-        if AcrobaticsCheck ~= nil and AcrobaticsCheck == "/2" then AcrobaticsTotal = AcrobaticsTotal + math.floor(ProfBonus * 0.5)
-        elseif AcrobaticsCheck ~= nil and AcrobaticsCheck == string.char(10008) then AcrobaticsTotal = AcrobaticsTotal + ProfBonus
-        elseif AcrobaticsCheck ~= nil and AcrobaticsCheck == "x2" then AcrobaticsTotal = AcrobaticsTotal + (ProfBonus * 2)
+        if global_characterStats.AcrobaticsCheck ~= nil and global_characterStats.AcrobaticsCheck == "/2" then AcrobaticsTotal = AcrobaticsTotal + math.floor(ProfBonus * 0.5)
+        elseif global_characterStats.AcrobaticsCheck ~= nil and global_characterStats.AcrobaticsCheck == string.char(10008) then AcrobaticsTotal = AcrobaticsTotal + ProfBonus
+        elseif global_characterStats.AcrobaticsCheck ~= nil and global_characterStats.AcrobaticsCheck == "x2" then AcrobaticsTotal = AcrobaticsTotal + (ProfBonus * 2)
         end
-        if AnimalHandlingCheck ~= nil and AnimalHandlingCheck == "/2" then AnimalHandlingTotal = AnimalHandlingTotal + math.floor(ProfBonus * 0.5)
-        elseif AnimalHandlingCheck ~= nil and AnimalHandlingCheck == string.char(10008) then AnimalHandlingTotal = AnimalHandlingTotal + ProfBonus
-        elseif AnimalHandlingCheck ~= nil and AnimalHandlingCheck == "x2" then AnimalHandlingTotal = AnimalHandlingTotal + (ProfBonus * 2)
+        if global_characterStats.AnimalHandlingCheck ~= nil and global_characterStats.AnimalHandlingCheck == "/2" then AnimalHandlingTotal = AnimalHandlingTotal + math.floor(ProfBonus * 0.5)
+        elseif global_characterStats.AnimalHandlingCheck ~= nil and global_characterStats.AnimalHandlingCheck == string.char(10008) then AnimalHandlingTotal = AnimalHandlingTotal + ProfBonus
+        elseif global_characterStats.AnimalHandlingCheck ~= nil and global_characterStats.AnimalHandlingCheck == "x2" then AnimalHandlingTotal = AnimalHandlingTotal + (ProfBonus * 2)
         end
-        if ArcanaCheck ~= nil and ArcanaCheck == "/2" then ArcanaTotal = ArcanaTotal + math.floor(ProfBonus * 0.5)
-        elseif ArcanaCheck ~= nil and ArcanaCheck == string.char(10008) then ArcanaTotal = ArcanaTotal + ProfBonus
-        elseif ArcanaCheck ~= nil and ArcanaCheck == "x2" then ArcanaTotal = ArcanaTotal + (ProfBonus * 2)
+        if global_characterStats.ArcanaCheck ~= nil and global_characterStats.ArcanaCheck == "/2" then ArcanaTotal = ArcanaTotal + math.floor(ProfBonus * 0.5)
+        elseif global_characterStats.ArcanaCheck ~= nil and global_characterStats.ArcanaCheck == string.char(10008) then ArcanaTotal = ArcanaTotal + ProfBonus
+        elseif global_characterStats.ArcanaCheck ~= nil and global_characterStats.ArcanaCheck == "x2" then ArcanaTotal = ArcanaTotal + (ProfBonus * 2)
         end
-        if AthleticsCheck ~= nil and AthleticsCheck == "/2" then AthleticsTotal = AthleticsTotal + math.floor(ProfBonus * 0.5)
-        elseif AthleticsCheck ~= nil and AthleticsCheck == string.char(10008) then AthleticsTotal = AthleticsTotal + ProfBonus
-        elseif AthleticsCheck ~= nil and AthleticsCheck == "x2" then AthleticsTotal = AthleticsTotal + (ProfBonus * 2)
+        if global_characterStats.AthleticsCheck ~= nil and global_characterStats.AthleticsCheck == "/2" then AthleticsTotal = AthleticsTotal + math.floor(ProfBonus * 0.5)
+        elseif global_characterStats.AthleticsCheck ~= nil and global_characterStats.AthleticsCheck == string.char(10008) then AthleticsTotal = AthleticsTotal + ProfBonus
+        elseif global_characterStats.AthleticsCheck ~= nil and global_characterStats.AthleticsCheck == "x2" then AthleticsTotal = AthleticsTotal + (ProfBonus * 2)
         end
-        if DeceptionCheck ~= nil and DeceptionCheck == "/2" then DeceptionTotal = DeceptionTotal + math.floor(ProfBonus * 0.5)
-        elseif DeceptionCheck ~= nil and DeceptionCheck == string.char(10008) then DeceptionTotal = DeceptionTotal + ProfBonus
-        elseif DeceptionCheck ~= nil and DeceptionCheck == "x2" then DeceptionTotal = DeceptionTotal + (ProfBonus * 2)
+        if global_characterStats.DeceptionCheck ~= nil and global_characterStats.DeceptionCheck == "/2" then DeceptionTotal = DeceptionTotal + math.floor(ProfBonus * 0.5)
+        elseif global_characterStats.DeceptionCheck ~= nil and global_characterStats.DeceptionCheck == string.char(10008) then DeceptionTotal = DeceptionTotal + ProfBonus
+        elseif global_characterStats.DeceptionCheck ~= nil and global_characterStats.DeceptionCheck == "x2" then DeceptionTotal = DeceptionTotal + (ProfBonus * 2)
         end
-        if HistoryCheck ~= nil and HistoryCheck == "/2" then HistoryTotal = HistoryTotal + math.floor(ProfBonus * 0.5)
-        elseif HistoryCheck ~= nil and HistoryCheck == string.char(10008) then HistoryTotal = HistoryTotal + ProfBonus
-        elseif HistoryCheck ~= nil and HistoryCheck == "x2" then HistoryTotal = HistoryTotal + (ProfBonus * 2)
+        if global_characterStats.HistoryCheck ~= nil and global_characterStats.HistoryCheck == "/2" then HistoryTotal = HistoryTotal + math.floor(ProfBonus * 0.5)
+        elseif global_characterStats.HistoryCheck ~= nil and global_characterStats.HistoryCheck == string.char(10008) then HistoryTotal = HistoryTotal + ProfBonus
+        elseif global_characterStats.HistoryCheck ~= nil and global_characterStats.HistoryCheck == "x2" then HistoryTotal = HistoryTotal + (ProfBonus * 2)
         end
-        if InsightCheck ~= nil and InsightCheck == "/2" then InsightTotal = InsightTotal + math.floor(ProfBonus * 0.5)
-        elseif InsightCheck ~= nil and InsightCheck == string.char(10008) then InsightTotal = InsightTotal + ProfBonus
-        elseif InsightCheck ~= nil and InsightCheck == "x2" then InsightTotal = InsightTotal + (ProfBonus * 2)
+        if global_characterStats.InsightCheck ~= nil and global_characterStats.InsightCheck == "/2" then InsightTotal = InsightTotal + math.floor(ProfBonus * 0.5)
+        elseif global_characterStats.InsightCheck ~= nil and global_characterStats.InsightCheck == string.char(10008) then InsightTotal = InsightTotal + ProfBonus
+        elseif global_characterStats.InsightCheck ~= nil and global_characterStats.InsightCheck == "x2" then InsightTotal = InsightTotal + (ProfBonus * 2)
         end
-        if IntimidationCheck ~= nil and IntimidationCheck == "/2" then IntimidationTotal = IntimidationTotal + math.floor(ProfBonus * 0.5)
-        elseif IntimidationCheck ~= nil and IntimidationCheck == string.char(10008) then IntimidationTotal = IntimidationTotal + ProfBonus
-        elseif IntimidationCheck ~= nil and IntimidationCheck == "x2" then IntimidationTotal = IntimidationTotal + (ProfBonus * 2)
+        if global_characterStats.IntimidationCheck ~= nil and global_characterStats.IntimidationCheck == "/2" then IntimidationTotal = IntimidationTotal + math.floor(ProfBonus * 0.5)
+        elseif global_characterStats.IntimidationCheck ~= nil and global_characterStats.IntimidationCheck == string.char(10008) then IntimidationTotal = IntimidationTotal + ProfBonus
+        elseif global_characterStats.IntimidationCheck ~= nil and global_characterStats.IntimidationCheck == "x2" then IntimidationTotal = IntimidationTotal + (ProfBonus * 2)
         end
-        if InvestigationCheck ~= nil and InvestigationCheck == "/2" then InvestigationTotal = InvestigationTotal + math.floor(ProfBonus * 0.5)
-        elseif InvestigationCheck ~= nil and InvestigationCheck == string.char(10008) then InvestigationTotal = InvestigationTotal + ProfBonus
-        elseif InvestigationCheck ~= nil and InvestigationCheck == "x2" then InvestigationTotal = InvestigationTotal + (ProfBonus * 2)
+        if global_characterStats.InvestigationCheck ~= nil and global_characterStats.InvestigationCheck == "/2" then InvestigationTotal = InvestigationTotal + math.floor(ProfBonus * 0.5)
+        elseif global_characterStats.InvestigationCheck ~= nil and global_characterStats.InvestigationCheck == string.char(10008) then InvestigationTotal = InvestigationTotal + ProfBonus
+        elseif global_characterStats.InvestigationCheck ~= nil and global_characterStats.InvestigationCheck == "x2" then InvestigationTotal = InvestigationTotal + (ProfBonus * 2)
         end
-        if MedicineCheck ~= nil and MedicineCheck == "/2" then MedicineTotal = MedicineTotal + math.floor(ProfBonus * 0.5)
-        elseif MedicineCheck ~= nil and MedicineCheck == string.char(10008) then MedicineTotal = MedicineTotal + ProfBonus
-        elseif MedicineCheck ~= nil and MedicineCheck == "x2" then MedicineTotal = MedicineTotal + (ProfBonus * 2)
+        if global_characterStats.MedicineCheck ~= nil and global_characterStats.MedicineCheck == "/2" then MedicineTotal = MedicineTotal + math.floor(ProfBonus * 0.5)
+        elseif global_characterStats.MedicineCheck ~= nil and global_characterStats.MedicineCheck == string.char(10008) then MedicineTotal = MedicineTotal + ProfBonus
+        elseif global_characterStats.MedicineCheck ~= nil and global_characterStats.MedicineCheck == "x2" then MedicineTotal = MedicineTotal + (ProfBonus * 2)
         end
-        if NatureCheck ~= nil and NatureCheck == "/2" then NatureTotal = NatureTotal + math.floor(ProfBonus * 0.5)
-        elseif NatureCheck ~= nil and NatureCheck == string.char(10008) then NatureTotal = NatureTotal + ProfBonus
-        elseif NatureCheck ~= nil and NatureCheck == "x2" then NatureTotal = NatureTotal + (ProfBonus * 2)
+        if global_characterStats.NatureCheck ~= nil and global_characterStats.NatureCheck == "/2" then NatureTotal = NatureTotal + math.floor(ProfBonus * 0.5)
+        elseif global_characterStats.NatureCheck ~= nil and global_characterStats.NatureCheck == string.char(10008) then NatureTotal = NatureTotal + ProfBonus
+        elseif global_characterStats.NatureCheck ~= nil and global_characterStats.NatureCheck == "x2" then NatureTotal = NatureTotal + (ProfBonus * 2)
         end
-        if PerceptionCheck ~= nil and PerceptionCheck == "/2" then PerceptionTotal = PerceptionTotal + math.floor(ProfBonus * 0.5)
-        elseif PerceptionCheck ~= nil and PerceptionCheck == string.char(10008) then PerceptionTotal = PerceptionTotal + ProfBonus
-        elseif PerceptionCheck ~= nil and PerceptionCheck == "x2" then PerceptionTotal = PerceptionTotal + (ProfBonus * 2)
+        if global_characterStats.PerceptionCheck ~= nil and global_characterStats.PerceptionCheck == "/2" then PerceptionTotal = PerceptionTotal + math.floor(ProfBonus * 0.5)
+        elseif global_characterStats.PerceptionCheck ~= nil and global_characterStats.PerceptionCheck == string.char(10008) then PerceptionTotal = PerceptionTotal + ProfBonus
+        elseif global_characterStats.PerceptionCheck ~= nil and global_characterStats.PerceptionCheck == "x2" then PerceptionTotal = PerceptionTotal + (ProfBonus * 2)
         end
-        if PerformanceCheck ~= nil and PerformanceCheck == "/2" then PerformanceTotal = PerformanceTotal + math.floor(ProfBonus * 0.5)
-        elseif PerformanceCheck ~= nil and PerformanceCheck == string.char(10008) then PerformanceTotal = PerformanceTotal + ProfBonus
-        elseif PerformanceCheck ~= nil and PerformanceCheck == "x2" then PerformanceTotal = PerformanceTotal + (ProfBonus * 2)
+        if global_characterStats.PerformanceCheck ~= nil and global_characterStats.PerformanceCheck == "/2" then PerformanceTotal = PerformanceTotal + math.floor(ProfBonus * 0.5)
+        elseif global_characterStats.PerformanceCheck ~= nil and global_characterStats.PerformanceCheck == string.char(10008) then PerformanceTotal = PerformanceTotal + ProfBonus
+        elseif global_characterStats.PerformanceCheck ~= nil and global_characterStats.PerformanceCheck == "x2" then PerformanceTotal = PerformanceTotal + (ProfBonus * 2)
         end
-        if PersuasionCheck ~= nil and PersuasionCheck == "/2" then PersuasionTotal = PersuasionTotal + math.floor(ProfBonus * 0.5)
-        elseif PersuasionCheck ~= nil and PersuasionCheck == string.char(10008) then PersuasionTotal = PersuasionTotal + ProfBonus
-        elseif PersuasionCheck ~= nil and PersuasionCheck == "x2" then PersuasionTotal = PersuasionTotal + (ProfBonus * 2)
+        if global_characterStats.PersuasionCheck ~= nil and global_characterStats.PersuasionCheck == "/2" then PersuasionTotal = PersuasionTotal + math.floor(ProfBonus * 0.5)
+        elseif global_characterStats.PersuasionCheck ~= nil and global_characterStats.PersuasionCheck == string.char(10008) then PersuasionTotal = PersuasionTotal + ProfBonus
+        elseif global_characterStats.PersuasionCheck ~= nil and global_characterStats.PersuasionCheck == "x2" then PersuasionTotal = PersuasionTotal + (ProfBonus * 2)
         end
-        if ReligionCheck ~= nil and ReligionCheck == "/2" then ReligionTotal = ReligionTotal + math.floor(ProfBonus * 0.5)
-        elseif ReligionCheck ~= nil and ReligionCheck == string.char(10008) then ReligionTotal = ReligionTotal + ProfBonus
-        elseif ReligionCheck ~= nil and ReligionCheck == "x2" then ReligionTotal = ReligionTotal + (ProfBonus * 2)
+        if global_characterStats.ReligionCheck ~= nil and global_characterStats.ReligionCheck == "/2" then ReligionTotal = ReligionTotal + math.floor(ProfBonus * 0.5)
+        elseif global_characterStats.ReligionCheck ~= nil and global_characterStats.ReligionCheck == string.char(10008) then ReligionTotal = ReligionTotal + ProfBonus
+        elseif global_characterStats.ReligionCheck ~= nil and global_characterStats.ReligionCheck == "x2" then ReligionTotal = ReligionTotal + (ProfBonus * 2)
         end
-        if SleightofHandCheck ~= nil and SleightofHandCheck == "/2" then SleightofHandTotal = SleightofHandTotal + math.floor(ProfBonus * 0.5)
-        elseif SleightofHandCheck ~= nil and SleightofHandCheck == string.char(10008) then SleightofHandTotal = SleightofHandTotal + ProfBonus
-        elseif SleightofHandCheck ~= nil and SleightofHandCheck == "x2" then SleightofHandTotal = SleightofHandTotal + (ProfBonus * 2)
+        if global_characterStats.SleightofHandCheck ~= nil and global_characterStats.SleightofHandCheck == "/2" then SleightofHandTotal = SleightofHandTotal + math.floor(ProfBonus * 0.5)
+        elseif global_characterStats.SleightofHandCheck ~= nil and global_characterStats.SleightofHandCheck == string.char(10008) then SleightofHandTotal = SleightofHandTotal + ProfBonus
+        elseif global_characterStats.SleightofHandCheck ~= nil and global_characterStats.SleightofHandCheck == "x2" then SleightofHandTotal = SleightofHandTotal + (ProfBonus * 2)
         end
-        if StealthCheck ~= nil and StealthCheck == "/2" then StealthTotal = StealthTotal + math.floor(ProfBonus * 0.5)
-        elseif StealthCheck ~= nil and StealthCheck == string.char(10008) then StealthTotal = StealthTotal + ProfBonus
-        elseif StealthCheck ~= nil and StealthCheck == "x2" then StealthTotal = StealthTotal + (ProfBonus * 2)
+        if global_characterStats.StealthCheck ~= nil and global_characterStats.StealthCheck == "/2" then StealthTotal = StealthTotal + math.floor(ProfBonus * 0.5)
+        elseif global_characterStats.StealthCheck ~= nil and global_characterStats.StealthCheck == string.char(10008) then StealthTotal = StealthTotal + ProfBonus
+        elseif global_characterStats.StealthCheck ~= nil and global_characterStats.StealthCheck == "x2" then StealthTotal = StealthTotal + (ProfBonus * 2)
         end
-        if SurvivalCheck ~= nil and SurvivalCheck == "/2" then SurvivalTotal = SurvivalTotal + math.floor(ProfBonus * 0.5)
-        elseif SurvivalCheck ~= nil and SurvivalCheck == string.char(10008) then SurvivalTotal = SurvivalTotal + ProfBonus
-        elseif SurvivalCheck ~= nil and SurvivalCheck == "x2" then SurvivalTotal = SurvivalTotal + (ProfBonus * 2)
+        if global_characterStats.SurvivalCheck ~= nil and global_characterStats.SurvivalCheck == "/2" then SurvivalTotal = SurvivalTotal + math.floor(ProfBonus * 0.5)
+        elseif global_characterStats.SurvivalCheck ~= nil and global_characterStats.SurvivalCheck == string.char(10008) then SurvivalTotal = SurvivalTotal + ProfBonus
+        elseif global_characterStats.SurvivalCheck ~= nil and global_characterStats.SurvivalCheck == "x2" then SurvivalTotal = SurvivalTotal + (ProfBonus * 2)
         end
-        self.editButton({index = AcrobaticsCheckDisplayIdx, label = tostring(AcrobaticsCheck)})
-        self.editButton({index = AnimalHandlingCheckDisplayIdx, label = tostring(AnimalHandlingCheck)})
-        self.editButton({index = ArcanaCheckDisplayIdx, label = tostring(ArcanaCheck)})
-        self.editButton({index = AthleticsCheckDisplayIdx, label = tostring(AthleticsCheck)})
-        self.editButton({index = DeceptionCheckDisplayIdx, label = tostring(DeceptionCheck)})
-        self.editButton({index = HistoryCheckDisplayIdx, label = tostring(HistoryCheck)})
-        self.editButton({index = InsightCheckDisplayIdx, label = tostring(InsightCheck)})
-        self.editButton({index = IntimidationCheckDisplayIdx, label = tostring(IntimidationCheck)})
-        self.editButton({index = InvestigationCheckDisplayIdx, label = tostring(InvestigationCheck)})
-        self.editButton({index = MedicineCheckDisplayIdx, label = tostring(MedicineCheck)})
-        self.editButton({index = NatureCheckDisplayIdx, label = tostring(NatureCheck)})
-        self.editButton({index = PerceptionCheckDisplayIdx, label = tostring(PerceptionCheck)})
-        self.editButton({index = PerformanceCheckDisplayIdx, label = tostring(PerformanceCheck)})
-        self.editButton({index = PersuasionCheckDisplayIdx, label = tostring(PersuasionCheck)})
-        self.editButton({index = ReligionCheckDisplayIdx, label = tostring(ReligionCheck)})
-        self.editButton({index = SleightofHandCheckDisplayIdx, label = tostring(SleightofHandCheck)})
-        self.editButton({index = StealthCheckDisplayIdx, label = tostring(StealthCheck)})
-        self.editButton({index = SurvivalCheckDisplayIdx, label = tostring(SurvivalCheck)})
+        self.editButton({index = AcrobaticsCheckDisplayIdx, label = tostring(global_characterStats.AcrobaticsCheck)})
+        self.editButton({index = AnimalHandlingCheckDisplayIdx, label = tostring(global_characterStats.AnimalHandlingCheck)})
+        self.editButton({index = ArcanaCheckDisplayIdx, label = tostring(global_characterStats.ArcanaCheck)})
+        self.editButton({index = AthleticsCheckDisplayIdx, label = tostring(global_characterStats.AthleticsCheck)})
+        self.editButton({index = DeceptionCheckDisplayIdx, label = tostring(global_characterStats.DeceptionCheck)})
+        self.editButton({index = HistoryCheckDisplayIdx, label = tostring(global_characterStats.HistoryCheck)})
+        self.editButton({index = InsightCheckDisplayIdx, label = tostring(global_characterStats.InsightCheck)})
+        self.editButton({index = IntimidationCheckDisplayIdx, label = tostring(global_characterStats.IntimidationCheck)})
+        self.editButton({index = InvestigationCheckDisplayIdx, label = tostring(global_characterStats.InvestigationCheck)})
+        self.editButton({index = MedicineCheckDisplayIdx, label = tostring(global_characterStats.MedicineCheck)})
+        self.editButton({index = NatureCheckDisplayIdx, label = tostring(global_characterStats.NatureCheck)})
+        self.editButton({index = PerceptionCheckDisplayIdx, label = tostring(global_characterStats.PerceptionCheck)})
+        self.editButton({index = PerformanceCheckDisplayIdx, label = tostring(global_characterStats.PerformanceCheck)})
+        self.editButton({index = PersuasionCheckDisplayIdx, label = tostring(global_characterStats.PersuasionCheck)})
+        self.editButton({index = ReligionCheckDisplayIdx, label = tostring(global_characterStats.ReligionCheck)})
+        self.editButton({index = SleightofHandCheckDisplayIdx, label = tostring(global_characterStats.SleightofHandCheck)})
+        self.editButton({index = StealthCheckDisplayIdx, label = tostring(global_characterStats.StealthCheck)})
+        self.editButton({index = SurvivalCheckDisplayIdx, label = tostring(global_characterStats.SurvivalCheck)})
         self.editButton({index = AcrobaticsTotalDisplayIdx, label = tostring(AcrobaticsTotal)})
         self.editButton({index = AnimalHandlingTotalDisplayIdx, label = tostring(AnimalHandlingTotal)})
         self.editButton({index = ArcanaTotalDisplayIdx, label = tostring(ArcanaTotal)})
@@ -1413,75 +1399,75 @@ function updateCalculatedValues()
         SpellAtkBonus2 = 0
         HitDiceClass1 = ""
         HitDiceClass2 = ""
-        if className1 ~= nil and className1 == tostring("Draconic Bloodline Sorcerer") or className1 == tostring("Wild Magic Sorcerer") or className1 == tostring("Divine Soul Sorcerer") or className1 == tostring("Shadow Magic Sorcerer") or className1 == tostring("Storm Sorcery Sorcerer") or className1 == tostring("Wizard") or className1 == tostring("Abjuration Wizard") or className1 == tostring("Conjuration Wizard") or className1 == tostring("Divination Wizard") or className1 == tostring("Enchantment Wizard") or className1 == tostring("Evocation Wizard") or className1 == tostring("Illusion Wizard") or className1 == tostring("Necromancy Wizard") or className1 == tostring("Transmutation Wizard") or className1 == tostring("War Magic Wizard") then
+        if global_characterStats.className1 ~= nil and global_characterStats.className1 == tostring("Draconic Bloodline Sorcerer") or global_characterStats.className1 == tostring("Wild Magic Sorcerer") or global_characterStats.className1 == tostring("Divine Soul Sorcerer") or global_characterStats.className1 == tostring("Shadow Magic Sorcerer") or global_characterStats.className1 == tostring("Storm Sorcery Sorcerer") or global_characterStats.className1 == tostring("Wizard") or global_characterStats.className1 == tostring("Abjuration Wizard") or global_characterStats.className1 == tostring("Conjuration Wizard") or global_characterStats.className1 == tostring("Divination Wizard") or global_characterStats.className1 == tostring("Enchantment Wizard") or global_characterStats.className1 == tostring("Evocation Wizard") or global_characterStats.className1 == tostring("Illusion Wizard") or global_characterStats.className1 == tostring("Necromancy Wizard") or global_characterStats.className1 == tostring("Transmutation Wizard") or global_characterStats.className1 == tostring("War Magic Wizard") then
             HitDiceClass1 = tostring("d6")
-        elseif className1 ~= nil and className1 == tostring("Bard") or className1 == tostring("Lore Bard") or className1 == tostring("Valor Bard") or className1 == tostring("Glamour Bard") or className1 == tostring("Swords Bard") or className1 == tostring("Whispers Bard") or className1 == tostring("Knowledge Cleric") or className1 == tostring("Life Cleric") or className1 == tostring("Light Cleric") or className1 == tostring("Nature Cleric") or className1 == tostring("Tempest Cleric") or className1 == tostring("Trickery Cleric") or className1 == tostring("War Cleric") or className1 == tostring("Death Cleric") or className1 == tostring("Forge Cleric") or className1 == tostring("Grave Cleric") or className1 == tostring("Druid") or className1 == tostring("Land Druid") or className1 == tostring("Moon Druid") or className1 == tostring("Dreams Druid") or className1 == tostring("Shepherd Druid") or className1 == tostring("Monk") or className1 == tostring("Open Hand Monk") or className1 == tostring("Shadow Monk") or className1 == tostring("Four Elements Monk") or className1 == tostring("Drunken Master Monk") or className1 == tostring("Kensei Monk") or className1 == tostring("Sun Soul Monk") or className1 == tostring("Rogue") or className1 == tostring("Thief Rogue") or className1 == tostring("Assassin Rogue") or className1 == tostring("Arcane Trickster Rogue") or className1 == tostring("Inquisitive Rogue") or className1 == tostring("Mastermind Rogue") or className1 == tostring("Scout Rogue") or className1 == tostring("Swashbuckler Rogue") or className1 == tostring("The Archfey Warlock") or className1 == tostring("The Fiend Warlock") or className1 == tostring("The Great Old One Warlock") or className1 == tostring("The Celestial Warlock") or className1 == tostring("The Hexblade Warlock") then
+        elseif global_characterStats.className1 ~= nil and global_characterStats.className1 == tostring("Bard") or global_characterStats.className1 == tostring("Lore Bard") or global_characterStats.className1 == tostring("Valor Bard") or global_characterStats.className1 == tostring("Glamour Bard") or global_characterStats.className1 == tostring("Swords Bard") or global_characterStats.className1 == tostring("Whispers Bard") or global_characterStats.className1 == tostring("Knowledge Cleric") or global_characterStats.className1 == tostring("Life Cleric") or global_characterStats.className1 == tostring("Light Cleric") or global_characterStats.className1 == tostring("Nature Cleric") or global_characterStats.className1 == tostring("Tempest Cleric") or global_characterStats.className1 == tostring("Trickery Cleric") or global_characterStats.className1 == tostring("War Cleric") or global_characterStats.className1 == tostring("Death Cleric") or global_characterStats.className1 == tostring("Forge Cleric") or global_characterStats.className1 == tostring("Grave Cleric") or global_characterStats.className1 == tostring("Druid") or global_characterStats.className1 == tostring("Land Druid") or global_characterStats.className1 == tostring("Moon Druid") or global_characterStats.className1 == tostring("Dreams Druid") or global_characterStats.className1 == tostring("Shepherd Druid") or global_characterStats.className1 == tostring("Monk") or global_characterStats.className1 == tostring("Open Hand Monk") or global_characterStats.className1 == tostring("Shadow Monk") or global_characterStats.className1 == tostring("Four Elements Monk") or global_characterStats.className1 == tostring("Drunken Master Monk") or global_characterStats.className1 == tostring("Kensei Monk") or global_characterStats.className1 == tostring("Sun Soul Monk") or global_characterStats.className1 == tostring("Rogue") or global_characterStats.className1 == tostring("Thief Rogue") or global_characterStats.className1 == tostring("Assassin Rogue") or global_characterStats.className1 == tostring("Arcane Trickster Rogue") or global_characterStats.className1 == tostring("Inquisitive Rogue") or global_characterStats.className1 == tostring("Mastermind Rogue") or global_characterStats.className1 == tostring("Scout Rogue") or global_characterStats.className1 == tostring("Swashbuckler Rogue") or global_characterStats.className1 == tostring("The Archfey Warlock") or global_characterStats.className1 == tostring("The Fiend Warlock") or global_characterStats.className1 == tostring("The Great Old One Warlock") or global_characterStats.className1 == tostring("The Celestial Warlock") or global_characterStats.className1 == tostring("The Hexblade Warlock") then
             HitDiceClass1 = tostring("d8")
-        elseif className1 ~= nil and className1 == tostring("Fighter") or className1 == tostring("Champion Fighter") or className1 == tostring("Battle Master Fighter (str)") or className1 == tostring("Battle Master Fighter (dex)") or className1 == tostring("Eldritch Knight Fighter") or className1 == tostring("Arcane Archer Fighter") or className1 == tostring("Cavalier Fighter") or className1 == tostring("Samurai Fighter") or className1 == tostring("Paladin") or className1 == tostring("Devotion Paladin") or className1 == tostring("Ancients Paladin") or className1 == tostring("Vengeance Paladin") or className1 == tostring("Oathbreaker Paladin") or className1 == tostring("Conquest Paladin") or className1 == tostring("Redemption Paladin") or className1 == tostring("Ranger") or className1 == tostring("Hunter Ranger") or className1 == tostring("Beast Master Ranger") or className1 == tostring("Gloom Stalker Ranger") or className1 == tostring("Horizon Walker Ranger") or className1 == tostring("Monster Slayer Ranger") then
+        elseif global_characterStats.className1 ~= nil and global_characterStats.className1 == tostring("Fighter") or global_characterStats.className1 == tostring("Champion Fighter") or global_characterStats.className1 == tostring("Battle Master Fighter (str)") or global_characterStats.className1 == tostring("Battle Master Fighter (dex)") or global_characterStats.className1 == tostring("Eldritch Knight Fighter") or global_characterStats.className1 == tostring("Arcane Archer Fighter") or global_characterStats.className1 == tostring("Cavalier Fighter") or global_characterStats.className1 == tostring("Samurai Fighter") or global_characterStats.className1 == tostring("Paladin") or global_characterStats.className1 == tostring("Devotion Paladin") or global_characterStats.className1 == tostring("Ancients Paladin") or global_characterStats.className1 == tostring("Vengeance Paladin") or global_characterStats.className1 == tostring("Oathbreaker Paladin") or global_characterStats.className1 == tostring("Conquest Paladin") or global_characterStats.className1 == tostring("Redemption Paladin") or global_characterStats.className1 == tostring("Ranger") or global_characterStats.className1 == tostring("Hunter Ranger") or global_characterStats.className1 == tostring("Beast Master Ranger") or global_characterStats.className1 == tostring("Gloom Stalker Ranger") or global_characterStats.className1 == tostring("Horizon Walker Ranger") or global_characterStats.className1 == tostring("Monster Slayer Ranger") then
             HitDiceClass1 = tostring("d10")
-        elseif className1 ~= nil and className1 == tostring("Barbarian") or className1 == tostring("Berserker Barbarian") or className1 == tostring("Totem Warrior Barbarian") or className1 == tostring("Ancestral Guardian Barbarian") or className1 == tostring("Storm Herald Barbarian") or className1 == tostring("Zealot Barbarian") then
+        elseif global_characterStats.className1 ~= nil and global_characterStats.className1 == tostring("Barbarian") or global_characterStats.className1 == tostring("Berserker Barbarian") or global_characterStats.className1 == tostring("Totem Warrior Barbarian") or global_characterStats.className1 == tostring("Ancestral Guardian Barbarian") or global_characterStats.className1 == tostring("Storm Herald Barbarian") or global_characterStats.className1 == tostring("Zealot Barbarian") then
             HitDiceClass1 = tostring("d12")
-        elseif className1 ~= nil and className1 == tostring("") then
+        elseif global_characterStats.className1 ~= nil and global_characterStats.className1 == tostring("") then
             HitDiceClass1 = tostring("")
         end
-        if className2 ~= nil and className2 == tostring("Draconic Bloodline Sorcerer") or className2 == tostring("Wild Magic Sorcerer") or className2 == tostring("Divine Soul Sorcerer") or className2 == tostring("Shadow Magic Sorcerer") or className2 == tostring("Storm Sorcery Sorcerer") or className2 == tostring("Wizard") or className2 == tostring("Abjuration Wizard") or className2 == tostring("Conjuration Wizard") or className2 == tostring("Divination Wizard") or className2 == tostring("Enchantment Wizard") or className2 == tostring("Evocation Wizard") or className2 == tostring("Illusion Wizard") or className2 == tostring("Necromancy Wizard") or className2 == tostring("Transmutation Wizard") or className2 == tostring("War Magic Wizard") then
+        if global_characterStats.className2 ~= nil and global_characterStats.className2 == tostring("Draconic Bloodline Sorcerer") or global_characterStats.className2 == tostring("Wild Magic Sorcerer") or global_characterStats.className2 == tostring("Divine Soul Sorcerer") or global_characterStats.className2 == tostring("Shadow Magic Sorcerer") or global_characterStats.className2 == tostring("Storm Sorcery Sorcerer") or global_characterStats.className2 == tostring("Wizard") or global_characterStats.className2 == tostring("Abjuration Wizard") or global_characterStats.className2 == tostring("Conjuration Wizard") or global_characterStats.className2 == tostring("Divination Wizard") or global_characterStats.className2 == tostring("Enchantment Wizard") or global_characterStats.className2 == tostring("Evocation Wizard") or global_characterStats.className2 == tostring("Illusion Wizard") or global_characterStats.className2 == tostring("Necromancy Wizard") or global_characterStats.className2 == tostring("Transmutation Wizard") or global_characterStats.className2 == tostring("War Magic Wizard") then
             HitDiceClass2 = tostring("d6")
-        elseif className2 ~= nil and className2 == tostring("Bard") or className2 == tostring("Lore Bard") or className2 == tostring("Valor Bard") or className2 == tostring("Glamour Bard") or className2 == tostring("Swords Bard") or className2 == tostring("Whispers Bard") or className2 == tostring("Knowledge Cleric") or className2 == tostring("Life Cleric") or className2 == tostring("Light Cleric") or className2 == tostring("Nature Cleric") or className2 == tostring("Tempest Cleric") or className2 == tostring("Trickery Cleric") or className2 == tostring("War Cleric") or className2 == tostring("Death Cleric") or className2 == tostring("Forge Cleric") or className2 == tostring("Grave Cleric") or className2 == tostring("Druid") or className2 == tostring("Land Druid") or className2 == tostring("Moon Druid") or className2 == tostring("Dreams Druid") or className2 == tostring("Shepherd Druid") or className2 == tostring("Monk") or className2 == tostring("Open Hand Monk") or className2 == tostring("Shadow Monk") or className2 == tostring("Four Elements Monk") or className2 == tostring("Drunken Master Monk") or className2 == tostring("Kensei Monk") or className2 == tostring("Sun Soul Monk") or className2 == tostring("Rogue") or className2 == tostring("Thief Rogue") or className2 == tostring("Assassin Rogue") or className2 == tostring("Arcane Trickster Rogue") or className2 == tostring("Inquisitive Rogue") or className2 == tostring("Mastermind Rogue") or className2 == tostring("Scout Rogue") or className2 == tostring("Swashbuckler Rogue") or className2 == tostring("The Archfey Warlock") or className2 == tostring("The Fiend Warlock") or className2 == tostring("The Great Old One Warlock") or className2 == tostring("The Celestial Warlock") or className2 == tostring("The Hexblade Warlock") then
+        elseif global_characterStats.className2 ~= nil and global_characterStats.className2 == tostring("Bard") or global_characterStats.className2 == tostring("Lore Bard") or global_characterStats.className2 == tostring("Valor Bard") or global_characterStats.className2 == tostring("Glamour Bard") or global_characterStats.className2 == tostring("Swords Bard") or global_characterStats.className2 == tostring("Whispers Bard") or global_characterStats.className2 == tostring("Knowledge Cleric") or global_characterStats.className2 == tostring("Life Cleric") or global_characterStats.className2 == tostring("Light Cleric") or global_characterStats.className2 == tostring("Nature Cleric") or global_characterStats.className2 == tostring("Tempest Cleric") or global_characterStats.className2 == tostring("Trickery Cleric") or global_characterStats.className2 == tostring("War Cleric") or global_characterStats.className2 == tostring("Death Cleric") or global_characterStats.className2 == tostring("Forge Cleric") or global_characterStats.className2 == tostring("Grave Cleric") or global_characterStats.className2 == tostring("Druid") or global_characterStats.className2 == tostring("Land Druid") or global_characterStats.className2 == tostring("Moon Druid") or global_characterStats.className2 == tostring("Dreams Druid") or global_characterStats.className2 == tostring("Shepherd Druid") or global_characterStats.className2 == tostring("Monk") or global_characterStats.className2 == tostring("Open Hand Monk") or global_characterStats.className2 == tostring("Shadow Monk") or global_characterStats.className2 == tostring("Four Elements Monk") or global_characterStats.className2 == tostring("Drunken Master Monk") or global_characterStats.className2 == tostring("Kensei Monk") or global_characterStats.className2 == tostring("Sun Soul Monk") or global_characterStats.className2 == tostring("Rogue") or global_characterStats.className2 == tostring("Thief Rogue") or global_characterStats.className2 == tostring("Assassin Rogue") or global_characterStats.className2 == tostring("Arcane Trickster Rogue") or global_characterStats.className2 == tostring("Inquisitive Rogue") or global_characterStats.className2 == tostring("Mastermind Rogue") or global_characterStats.className2 == tostring("Scout Rogue") or global_characterStats.className2 == tostring("Swashbuckler Rogue") or global_characterStats.className2 == tostring("The Archfey Warlock") or global_characterStats.className2 == tostring("The Fiend Warlock") or global_characterStats.className2 == tostring("The Great Old One Warlock") or global_characterStats.className2 == tostring("The Celestial Warlock") or global_characterStats.className2 == tostring("The Hexblade Warlock") then
             HitDiceClass2 = tostring("d8")
-        elseif className2 ~= nil and className2 == tostring("Fighter") or className2 == tostring("Champion Fighter") or className2 == tostring("Battle Master Fighter (str)") or className2 == tostring("Battle Master Fighter (dex)") or className2 == tostring("Eldritch Knight Fighter") or className2 == tostring("Arcane Archer Fighter") or className2 == tostring("Cavalier Fighter") or className2 == tostring("Samurai Fighter") or className2 == tostring("Paladin") or className2 == tostring("Devotion Paladin") or className2 == tostring("Ancients Paladin") or className2 == tostring("Vengeance Paladin") or className2 == tostring("Oathbreaker Paladin") or className2 == tostring("Conquest Paladin") or className2 == tostring("Redemption Paladin") or className2 == tostring("Ranger") or className2 == tostring("Hunter Ranger") or className2 == tostring("Beast Master Ranger") or className2 == tostring("Gloom Stalker Ranger") or className2 == tostring("Horizon Walker Ranger") or className2 == tostring("Monster Slayer Ranger") then
+        elseif global_characterStats.className2 ~= nil and global_characterStats.className2 == tostring("Fighter") or global_characterStats.className2 == tostring("Champion Fighter") or global_characterStats.className2 == tostring("Battle Master Fighter (str)") or global_characterStats.className2 == tostring("Battle Master Fighter (dex)") or global_characterStats.className2 == tostring("Eldritch Knight Fighter") or global_characterStats.className2 == tostring("Arcane Archer Fighter") or global_characterStats.className2 == tostring("Cavalier Fighter") or global_characterStats.className2 == tostring("Samurai Fighter") or global_characterStats.className2 == tostring("Paladin") or global_characterStats.className2 == tostring("Devotion Paladin") or global_characterStats.className2 == tostring("Ancients Paladin") or global_characterStats.className2 == tostring("Vengeance Paladin") or global_characterStats.className2 == tostring("Oathbreaker Paladin") or global_characterStats.className2 == tostring("Conquest Paladin") or global_characterStats.className2 == tostring("Redemption Paladin") or global_characterStats.className2 == tostring("Ranger") or global_characterStats.className2 == tostring("Hunter Ranger") or global_characterStats.className2 == tostring("Beast Master Ranger") or global_characterStats.className2 == tostring("Gloom Stalker Ranger") or global_characterStats.className2 == tostring("Horizon Walker Ranger") or global_characterStats.className2 == tostring("Monster Slayer Ranger") then
             HitDiceClass2 = tostring("d10")
-        elseif className2 ~= nil and className2 == tostring("Barbarian") or className2 == tostring("Berserker Barbarian") or className2 == tostring("Totem Warrior Barbarian") or className2 == tostring("Ancestral Guardian Barbarian") or className2 == tostring("Storm Herald Barbarian") or className2 == tostring("Zealot Barbarian") then
+        elseif global_characterStats.className2 ~= nil and global_characterStats.className2 == tostring("Barbarian") or global_characterStats.className2 == tostring("Berserker Barbarian") or global_characterStats.className2 == tostring("Totem Warrior Barbarian") or global_characterStats.className2 == tostring("Ancestral Guardian Barbarian") or global_characterStats.className2 == tostring("Storm Herald Barbarian") or global_characterStats.className2 == tostring("Zealot Barbarian") then
             HitDiceClass2 = tostring("d12")
-        elseif className2 ~= nil and className2 == tostring("") then
+        elseif global_characterStats.className2 ~= nil and global_characterStats.className2 == tostring("") then
             HitDiceClass2 = tostring("")
         end
         self.editButton({index = HitDiceClass1DisplayIdx, label = tostring(HitDiceClass1)})
         self.editButton({index = HitDiceClass2DisplayIdx, label = tostring(HitDiceClass2)})
-        if className1 ~= nil and className1 == tostring("Wizard") or className1 == tostring("Abjuration Wizard") or className1 == tostring("Conjuration Wizard") or className1 == tostring("Divination Wizard") or className1 == tostring("Enchantment Wizard") or className1 == tostring("Evocation Wizard") or className1 == tostring("Illusion Wizard") or className1 == tostring("Necromancy Wizard") or className1 == tostring("Transmutation Wizard") or className1 == tostring("War Magic Wizard") or className1 == tostring("Eldritch Knight Fighter") or className1 == tostring("Arcane Trickster Rogue") then
+        if global_characterStats.className1 ~= nil and global_characterStats.className1 == tostring("Wizard") or global_characterStats.className1 == tostring("Abjuration Wizard") or global_characterStats.className1 == tostring("Conjuration Wizard") or global_characterStats.className1 == tostring("Divination Wizard") or global_characterStats.className1 == tostring("Enchantment Wizard") or global_characterStats.className1 == tostring("Evocation Wizard") or global_characterStats.className1 == tostring("Illusion Wizard") or global_characterStats.className1 == tostring("Necromancy Wizard") or global_characterStats.className1 == tostring("Transmutation Wizard") or global_characterStats.className1 == tostring("War Magic Wizard") or global_characterStats.className1 == tostring("Eldritch Knight Fighter") or global_characterStats.className1 == tostring("Arcane Trickster Rogue") then
             Caster = 8
             SpellSaveDC1 = SpellSaveDC1 + ProfBonus + Caster + INTmod;
             SpellAtkBonus1 = SpellAtkBonus1 + ProfBonus + INTmod;
-        elseif className1 ~= nil and className1 == tostring("Knowledge Cleric") or className1 == tostring("Life Cleric") or className1 == tostring("Light Cleric") or className1 == tostring("Nature Cleric") or className1 == tostring("Tempest Cleric") or className1 == tostring("Trickery Cleric") or className1 == tostring("War Cleric") or className1 == tostring("Death Cleric") or className1 == tostring("Forge Cleric") or className1 == tostring("Grave Cleric") or className1 == tostring("Druid") or className1 == tostring("Land Druid") or className1 == tostring("Moon Druid") or className1 == tostring("Dreams Druid") or className1 == tostring("Shepherd Druid") or className1 == tostring("Monk") or className1 == tostring("Open Hand Monk") or className1 == tostring("Shadow Monk") or className1 == tostring("Four Elements Monk") or className1 == tostring("Drunken Master Monk") or className1 == tostring("Kensei Monk") or className1 == tostring("Sun Soul Monk") or className1 == tostring("Hunter Ranger") or className1 == tostring("Beast Master Ranger") or className1 == tostring("Gloom Stalker Ranger") or className1 == tostring("Horizon Walker Ranger") or className1 == tostring("Monster Slayer Ranger") then
+        elseif global_characterStats.className1 ~= nil and global_characterStats.className1 == tostring("Knowledge Cleric") or global_characterStats.className1 == tostring("Life Cleric") or global_characterStats.className1 == tostring("Light Cleric") or global_characterStats.className1 == tostring("Nature Cleric") or global_characterStats.className1 == tostring("Tempest Cleric") or global_characterStats.className1 == tostring("Trickery Cleric") or global_characterStats.className1 == tostring("War Cleric") or global_characterStats.className1 == tostring("Death Cleric") or global_characterStats.className1 == tostring("Forge Cleric") or global_characterStats.className1 == tostring("Grave Cleric") or global_characterStats.className1 == tostring("Druid") or global_characterStats.className1 == tostring("Land Druid") or global_characterStats.className1 == tostring("Moon Druid") or global_characterStats.className1 == tostring("Dreams Druid") or global_characterStats.className1 == tostring("Shepherd Druid") or global_characterStats.className1 == tostring("Monk") or global_characterStats.className1 == tostring("Open Hand Monk") or global_characterStats.className1 == tostring("Shadow Monk") or global_characterStats.className1 == tostring("Four Elements Monk") or global_characterStats.className1 == tostring("Drunken Master Monk") or global_characterStats.className1 == tostring("Kensei Monk") or global_characterStats.className1 == tostring("Sun Soul Monk") or global_characterStats.className1 == tostring("Hunter Ranger") or global_characterStats.className1 == tostring("Beast Master Ranger") or global_characterStats.className1 == tostring("Gloom Stalker Ranger") or global_characterStats.className1 == tostring("Horizon Walker Ranger") or global_characterStats.className1 == tostring("Monster Slayer Ranger") then
             Caster = 8
             SpellSaveDC1 = SpellSaveDC1 + ProfBonus + Caster + WISmod;
             SpellAtkBonus1 = SpellAtkBonus1 + ProfBonus + WISmod;
-        elseif className1 ~= nil and className1 == tostring("Bard") or className1 == tostring("Lore Bard") or className1 == tostring("Valor Bard") or className1 == tostring("Glamour Bard") or className1 == tostring("Swords Bard") or className1 == tostring("Whispers Bard") or className1 == tostring("Devotion Paladin") or className1 == tostring("Ancients Paladin") or className1 == tostring("Vengeance Paladin") or className1 == tostring("Oathbreaker Paladin") or className1 == tostring("Conquest Paladin") or className1 == tostring("Redemption Paladin") or className1 == tostring("Draconic Bloodline Sorcerer") or className1 == tostring("Wild Magic Sorcerer") or className1 == tostring("Divine Soul Sorcerer") or className1 == tostring("Shadow Magic Sorcerer") or className1 == tostring("Storm Sorcery Sorcerer") or className1 == tostring("The Archfey Warlock") or className1 == tostring("The Fiend Warlock") or className1 == tostring("The Great Old One Warlock") or className1 == tostring("The Celestial Warlock") or className1 == tostring("The Hexblade Warlock") then
+        elseif global_characterStats.className1 ~= nil and global_characterStats.className1 == tostring("Bard") or global_characterStats.className1 == tostring("Lore Bard") or global_characterStats.className1 == tostring("Valor Bard") or global_characterStats.className1 == tostring("Glamour Bard") or global_characterStats.className1 == tostring("Swords Bard") or global_characterStats.className1 == tostring("Whispers Bard") or global_characterStats.className1 == tostring("Devotion Paladin") or global_characterStats.className1 == tostring("Ancients Paladin") or global_characterStats.className1 == tostring("Vengeance Paladin") or global_characterStats.className1 == tostring("Oathbreaker Paladin") or global_characterStats.className1 == tostring("Conquest Paladin") or global_characterStats.className1 == tostring("Redemption Paladin") or global_characterStats.className1 == tostring("Draconic Bloodline Sorcerer") or global_characterStats.className1 == tostring("Wild Magic Sorcerer") or global_characterStats.className1 == tostring("Divine Soul Sorcerer") or global_characterStats.className1 == tostring("Shadow Magic Sorcerer") or global_characterStats.className1 == tostring("Storm Sorcery Sorcerer") or global_characterStats.className1 == tostring("The Archfey Warlock") or global_characterStats.className1 == tostring("The Fiend Warlock") or global_characterStats.className1 == tostring("The Great Old One Warlock") or global_characterStats.className1 == tostring("The Celestial Warlock") or global_characterStats.className1 == tostring("The Hexblade Warlock") then
             Caster = 8
             SpellSaveDC1 = SpellSaveDC1 + ProfBonus + Caster + CHAmod;
             SpellAtkBonus1 = SpellAtkBonus1 + ProfBonus + CHAmod;
-        elseif className1 ~= nil and className1 == tostring("Battle Master Fighter (str)") then
+        elseif global_characterStats.className1 ~= nil and global_characterStats.className1 == tostring("Battle Master Fighter (str)") then
             Caster = 8
             SpellSaveDC1 = SpellSaveDC1 + ProfBonus + Caster + STRmod;
             SpellAtkBonus1 = "NA"
-        elseif className1 ~= nil and className1 == tostring("Battle Master Fighter (dex)") then
+        elseif global_characterStats.className1 ~= nil and global_characterStats.className1 == tostring("Battle Master Fighter (dex)") then
             Caster = 8
             SpellSaveDC1 = SpellSaveDC1 + ProfBonus + Caster + DEXmod;
             SpellAtkBonus1 = "NA"
-        elseif className1 ~= nil and className1 == tostring("") or className1 == tostring("Barbarian") or className1 == tostring("Berserker Barbarian") or className1 == tostring("Totem Warrior Barbarian") or className1 == tostring("Ancestral Guardian Barbarian") or className1 == tostring("Storm Herald Barbarian") or className1 == tostring("Zealot Barbarian") or className1 == tostring("Fighter") or className1 == tostring("Champion Fighter") or className1 == tostring("Arcane Archer Fighter") or className1 == tostring("Cavalier Fighter") or className1 == tostring("Samurai Fighter") or className1 == tostring("Rogue") or className1 == tostring("Thief Rogue") or className1 == tostring("Assassin Rogue") or className1 == tostring("Inquisitive Rogue") or className1 == tostring("Mastermind Rogue") or className1 == tostring("Scout Rogue") or className1 == tostring("Swashbuckler Rogue") then
+        elseif global_characterStats.className1 ~= nil and global_characterStats.className1 == tostring("") or global_characterStats.className1 == tostring("Barbarian") or global_characterStats.className1 == tostring("Berserker Barbarian") or global_characterStats.className1 == tostring("Totem Warrior Barbarian") or global_characterStats.className1 == tostring("Ancestral Guardian Barbarian") or global_characterStats.className1 == tostring("Storm Herald Barbarian") or global_characterStats.className1 == tostring("Zealot Barbarian") or global_characterStats.className1 == tostring("Fighter") or global_characterStats.className1 == tostring("Champion Fighter") or global_characterStats.className1 == tostring("Arcane Archer Fighter") or global_characterStats.className1 == tostring("Cavalier Fighter") or global_characterStats.className1 == tostring("Samurai Fighter") or global_characterStats.className1 == tostring("Rogue") or global_characterStats.className1 == tostring("Thief Rogue") or global_characterStats.className1 == tostring("Assassin Rogue") or global_characterStats.className1 == tostring("Inquisitive Rogue") or global_characterStats.className1 == tostring("Mastermind Rogue") or global_characterStats.className1 == tostring("Scout Rogue") or global_characterStats.className1 == tostring("Swashbuckler Rogue") then
             SpellSaveDC1 = "NA"
             SpellAtkBonus1 = "NA"
         end
-        if className2 ~= nil and className2 == tostring("Wizard") or className2 == tostring("Abjuration Wizard") or className2 == tostring("Conjuration Wizard") or className2 == tostring("Divination Wizard") or className2 == tostring("Enchantment Wizard") or className2 == tostring("Evocation Wizard") or className2 == tostring("Illusion Wizard") or className2 == tostring("Necromancy Wizard") or className2 == tostring("Transmutation Wizard") or className2 == tostring("War Magic Wizard") or className2 == tostring("Eldritch Knight Fighter") or className2 == tostring("Arcane Trickster Rogue") then
+        if global_characterStats.className2 ~= nil and global_characterStats.className2 == tostring("Wizard") or global_characterStats.className2 == tostring("Abjuration Wizard") or global_characterStats.className2 == tostring("Conjuration Wizard") or global_characterStats.className2 == tostring("Divination Wizard") or global_characterStats.className2 == tostring("Enchantment Wizard") or global_characterStats.className2 == tostring("Evocation Wizard") or global_characterStats.className2 == tostring("Illusion Wizard") or global_characterStats.className2 == tostring("Necromancy Wizard") or global_characterStats.className2 == tostring("Transmutation Wizard") or global_characterStats.className2 == tostring("War Magic Wizard") or global_characterStats.className2 == tostring("Eldritch Knight Fighter") or global_characterStats.className2 == tostring("Arcane Trickster Rogue") then
             Caster = 8
             SpellSaveDC2 = SpellSaveDC2 + ProfBonus + Caster + INTmod;
             SpellAtkBonus2 = SpellAtkBonus2 + ProfBonus + INTmod;
-        elseif className2 ~= nil and className2 == tostring("Knowledge Cleric") or className2 == tostring("Life Cleric") or className2 == tostring("Light Cleric") or className2 == tostring("Nature Cleric") or className2 == tostring("Tempest Cleric") or className2 == tostring("Trickery Cleric") or className2 == tostring("War Cleric") or className2 == tostring("Death Cleric") or className2 == tostring("Forge Cleric") or className2 == tostring("Grave Cleric") or className2 == tostring("Druid") or className2 == tostring("Land Druid") or className2 == tostring("Moon Druid") or className2 == tostring("Dreams Druid") or className2 == tostring("Shepherd Druid") or className2 == tostring("Monk") or className2 == tostring("Open Hand Monk") or className2 == tostring("Shadow Monk") or className2 == tostring("Four Elements Monk") or className2 == tostring("Drunken Master Monk") or className2 == tostring("Kensei Monk") or className2 == tostring("Sun Soul Monk") or className2 == tostring("Hunter Ranger") or className2 == tostring("Beast Master Ranger") or className2 == tostring("Gloom Stalker Ranger") or className2 == tostring("Horizon Walker Ranger") or className2 == tostring("Monster Slayer Ranger") then
+        elseif global_characterStats.className2 ~= nil and global_characterStats.className2 == tostring("Knowledge Cleric") or global_characterStats.className2 == tostring("Life Cleric") or global_characterStats.className2 == tostring("Light Cleric") or global_characterStats.className2 == tostring("Nature Cleric") or global_characterStats.className2 == tostring("Tempest Cleric") or global_characterStats.className2 == tostring("Trickery Cleric") or global_characterStats.className2 == tostring("War Cleric") or global_characterStats.className2 == tostring("Death Cleric") or global_characterStats.className2 == tostring("Forge Cleric") or global_characterStats.className2 == tostring("Grave Cleric") or global_characterStats.className2 == tostring("Druid") or global_characterStats.className2 == tostring("Land Druid") or global_characterStats.className2 == tostring("Moon Druid") or global_characterStats.className2 == tostring("Dreams Druid") or global_characterStats.className2 == tostring("Shepherd Druid") or global_characterStats.className2 == tostring("Monk") or global_characterStats.className2 == tostring("Open Hand Monk") or global_characterStats.className2 == tostring("Shadow Monk") or global_characterStats.className2 == tostring("Four Elements Monk") or global_characterStats.className2 == tostring("Drunken Master Monk") or global_characterStats.className2 == tostring("Kensei Monk") or global_characterStats.className2 == tostring("Sun Soul Monk") or global_characterStats.className2 == tostring("Hunter Ranger") or global_characterStats.className2 == tostring("Beast Master Ranger") or global_characterStats.className2 == tostring("Gloom Stalker Ranger") or global_characterStats.className2 == tostring("Horizon Walker Ranger") or global_characterStats.className2 == tostring("Monster Slayer Ranger") then
             Caster = 8
             SpellSaveDC2 = SpellSaveDC2 + ProfBonus + Caster + WISmod;
             SpellAtkBonus2 = SpellAtkBonus2 + ProfBonus + WISmod;
-        elseif className2 ~= nil and className2 == tostring("Bard") or className2 == tostring("Lore Bard") or className2 == tostring("Valor Bard") or className2 == tostring("Glamour Bard") or className2 == tostring("Swords Bard") or className2 == tostring("Whispers Bard") or className2 == tostring("Devotion Paladin") or className2 == tostring("Ancients Paladin") or className2 == tostring("Vengeance Paladin") or className2 == tostring("Oathbreaker Paladin") or className2 == tostring("Conquest Paladin") or className2 == tostring("Redemption Paladin") or className2 == tostring("Draconic Bloodline Sorcerer") or className2 == tostring("Wild Magic Sorcerer") or className2 == tostring("Divine Soul Sorcerer") or className2 == tostring("Shadow Magic Sorcerer") or className2 == tostring("Storm Sorcery Sorcerer") or className2 == tostring("The Archfey Warlock") or className2 == tostring("The Fiend Warlock") or className2 == tostring("The Great Old One Warlock") or className2 == tostring("The Celestial Warlock") or className2 == tostring("The Hexblade Warlock") then
+        elseif global_characterStats.className2 ~= nil and global_characterStats.className2 == tostring("Bard") or global_characterStats.className2 == tostring("Lore Bard") or global_characterStats.className2 == tostring("Valor Bard") or global_characterStats.className2 == tostring("Glamour Bard") or global_characterStats.className2 == tostring("Swords Bard") or global_characterStats.className2 == tostring("Whispers Bard") or global_characterStats.className2 == tostring("Devotion Paladin") or global_characterStats.className2 == tostring("Ancients Paladin") or global_characterStats.className2 == tostring("Vengeance Paladin") or global_characterStats.className2 == tostring("Oathbreaker Paladin") or global_characterStats.className2 == tostring("Conquest Paladin") or global_characterStats.className2 == tostring("Redemption Paladin") or global_characterStats.className2 == tostring("Draconic Bloodline Sorcerer") or global_characterStats.className2 == tostring("Wild Magic Sorcerer") or global_characterStats.className2 == tostring("Divine Soul Sorcerer") or global_characterStats.className2 == tostring("Shadow Magic Sorcerer") or global_characterStats.className2 == tostring("Storm Sorcery Sorcerer") or global_characterStats.className2 == tostring("The Archfey Warlock") or global_characterStats.className2 == tostring("The Fiend Warlock") or global_characterStats.className2 == tostring("The Great Old One Warlock") or global_characterStats.className2 == tostring("The Celestial Warlock") or global_characterStats.className2 == tostring("The Hexblade Warlock") then
             Caster = 8
             SpellSaveDC2 = SpellSaveDC2 + ProfBonus + Caster + CHAmod;
             SpellAtkBonus2 = SpellAtkBonus2 + ProfBonus + CHAmod;
-        elseif className2 ~= nil and className2 == tostring("Battle Master Fighter (str)") then
+        elseif global_characterStats.className2 ~= nil and global_characterStats.className2 == tostring("Battle Master Fighter (str)") then
             Caster = 8
             SpellSaveDC2 = SpellSaveDC2 + ProfBonus + Caster + STRmod;
             SpellAtkBonus2 = "NA"
-        elseif className2 ~= nil and className2 == tostring("Battle Master Fighter (dex)") then
+        elseif global_characterStats.className2 ~= nil and global_characterStats.className2 == tostring("Battle Master Fighter (dex)") then
             Caster = 8
             SpellSaveDC2 = SpellSaveDC2 + ProfBonus + Caster + DEXmod;
             SpellAtkBonus2 = "NA"
-        elseif className2 ~= nil and className2 == tostring("") or className2 == tostring("Barbarian") or className2 == tostring("Berserker Barbarian") or className2 == tostring("Totem Warrior Barbarian") or className2 == tostring("Ancestral Guardian Barbarian") or className2 == tostring("Storm Herald Barbarian") or className2 == tostring("Zealot Barbarian") or className2 == tostring("Fighter") or className2 == tostring("Champion Fighter") or className2 == tostring("Arcane Archer Fighter") or className2 == tostring("Cavalier Fighter") or className2 == tostring("Samurai Fighter") or className2 == tostring("Rogue") or className2 == tostring("Thief Rogue") or className2 == tostring("Assassin Rogue") or className2 == tostring("Inquisitive Rogue") or className2 == tostring("Mastermind Rogue") or className2 == tostring("Scout Rogue") or className2 == tostring("Swashbuckler Rogue") then
+        elseif global_characterStats.className2 ~= nil and global_characterStats.className2 == tostring("") or global_characterStats.className2 == tostring("Barbarian") or global_characterStats.className2 == tostring("Berserker Barbarian") or global_characterStats.className2 == tostring("Totem Warrior Barbarian") or global_characterStats.className2 == tostring("Ancestral Guardian Barbarian") or global_characterStats.className2 == tostring("Storm Herald Barbarian") or global_characterStats.className2 == tostring("Zealot Barbarian") or global_characterStats.className2 == tostring("Fighter") or global_characterStats.className2 == tostring("Champion Fighter") or global_characterStats.className2 == tostring("Arcane Archer Fighter") or global_characterStats.className2 == tostring("Cavalier Fighter") or global_characterStats.className2 == tostring("Samurai Fighter") or global_characterStats.className2 == tostring("Rogue") or global_characterStats.className2 == tostring("Thief Rogue") or global_characterStats.className2 == tostring("Assassin Rogue") or global_characterStats.className2 == tostring("Inquisitive Rogue") or global_characterStats.className2 == tostring("Mastermind Rogue") or global_characterStats.className2 == tostring("Scout Rogue") or global_characterStats.className2 == tostring("Swashbuckler Rogue") then
             SpellSaveDC2 = "NA"
             SpellAtkBonus2 = "NA"
         end
@@ -1490,13 +1476,13 @@ function updateCalculatedValues()
         self.editButton({index = SpellAtkBonus1DisplayIdx, label = tostring(SpellAtkBonus1)})
         self.editButton({index = SpellAtkBonus2DisplayIdx, label = tostring(SpellAtkBonus2)})
 
-        self.editButton({index = raceNameDisplayIdx, label = tostring(raceName)})
-        self.editButton({index = infoSizeDisplayIdx, label = tostring(infoSize)})
-        self.editButton({index = VisionDisplayIdx, label = tostring(Vision)})
-        self.editButton({index = Vision1DisplayIdx, label = tostring(Vision1)})
-        self.editButton({index = SpeedDisplayIdx, label = tostring(Speed)})
-        self.editButton({index = className1DisplayIdx, label = tostring(className1)})
-        self.editButton({index = className2DisplayIdx, label = tostring(className2)})
+        self.editButton({index = raceNameDisplayIdx, label = tostring(global_characterStats.raceName)})
+        self.editButton({index = infoSizeDisplayIdx, label = tostring(global_characterStats.infoSize)})
+        self.editButton({index = VisionDisplayIdx, label = tostring(global_characterStats.Vision)})
+        self.editButton({index = Vision1DisplayIdx, label = tostring(global_characterStats.Vision1)})
+        self.editButton({index = SpeedDisplayIdx, label = tostring(global_characterStats.Speed)})
+        self.editButton({index = className1DisplayIdx, label = tostring(global_characterStats.className1)})
+        self.editButton({index = className2DisplayIdx, label = tostring(global_characterStats.className2)})
 
         SaveCheckSTRIsChecked = savedDataTable[SaveCheckSTRCheckboxButtonIdx]
         SaveCheckDEXIsChecked = savedDataTable[SaveCheckDEXCheckboxButtonIdx]
@@ -1554,30 +1540,30 @@ end
 
 function rollCheckSaveThrow(color, obj)
     displayCol = getColor(obj)
-    playerName = Player[obj].steam_name
+    global_characterStats.playerName = Player[obj].steam_name
     updateRandomSeed()
     d20 = math.random(20)
     d20two = math.random(20)
     if (SaveCheckSTRIsChecked == true) or (SaveCheckDEXIsChecked == true) or (SaveCheckCONIsChecked == true) or (SaveCheckINTIsChecked == true) or (SaveCheckWISIsChecked == true) or (SaveCheckCHAIsChecked == true) then
         printToAll("╔═════════════════════════════", displayCol)
-        printToAll("║[b]"..playerName.."'s Saving Throw:[/b]", displayCol)
+        printToAll("║[b]"..global_characterStats.playerName.."'s Saving Throw:[/b]", displayCol)
         printToAll("║[i]**Original rolls: ( "..(d20).." | "..(d20two).." ) + Modifier: ("..RollSaveSelected..")[/i]", displayCol)
-        broadcastToAll(">> "..playerName.." rolled [b]( "..(d20+RollSaveSelected).." | "..(d20two+RollSaveSelected)..messageSaveThrow.." <<", displayCol)
+        broadcastToAll(">> "..global_characterStats.playerName.." rolled [b]( "..(d20+RollSaveSelected).." | "..(d20two+RollSaveSelected)..messageSaveThrow.." <<", displayCol)
     else
         broadcastToColor("There is no Saving Throw selected.", obj, displayCol)
     end
 end
 function rollCheckSkill(color, obj)
     displayCol = getColor(obj)
-    playerName = Player[obj].steam_name
+    global_characterStats.playerName = Player[obj].steam_name
     updateRandomSeed()
     d20 = math.random(20)
     d20two = math.random(20)
     if (AcrobaticsSkillIsChecked == true) or (AnimalHandlingSkillIsChecked == true) or (ArcanaSkillIsChecked == true) or (AthleticsSkillIsChecked == true) or (DeceptionSkillIsChecked == true) or (HistorySkillIsChecked == true) or (InsightSkillIsChecked == true) or (IntimidationSkillIsChecked == true) or (InvestigationSkillIsChecked == true) or (MedicineSkillIsChecked == true) or (NatureSkillIsChecked == true) or (PerceptionSkillIsChecked == true) or (PerformanceSkillIsChecked == true) or (PersuasionSkillIsChecked == true) or (ReligionSkillIsChecked == true) or (SleightofHandSkillIsChecked == true) or (StealthSkillIsChecked == true) or (SurvivalSkillIsChecked == true) then
         printToAll("╔═════════════════════════════", displayCol)
-        printToAll("║[b]"..playerName.."'s Skill Check:[/b]", displayCol)
+        printToAll("║[b]"..global_characterStats.playerName.."'s Skill Check:[/b]", displayCol)
         printToAll("║[i]**Original rolls: ( "..(d20).." | "..(d20two).." ) + Modifier: ("..RollSkillSelected..")[/i]", displayCol)
-        broadcastToAll(">> "..playerName.." rolled [b]( "..(d20+RollSkillSelected).." | "..(d20two+RollSkillSelected)..messageSkill.." <<", displayCol)
+        broadcastToAll(">> "..global_characterStats.playerName.." rolled [b]( "..(d20+RollSkillSelected).." | "..(d20two+RollSkillSelected)..messageSkill.." <<", displayCol)
     else
         broadcastToColor("There is no Skill Check selected.", obj, displayCol)
     end
@@ -1682,126 +1668,126 @@ CHAsaveItem = 0
 function onCollisionStay(collision_info)
     obj = collision_info.collision_object
     if self.resting and obj.resting and obj.getName() == 'STR score' then
-        print('!Changed '..obj.getName()); STRscore = tostring(obj.getDescription()); updateCalculatedValues(true); obj.destruct()
+        print('!Changed '..obj.getName()); global_characterStats.STRscore = tostring(obj.getDescription()); updateCalculatedValues(true); obj.destruct()
     elseif self.resting and obj.resting and obj.getName() == 'DEX score' then
-        print('!Changed '..obj.getName()); DEXscore = tostring(obj.getDescription()); updateCalculatedValues(true); obj.destruct()
+        print('!Changed '..obj.getName()); global_characterStats.DEXscore = tostring(obj.getDescription()); updateCalculatedValues(true); obj.destruct()
     elseif self.resting and obj.resting and obj.getName() == 'CON score' then
-        print('!Changed '..obj.getName()); CONscore = tostring(obj.getDescription()); updateCalculatedValues(true); obj.destruct()
+        print('!Changed '..obj.getName()); global_characterStats.CONscore = tostring(obj.getDescription()); updateCalculatedValues(true); obj.destruct()
     elseif self.resting and obj.resting and obj.getName() == 'INT score' then
-        print('!Changed '..obj.getName()); INTscore = tostring(obj.getDescription()); updateCalculatedValues(true); obj.destruct()
+        print('!Changed '..obj.getName()); global_characterStats.INTscore = tostring(obj.getDescription()); updateCalculatedValues(true); obj.destruct()
     elseif self.resting and obj.resting and obj.getName() == 'WIS score' then
-        print('!Changed '..obj.getName()); WISscore = tostring(obj.getDescription()); updateCalculatedValues(true); obj.destruct()
+        print('!Changed '..obj.getName()); global_characterStats.WISscore = tostring(obj.getDescription()); updateCalculatedValues(true); obj.destruct()
     elseif self.resting and obj.resting and obj.getName() == 'CHA score' then
-        print('!Changed '..obj.getName()); CHAscore = tostring(obj.getDescription()); updateCalculatedValues(true); obj.destruct()
+        print('!Changed '..obj.getName()); global_characterStats.CHAscore = tostring(obj.getDescription()); updateCalculatedValues(true); obj.destruct()
     elseif self.resting and obj.resting and obj.getName() == 'Race' then
-        print('!Race: '..obj.getDescription()); raceName = tostring(obj.getDescription()); updateCalculatedValues(true); obj.destruct()
+        print('!Race: '..obj.getDescription()); global_characterStats.raceName = tostring(obj.getDescription()); updateCalculatedValues(true); obj.destruct()
     elseif self.resting and obj.resting and obj.getName() == 'Size' then
-        print('!Size: '..obj.getDescription()); infoSize = tostring(obj.getDescription()); updateCalculatedValues(true); obj.destruct()
+        print('!Size: '..obj.getDescription()); global_characterStats.infoSize = tostring(obj.getDescription()); updateCalculatedValues(true); obj.destruct()
     elseif self.resting and obj.resting and obj.getName() == 'Vision' then
-        print('!Vision: '..obj.getDescription()); Vision = tostring(obj.getDescription()); updateCalculatedValues(true); obj.destruct()
+        print('!Vision: '..obj.getDescription()); global_characterStats.Vision = tostring(obj.getDescription()); updateCalculatedValues(true); obj.destruct()
     elseif self.resting and obj.resting and obj.getName() == 'Darkvision' then
         print('!Darkvision: '..obj.getDescription())
-        if obj.getDescription() == 'x' then Vision1=string.char(10008) else Vision1 = tostring(obj.getDescription()) end
+        if obj.getDescription() == 'x' then global_characterStats.Vision1=string.char(10008) else global_characterStats.Vision1 = tostring(obj.getDescription()) end
         updateCalculatedValues(true); obj.destruct()
     elseif self.resting and obj.resting and obj.getName() == 'Speed' then
-        print('!Speed: '..obj.getDescription()); Speed = tostring(obj.getDescription()); updateCalculatedValues(true); obj.destruct()
+        print('!Speed: '..obj.getDescription()); global_characterStats.Speed = tostring(obj.getDescription()); updateCalculatedValues(true); obj.destruct()
     elseif self.resting and obj.resting and obj.getName() == 'Class1' then
-        print('!1st Class: '..obj.getDescription()); className1 = tostring(obj.getDescription()); updateCalculatedValues(true); obj.destruct()
+        print('!1st Class: '..obj.getDescription()); global_characterStats.className1 = tostring(obj.getDescription()); updateCalculatedValues(true); obj.destruct()
     elseif self.resting and obj.resting and obj.getName() == 'Class2' then
-        print('!2nd Class: '..obj.getDescription()); className2 = tostring(obj.getDescription()); updateCalculatedValues(true); obj.destruct()
+        print('!2nd Class: '..obj.getDescription()); global_characterStats.className2 = tostring(obj.getDescription()); updateCalculatedValues(true); obj.destruct()
     elseif self.resting and obj.resting and obj.getName() == 'STR Saving Throw' then
-        print('!STR Saving Throw'); STRsaveCheck=string.char(10008); updateCalculatedValues(true); obj.destruct()
+        print('!STR Saving Throw'); global_characterStats.STRsaveCheck=string.char(10008); updateCalculatedValues(true); obj.destruct()
     elseif self.resting and obj.resting and obj.getName() == 'DEX Saving Throw' then
-        print('!DEX Saving Throw'); DEXsaveCheck=string.char(10008); updateCalculatedValues(true); obj.destruct()
+        print('!DEX Saving Throw'); global_characterStats.DEXsaveCheck=string.char(10008); updateCalculatedValues(true); obj.destruct()
     elseif self.resting and obj.resting and obj.getName() == 'CON Saving Throw' then
-        print('!CON Saving Throw'); CONsaveCheck=string.char(10008); updateCalculatedValues(true); obj.destruct()
+        print('!CON Saving Throw'); global_characterStats.CONsaveCheck=string.char(10008); updateCalculatedValues(true); obj.destruct()
     elseif self.resting and obj.resting and obj.getName() == 'INT Saving Throw' then
-        print('!INT Saving Throw'); INTsaveCheck=string.char(10008); updateCalculatedValues(true); obj.destruct()
+        print('!INT Saving Throw'); global_characterStats.INTsaveCheck=string.char(10008); updateCalculatedValues(true); obj.destruct()
     elseif self.resting and obj.resting and obj.getName() == 'WIS Saving Throw' then
-        print('!WIS Saving Throw'); WISsaveCheck=string.char(10008); updateCalculatedValues(true); obj.destruct()
+        print('!WIS Saving Throw'); global_characterStats.WISsaveCheck=string.char(10008); updateCalculatedValues(true); obj.destruct()
     elseif self.resting and obj.resting and obj.getName() == 'CHA Saving Throw' then
-        print('!CHA Saving Throw'); CHAsaveCheck=string.char(10008); updateCalculatedValues(true); obj.destruct()
+        print('!CHA Saving Throw'); global_characterStats.CHAsaveCheck=string.char(10008); updateCalculatedValues(true); obj.destruct()
     elseif self.resting and obj.resting and obj.getName() == 'REMOVE Saving Throw' then
         print('!REMOVE Saving Throw')
-        if obj.getDescription() == 'STR' then STRsaveCheck=""
-        elseif obj.getDescription() == 'DEX' then DEXsaveCheck=""
-        elseif obj.getDescription() == 'CON' then CONsaveCheck=""
-        elseif obj.getDescription() == 'INT' then INTsaveCheck=""
-        elseif obj.getDescription() == 'WIS' then WISsaveCheck=""
-        elseif obj.getDescription() == 'CHA' then CHAsaveCheck=""
+        if obj.getDescription() == 'STR' then global_characterStats.STRsaveCheck=""
+        elseif obj.getDescription() == 'DEX' then global_characterStats.DEXsaveCheck=""
+        elseif obj.getDescription() == 'CON' then global_characterStats.CONsaveCheck=""
+        elseif obj.getDescription() == 'INT' then global_characterStats.INTsaveCheck=""
+        elseif obj.getDescription() == 'WIS' then global_characterStats.WISsaveCheck=""
+        elseif obj.getDescription() == 'CHA' then global_characterStats.CHAsaveCheck=""
         end
         updateCalculatedValues(true); obj.destruct()
     elseif self.resting and obj.resting and obj.getName() == 'Acrobatics' then
         print('!Skill: '..obj.getName())
-        if obj.getDescription() == 'x' then AcrobaticsCheck=string.char(10008) else AcrobaticsCheck = tostring(obj.getDescription()) end
+        if obj.getDescription() == 'x' then global_characterStats.AcrobaticsCheck=string.char(10008) else global_characterStats.AcrobaticsCheck = tostring(obj.getDescription()) end
         updateCalculatedValues(true); obj.destruct()
     elseif self.resting and obj.resting and obj.getName() == 'Animal Handling' then
         print('!Skill: '..obj.getName())
-        if obj.getDescription() == 'x' then AnimalHandlingCheck=string.char(10008) else AnimalHandlingCheck = tostring(obj.getDescription()) end
+        if obj.getDescription() == 'x' then global_characterStats.AnimalHandlingCheck=string.char(10008) else global_characterStats.AnimalHandlingCheck = tostring(obj.getDescription()) end
         updateCalculatedValues(true); obj.destruct()
     elseif self.resting and obj.resting and obj.getName() == 'Arcana' then
         print('!Skill: '..obj.getName())
-        if obj.getDescription() == 'x' then ArcanaCheck=string.char(10008) else ArcanaCheck = tostring(obj.getDescription()) end
+        if obj.getDescription() == 'x' then global_characterStats.ArcanaCheck=string.char(10008) else global_characterStats.ArcanaCheck = tostring(obj.getDescription()) end
         updateCalculatedValues(true); obj.destruct()
     elseif self.resting and obj.resting and obj.getName() == 'Athletics' then
         print('!Skill: '..obj.getName())
-        if obj.getDescription() == 'x' then AthleticsCheck=string.char(10008) else AthleticsCheck = tostring(obj.getDescription()) end
+        if obj.getDescription() == 'x' then global_characterStats.AthleticsCheck=string.char(10008) else global_characterStats.AthleticsCheck = tostring(obj.getDescription()) end
         updateCalculatedValues(true); obj.destruct()
     elseif self.resting and obj.resting and obj.getName() == 'Deception' then
         print('!Skill: '..obj.getName())
-        if obj.getDescription() == 'x' then DeceptionCheck=string.char(10008) else DeceptionCheck = tostring(obj.getDescription()) end
+        if obj.getDescription() == 'x' then global_characterStats.DeceptionCheck=string.char(10008) else global_characterStats.DeceptionCheck = tostring(obj.getDescription()) end
         updateCalculatedValues(true); obj.destruct()
     elseif self.resting and obj.resting and obj.getName() == 'History' then
         print('!Skill: '..obj.getName())
-        if obj.getDescription() == 'x' then HistoryCheck=string.char(10008) else HistoryCheck = tostring(obj.getDescription()) end
+        if obj.getDescription() == 'x' then global_characterStats.HistoryCheck=string.char(10008) else global_characterStats.HistoryCheck = tostring(obj.getDescription()) end
         updateCalculatedValues(true); obj.destruct()
     elseif self.resting and obj.resting and obj.getName() == 'Insight' then
         print('!Skill: '..obj.getName())
-        if obj.getDescription() == 'x' then InsightCheck=string.char(10008) else InsightCheck = tostring(obj.getDescription()) end
+        if obj.getDescription() == 'x' then global_characterStats.InsightCheck=string.char(10008) else global_characterStats.InsightCheck = tostring(obj.getDescription()) end
         updateCalculatedValues(true); obj.destruct()
     elseif self.resting and obj.resting and obj.getName() == 'Intimidation' then
         print('!Skill: '..obj.getName())
-        if obj.getDescription() == 'x' then IntimidationCheck=string.char(10008) else IntimidationCheck = tostring(obj.getDescription()) end
+        if obj.getDescription() == 'x' then global_characterStats.IntimidationCheck=string.char(10008) else global_characterStats.IntimidationCheck = tostring(obj.getDescription()) end
         updateCalculatedValues(true); obj.destruct()
     elseif self.resting and obj.resting and obj.getName() == 'Investigation' then
         print('!Skill: '..obj.getName())
-        if obj.getDescription() == 'x' then InvestigationCheck=string.char(10008) else InvestigationCheck = tostring(obj.getDescription()) end
+        if obj.getDescription() == 'x' then global_characterStats.InvestigationCheck=string.char(10008) else global_characterStats.InvestigationCheck = tostring(obj.getDescription()) end
         updateCalculatedValues(true); obj.destruct()
     elseif self.resting and obj.resting and obj.getName() == 'Medicine' then
         print('!Skill: '..obj.getName())
-        if obj.getDescription() == 'x' then MedicineCheck=string.char(10008) else MedicineCheck = tostring(obj.getDescription()) end
+        if obj.getDescription() == 'x' then global_characterStats.MedicineCheck=string.char(10008) else global_characterStats.MedicineCheck = tostring(obj.getDescription()) end
         updateCalculatedValues(true); obj.destruct()
     elseif self.resting and obj.resting and obj.getName() == 'Nature' then
         print('!Skill: '..obj.getName())
-        if obj.getDescription() == 'x' then NatureCheck=string.char(10008) else NatureCheck = tostring(obj.getDescription()) end
+        if obj.getDescription() == 'x' then global_characterStats.NatureCheck=string.char(10008) else global_characterStats.NatureCheck = tostring(obj.getDescription()) end
         updateCalculatedValues(true); obj.destruct()
     elseif self.resting and obj.resting and obj.getName() == 'Perception' then
         print('!Skill: '..obj.getName())
-        if obj.getDescription() == 'x' then PerceptionCheck=string.char(10008) else PerceptionCheck = tostring(obj.getDescription()) end
+        if obj.getDescription() == 'x' then global_characterStats.PerceptionCheck=string.char(10008) else global_characterStats.PerceptionCheck = tostring(obj.getDescription()) end
         updateCalculatedValues(true); obj.destruct()
     elseif self.resting and obj.resting and obj.getName() == 'Performance' then
         print('!Skill: '..obj.getName())
-        if obj.getDescription() == 'x' then PerformanceCheck=string.char(10008) else PerformanceCheck = tostring(obj.getDescription()) end
+        if obj.getDescription() == 'x' then global_characterStats.PerformanceCheck=string.char(10008) else global_characterStats.PerformanceCheck = tostring(obj.getDescription()) end
         updateCalculatedValues(true); obj.destruct()
     elseif self.resting and obj.resting and obj.getName() == 'Persuasion' then
         print('!Skill: '..obj.getName())
-        if obj.getDescription() == 'x' then PersuasionCheck=string.char(10008) else PersuasionCheck = tostring(obj.getDescription()) end
+        if obj.getDescription() == 'x' then global_characterStats.PersuasionCheck=string.char(10008) else global_characterStats.PersuasionCheck = tostring(obj.getDescription()) end
         updateCalculatedValues(true); obj.destruct()
     elseif self.resting and obj.resting and obj.getName() == 'Religion' then
         print('!Skill: '..obj.getName())
-        if obj.getDescription() == 'x' then ReligionCheck=string.char(10008) else ReligionCheck = tostring(obj.getDescription()) end
+        if obj.getDescription() == 'x' then global_characterStats.ReligionCheck=string.char(10008) else global_characterStats.ReligionCheck = tostring(obj.getDescription()) end
         updateCalculatedValues(true); obj.destruct()
     elseif self.resting and obj.resting and obj.getName() == 'Sleight of Hand' then
         print('!Skill: '..obj.getName())
-        if obj.getDescription() == 'x' then SleightofHandCheck=string.char(10008) else SleightofHandCheck = tostring(obj.getDescription()) end
+        if obj.getDescription() == 'x' then global_characterStats.SleightofHandCheck=string.char(10008) else global_characterStats.SleightofHandCheck = tostring(obj.getDescription()) end
         updateCalculatedValues(true); obj.destruct()
     elseif self.resting and obj.resting and obj.getName() == 'Stealth' then
         print('!Skill: '..obj.getName())
-        if obj.getDescription() == 'x' then StealthCheck=string.char(10008) else StealthCheck = tostring(obj.getDescription()) end
+        if obj.getDescription() == 'x' then global_characterStats.StealthCheck=string.char(10008) else global_characterStats.StealthCheck = tostring(obj.getDescription()) end
         updateCalculatedValues(true); obj.destruct()
     elseif self.resting and obj.resting and obj.getName() == 'Survival' then
         print('!Skill: '..obj.getName())
-        if obj.getDescription() == 'x' then SurvivalCheck=string.char(10008) else SurvivalCheck = tostring(obj.getDescription()) end
+        if obj.getDescription() == 'x' then global_characterStats.SurvivalCheck=string.char(10008) else global_characterStats.SurvivalCheck = tostring(obj.getDescription()) end
         updateCalculatedValues(true); obj.destruct()
     -- item cards
     --elseif self.resting and obj.resting and obj.getDescription() ~= 'larmor' then
@@ -1809,115 +1795,3 @@ function onCollisionStay(collision_info)
     --    updateCalculatedValues(false)
     end
 end
-
--- characterName = 1
--- playerName = 2
--- class1Level = 3
--- class2Level = 4
--- alignment = 5
--- diety = 6
--- gender = 7
--- age = 8
--- height = 9
--- weight = 10
--- skin = 11
--- hair = 12
--- eyes = 13
--- exp = 14
--- savingThrowSTR = 15
--- savingThrowDEX = 16
--- savingThrowCON = 17
--- savingThrowINT = 18
--- savingThrowWIS = 19
--- savingThrowCHA = 20
--- acrobatics = 21
--- animalHandling = 22
--- arcana = 23
--- athletics = 24
--- deception = 25
--- history = 26
--- insight = 27
--- intimidation = 28
--- investigation = 29
--- medicine = 30
--- nature = 31
--- perception = 32
--- performance = 33
--- persuasion = 34
--- religion = 35
--- slightOfHand = 36
--- stealth = 37
--- survival = 38
--- inspiration = 39
--- armorClass = 40
--- tempACBonus = 41
--- maxHP = 42
--- currentHP = 43
--- temporaryHP = 44
--- fly = 45
--- swim = 46
--- longJump = 47
--- highJump = 48
--- crawl = 49
--- climb = 50
--- hitDie1 = 51
--- hitDie2 = 52
--- resistance = 53
--- exhaustion = 54
--- success1 = 55
--- success2 = 56
--- success3 = 57
--- failures1 = 58
--- failures2 = 59
--- failures3 = 60
--- lightArmor = 61
--- mediumArmor = 62
--- heavyArmor = 63
--- shields = 64
--- simple = 65
--- martial = 66
--- other = 67
--- weapons = 68
--- tools = 69
--- languages = 70
--- copper = 71
--- silver = 72
--- electrum = 73
--- gold = 74
--- platinum = 75
--- weapon1 = 76
--- weapon2 = 77
--- weapon3 = 78
--- weapon4 = 79
--- weapon5 = 80
--- ammo1 = 81
--- ammo2 = 82
--- ammo3 = 83
--- potion1 = 84
--- potion2 = 85
--- potion3 = 86
--- potion4 = 87
--- savingThrowSTRProf = 88
--- savingThrowDEXProf = 89
--- savingThrowCONProf = 90
--- savingThrowINTProf = 91
--- savingThrowWISProf = 92
--- savingThrowCHAProf = 93
--- acrobaticsProf = 94
--- animalHandlingProf = 95
--- arcanaProf = 96
--- athleticsProf = 97
--- deceptionProf = 98
--- historyProf = 99
--- insightProf = 100
--- intimidationProf = 101
--- investigationProf = 102
--- medicineProf = 103
--- natureProf = 104
--- perceptionProf = 105
--- performanceProf = 106
--- persuasionProf = 107
--- religionProf = 108
--- sleightofHandProf = 109
--- stealthProf = 110
--- survivalProf = 111
