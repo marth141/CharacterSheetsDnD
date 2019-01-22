@@ -412,8 +412,8 @@ end
 
 function onload(saved_data)
     global_characterStats = characterStats_Structure()
-    if disableSave==true then saved_data="" end
     savedDataNotBlank = saved_data ~= ""
+    if disableSave==true then saved_data="" end
     if savedDataNotBlank then
         local loaded_data = JSON.decode(saved_data)
         savedDataTable = loaded_data
@@ -1157,7 +1157,6 @@ function updateCalculatedValues()
         if totalLVL >= 21 then ProfBonus = 0 end
         self.editButton({index = ProfBonusDisplayIdx, label = tostring(ProfBonus)})
         -- Saving Throws
-        print(STRsaveItemDisplayIdx)
         global_characterStats.STRsaveItem = tonumber(savedDataTable.savingThrowSTR)
         global_characterStats.DEXsaveItem = tonumber(savedDataTable.savingThrowDEX)
         global_characterStats.CONsaveItem = tonumber(savedDataTable.savingThrowCON)
@@ -1202,24 +1201,24 @@ function updateCalculatedValues()
         self.editButton({index = CHAsaveTotalDisplayIdx, label = tostring(CHAsaveTotal)})
         self.editButton({index = CHAsaveModDisplayIdx, label = tostring(CHAmod)})
         -- Skills
-        AcrobaticsItem = tonumber(savedDataTable[AcrobaticsItemDisplayIdx])
-        AnimalHandlingItem = tonumber(savedDataTable[AnimalHandlingItemDisplayIdx])
-        ArcanaItem = tonumber(savedDataTable[ArcanaItemDisplayIdx])
-        AthleticsItem = tonumber(savedDataTable[AthleticsItemDisplayIdx])
-        DeceptionItem = tonumber(savedDataTable[DeceptionItemDisplayIdx])
-        HistoryItem = tonumber(savedDataTable[HistoryItemDisplayIdx])
-        InsightItem = tonumber(savedDataTable[InsightItemDisplayIdx])
-        IntimidationItem = tonumber(savedDataTable[IntimidationItemDisplayIdx])
-        InvestigationItem = tonumber(savedDataTable[InvestigationItemDisplayIdx])
-        MedicineItem = tonumber(savedDataTable[MedicineItemDisplayIdx])
-        NatureItem = tonumber(savedDataTable[NatureItemDisplayIdx])
-        PerceptionItem = tonumber(savedDataTable[PerceptionItemDisplayIdx])
-        PerformanceItem = tonumber(savedDataTable[PerformanceItemDisplayIdx])
-        PersuasionItem = tonumber(savedDataTable[PersuasionItemDisplayIdx])
-        ReligionItem = tonumber(savedDataTable[ReligionItemDisplayIdx])
-        SleightofHandItem = tonumber(savedDataTable[SleightofHandItemDisplayIdx])
-        StealthItem = tonumber(savedDataTable[StealthItemDisplayIdx])
-        SurvivalItem = tonumber(savedDataTable[SurvivalItemDisplayIdx])
+        AcrobaticsItem = tonumber(savedDataTable.acrobatics)
+        AnimalHandlingItem = tonumber(savedDataTable.animalHandling)
+        ArcanaItem = tonumber(savedDataTable.arcana)
+        AthleticsItem = tonumber(savedDataTable.athletics)
+        DeceptionItem = tonumber(savedDataTable.deception)
+        HistoryItem = tonumber(savedDataTable.history)
+        InsightItem = tonumber(savedDataTable.insight)
+        IntimidationItem = tonumber(savedDataTable.intimidation)
+        InvestigationItem = tonumber(savedDataTable.investigation)
+        MedicineItem = tonumber(savedDataTable.medicine)
+        NatureItem = tonumber(savedDataTable.nature)
+        PerceptionItem = tonumber(savedDataTable.perception)
+        PerformanceItem = tonumber(savedDataTable.performance)
+        PersuasionItem = tonumber(savedDataTable.persuasion)
+        ReligionItem = tonumber(savedDataTable.religion)
+        SleightofHandItem = tonumber(savedDataTable.slightOfHand)
+        StealthItem = tonumber(savedDataTable.stealth)
+        SurvivalItem = tonumber(savedDataTable.survival)
         if AcrobaticsItem == nil then AcrobaticsItem = 0 end
         if AnimalHandlingItem == nil then AnimalHandlingItem = 0 end
         if ArcanaItem == nil then ArcanaItem = 0 end
