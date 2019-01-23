@@ -1095,12 +1095,10 @@ end
 --Dud function for displayNumber buttons
 function click_none() end
 
--- Actually fills in values to the character sheet
 function updateCalculatedValues()
     if allUiElementsLoaded == true then
         totalLVL = 0
         ExpLVLUP = 0
-        print(JSON.encode(savedDataTable))
         classLVL1 = tonumber(savedDataTable.class1Level)
         classLVL2 = tonumber(savedDataTable.class2Level)
         if classLVL1 == nil then classLVL1 = 0 end
