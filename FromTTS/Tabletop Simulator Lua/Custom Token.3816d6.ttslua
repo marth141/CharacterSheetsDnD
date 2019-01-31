@@ -1,0 +1,428 @@
+disableSave = false
+buttonFontColor = {0,0,0}
+buttonColor = {1,1,1}
+buttonScale = {0.1,0.1,0.1}
+
+defaultButtonData = {
+        textbox = {
+        -- 1x1 card
+        {
+            pos       = {-1.752,0.1,-1.20},
+            rows      = 1,
+            width     = 1200,
+            font_size = 650,
+            label     = "00",
+            value     = "",
+            alignment = 3
+        },
+        {
+            pos       = {-1.452,0.1,-1.20},
+            rows      = 1,
+            width     = 1200,
+            font_size = 650,
+            label     = "00",
+            value     = "",
+            alignment = 3
+        },
+        {
+            pos       = {-1.152,0.1,-1.20},
+            rows      = 1,
+            width     = 1200,
+            font_size = 650,
+            label     = "00",
+            value     = "",
+            alignment = 3
+        },
+        {
+            pos       = {-0.852,0.1,-1.20},
+            rows      = 1,
+            width     = 1200,
+            font_size = 650,
+            label     = "00",
+            value     = "",
+            alignment = 3
+        },
+        {
+            pos       = {-0.552,0.1,-1.20},
+            rows      = 1,
+            width     = 1200,
+            font_size = 650,
+            label     = "00",
+            value     = "",
+            alignment = 3
+        },
+        {
+            pos       = {-0.252,0.1,-1.20},
+            rows      = 1,
+            width     = 1200,
+            font_size = 650,
+            label     = "00",
+            value     = "",
+            alignment = 3
+        },
+        {
+            pos       = {0.052,0.1,-1.20},
+            rows      = 1,
+            width     = 1200,
+            font_size = 650,
+            label     = "00",
+            value     = "",
+            alignment = 3
+        },
+        {
+            pos       = {0.352,0.1,-1.20},
+            rows      = 1,
+            width     = 1200,
+            font_size = 650,
+            label     = "00",
+            value     = "",
+            alignment = 3
+        },
+        -- 1x2 card
+        {
+            pos       = {1.152,0.1,-1.20},
+            rows      = 1,
+            width     = 1200,
+            font_size = 650,
+            label     = "00",
+            value     = "",
+            alignment = 3
+        },
+        {
+            pos       = {1.452,0.1,-1.20},
+            rows      = 1,
+            width     = 1200,
+            font_size = 650,
+            label     = "00",
+            value     = "",
+            alignment = 3
+        },
+        {
+            pos       = {1.752,0.1,-1.20},
+            rows      = 1,
+            width     = 1200,
+            font_size = 650,
+            label     = "00",
+            value     = "",
+            alignment = 3
+        },
+        {
+            pos       = {2.052,0.1,-1.20},
+            rows      = 1,
+            width     = 1200,
+            font_size = 650,
+            label     = "00",
+            value     = "",
+            alignment = 3
+        },
+        {
+            pos       = {2.322,0.1,-1.20},
+            rows      = 1,
+            width     = 1200,
+            font_size = 650,
+            label     = "00",
+            value     = "",
+            alignment = 3
+        },
+        -- 2x1 card
+        {
+            pos       = {-1.752,0.1,-0.50},
+            rows      = 1,
+            width     = 1200,
+            font_size = 650,
+            label     = "00",
+            value     = "",
+            alignment = 3
+        },
+        {
+            pos       = {-1.452,0.1,-0.50},
+            rows      = 1,
+            width     = 1200,
+            font_size = 650,
+            label     = "00",
+            value     = "",
+            alignment = 3
+        },
+        {
+            pos       = {-1.152,0.1,-0.50},
+            rows      = 1,
+            width     = 1200,
+            font_size = 650,
+            label     = "00",
+            value     = "",
+            alignment = 3
+        },
+        {
+            pos       = {-0.852,0.1,-0.50},
+            rows      = 1,
+            width     = 1200,
+            font_size = 650,
+            label     = "00",
+            value     = "",
+            alignment = 3
+        },
+        {
+            pos       = {-0.552,0.1,-0.50},
+            rows      = 1,
+            width     = 1200,
+            font_size = 650,
+            label     = "00",
+            value     = "",
+            alignment = 3
+        },
+        {
+            pos       = {-0.252,0.1,-0.50},
+            rows      = 1,
+            width     = 1200,
+            font_size = 650,
+            label     = "00",
+            value     = "",
+            alignment = 3
+        },
+        {
+            pos       = {0.052,0.1,-0.50},
+            rows      = 1,
+            width     = 1200,
+            font_size = 650,
+            label     = "00",
+            value     = "",
+            alignment = 3
+        },
+        {
+            pos       = {0.352,0.1,-0.50},
+            rows      = 1,
+            width     = 1200,
+            font_size = 650,
+            label     = "00",
+            value     = "",
+            alignment = 3
+        },
+        -- 2x2 card
+        {
+            pos       = {1.152,0.1,-0.50},
+            rows      = 1,
+            width     = 1200,
+            font_size = 650,
+            label     = "00",
+            value     = "",
+            alignment = 3
+        },
+        {
+            pos       = {1.452,0.1,-0.50},
+            rows      = 1,
+            width     = 1200,
+            font_size = 650,
+            label     = "00",
+            value     = "",
+            alignment = 3
+        },
+        {
+            pos       = {1.752,0.1,-0.50},
+            rows      = 1,
+            width     = 1200,
+            font_size = 650,
+            label     = "00",
+            value     = "",
+            alignment = 3
+        },
+        {
+            pos       = {2.052,0.1,-0.50},
+            rows      = 1,
+            width     = 1200,
+            font_size = 650,
+            label     = "00",
+            value     = "",
+            alignment = 3
+        },
+        {
+            pos       = {2.322,0.1,-0.50},
+            rows      = 1,
+            width     = 1200,
+            font_size = 650,
+            label     = "00",
+            value     = "",
+            alignment = 3
+        },
+        -- 3x1 card
+        {
+            pos       = {-1.252,0.1,0.22},
+            rows      = 1,
+            width     = 1200,
+            font_size = 650,
+            label     = "00",
+            value     = "",
+            alignment = 3
+        },
+        {
+            pos       = {-0.952,0.1,0.22},
+            rows      = 1,
+            width     = 1200,
+            font_size = 650,
+            label     = "00",
+            value     = "",
+            alignment = 3
+        },
+        {
+            pos       = {-0.652,0.1,0.22},
+            rows      = 1,
+            width     = 1200,
+            font_size = 650,
+            label     = "00",
+            value     = "",
+            alignment = 3
+        },
+        {
+            pos       = {-0.352,0.1,0.22},
+            rows      = 1,
+            width     = 1200,
+            font_size = 650,
+            label     = "00",
+            value     = "",
+            alignment = 3
+        },
+        {
+            pos       = {-0.052,0.1,0.22},
+            rows      = 1,
+            width     = 1200,
+            font_size = 650,
+            label     = "00",
+            value     = "",
+            alignment = 3
+        },
+        -- 3x2 card
+        {
+            pos       = {1.932,0.1,0.22},
+            rows      = 1,
+            width     = 1200,
+            font_size = 650,
+            label     = "00",
+            value     = "",
+            alignment = 3
+        },
+        {
+            pos       = {2.232,0.1,0.22},
+            rows      = 1,
+            width     = 1200,
+            font_size = 650,
+            label     = "00",
+            value     = "",
+            alignment = 3
+        },
+        -- 4x1 card
+        {
+            pos       = {-1.252,0.1,0.925},
+            rows      = 1,
+            width     = 1200,
+            font_size = 650,
+            label     = "00",
+            value     = "",
+            alignment = 3
+        },
+        {
+            pos       = {-0.952,0.1,0.925},
+            rows      = 1,
+            width     = 1200,
+            font_size = 650,
+            label     = "00",
+            value     = "",
+            alignment = 3
+        },
+        {
+            pos       = {-0.652,0.1,0.925},
+            rows      = 1,
+            width     = 1200,
+            font_size = 650,
+            label     = "00",
+            value     = "",
+            alignment = 3
+        },
+        {
+            pos       = {-0.352,0.1,0.925},
+            rows      = 1,
+            width     = 1200,
+            font_size = 650,
+            label     = "00",
+            value     = "",
+            alignment = 3
+        },
+        {
+            pos       = {-0.052,0.1,0.925},
+            rows      = 1,
+            width     = 1200,
+            font_size = 650,
+            label     = "00",
+            value     = "",
+            alignment = 3
+        },
+        -- 4x2 card
+        {
+            pos       = {1.932,0.1,0.925},
+            rows      = 1,
+            width     = 1200,
+            font_size = 650,
+            label     = "00",
+            value     = "",
+            alignment = 3
+        },
+        {
+            pos       = {2.232,0.1,0.925},
+            rows      = 1,
+            width     = 1200,
+            font_size = 650,
+            label     = "00",
+            value     = "",
+            alignment = 3
+        },
+    }
+}
+
+function updateSave()
+    saved_data = JSON.encode(ref_buttonData)
+    if disableSave==true then saved_data="" end
+    self.script_state = saved_data
+end
+
+function onload(saved_data)
+    if disableSave==true then saved_data="" end
+    if saved_data ~= "" then
+        local loaded_data = JSON.decode(saved_data)
+        ref_buttonData = loaded_data
+    else
+        ref_buttonData = defaultButtonData
+    end
+
+    spawnedButtonCount = 0
+    createTextbox()
+end
+
+function click_textbox(i, value, selected)
+    if selected == false then
+        ref_buttonData.textbox[i].value = value
+        updateSave()
+    end
+end
+
+function click_none() end
+
+function createTextbox()
+    for i, data in ipairs(ref_buttonData.textbox) do
+        local funcName = "textbox"..i
+        local func = function(_,_,val,sel) click_textbox(i,val,sel) end
+        self.setVar(funcName, func)
+
+        self.createInput({
+            input_function = funcName,
+            function_owner = self,
+            label          = data.label,
+            alignment      = data.alignment,
+            position       = data.pos,
+            scale          = buttonScale,
+            width          = data.width,
+            height         = (data.font_size*data.rows)+24,
+            font_size      = data.font_size,
+            color          = buttonColor,
+            font_color     = buttonFontColor,
+            value          = data.value,
+        })
+    end
+end

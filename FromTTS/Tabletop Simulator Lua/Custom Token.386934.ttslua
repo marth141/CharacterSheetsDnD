@@ -1,0 +1,258 @@
+function onSave()
+    local data_to_save = memory
+    saved_data = JSON.encode(data_to_save)
+    return saved_data
+end
+
+function onload(saved_data)
+    if saved_data ~= nil and saved_data ~= "" then
+        memory = JSON.decode(saved_data)
+    else
+        memory = {
+            {mod=nil, dice=nil, name="---"}, {mod=nil, dice=nil, name="---"}, {mod=nil, dice=nil, name="---"},
+            {mod=nil, dice=nil, name="---"}, {mod=nil, dice=nil, name="---"}, {mod=nil, dice=nil, name="---"},
+            {mod=nil, dice=nil, name="---"}, {mod=nil, dice=nil, name="---"},
+        }
+    end
+    printMode = "ALL"
+    spawnCoreButtons()
+    resetCounts()
+
+end
+
+--The + and - buttons changing the modifer
+function modPlus()
+    modCount = modCount + 1
+    updateModDisplay()
+end
+function modMinus()
+    modCount = modCount - 1
+    updateModDisplay()
+end
+
+--Click functions, passing a paramiter to updateCount. Because buttons do not
+--currently let you pass paramiters as part of the button. Sloppy fix.
+function d6() updateCount(1) end
+function d8() updateCount(2) end
+function d10() updateCount(3) end
+function d12() updateCount(4) end
+function d20() updateCount(5) end
+function d100() updateCount(6) end
+
+--Triggered by any of the d# buttons, adding to their count.
+function updateCount(whichOne)
+    diceCount[whichOne] = diceCount[whichOne] + 1
+    updateDiceDisplay(whichOne-1, diceCount[whichOne], diceSide[whichOne])
+end
+
+--Updates d# displays with the count of how many of each die is selected.
+function updateDiceDisplay(ind, dieCount, dieType)
+    self.editButton({index=ind, label=dieCount.."d"..dieType})
+end
+
+--Uupdating of the Mod display screen to show changing values
+function updateModDisplay()
+    self.editButton({index=6, label="Mod\n" .. modCount})
+end
+
+--Roll function. Displays roller, then does the random rolls
+function roll(o,c)
+    printThis("((Roll by " .. Player[c].steam_name.."))", c)
+    math.randomseed(os.time())
+    local totalScore = 0
+    for i, v in pairs(diceCount) do
+        if v > 0 then
+            local printString = "[u](d"..diceSide[i]..")[/u]  "
+            for repeats=1, v do
+                local randomRoll = math.random(1, diceSide[i])
+                totalScore = totalScore + randomRoll
+                if repeats > 1 then printString = printString .. "," end
+                printString = printString .. " " .. randomRoll
+            end
+            printThis(printString, "White")
+        end
+    end
+    if modCount ~= 0 then
+        printThis("[u](MOD)[/u]  "..modCount, "White")
+    end
+    printThis("[u](TOTAL)[/u]  " .. tostring(totalScore + modCount), "White")
+    resetCounts()
+end
+
+--Function which does the printing, called on by roll()
+function printThis(stringForPrint, colorForPrint)
+    if printMode == "ALL" then
+        printToAll(stringForPrint, stringColorToRGB(colorForPrint))
+    else
+        printToColor(stringForPrint, "Black", stringColorToRGB(colorForPrint))
+    end
+end
+
+--Resets counts and initializes diceSide/modCount/diceCount
+function resetCounts()
+    modCount = 0
+    diceCount = {0, 0, 0, 0, 0, 0}
+    diceSide = {6, 8, 10, 12, 20, 100}
+    for i=1, 6 do updateDiceDisplay(i-1, diceCount[i], diceSide[i]) end
+    updateModDisplay()
+end
+
+--Switches printMode and update the button associated (just changing variable)
+function printSwitch()
+    if printMode == "GM" then
+        printMode = "ALL"
+        self.editButton({index=7, label=printMode})
+    elseif Player["Black"].seated == false then
+        printToAll("Error. Cannot print results to GM only. No GM seated on Black.", {1, 0.2, 0.2})
+    else
+        printMode = "GM"
+        self.editButton({index=7, label=printMode})
+    end
+end
+
+--[[BEGIN MEMORY LOGIC BELOW]]--
+function mem1(o,c) remember(o,c,1) end
+function mem2(o,c) remember(o,c,2) end
+function mem3(o,c) remember(o,c,3) end
+function mem4(o,c) remember(o,c,4) end
+function mem5(o,c) remember(o,c,5) end
+function mem6(o,c) remember(o,c,6) end
+function mem7(o,c) remember(o,c,7) end
+function mem8(o,c) remember(o,c,8) end
+
+function remember(o,c,whichSlot)
+    if clearSlot == true then
+        memory[whichSlot].mod = nil
+        memory[whichSlot].dice = nil
+        memory[whichSlot].name = "---"
+        self.editButton({index=whichSlot+9, label="---", font_size=80})
+        clearSlot = false
+        self.editButton({index=18, label="MemCLR"})
+    elseif memory[whichSlot].mod == nil then
+        local itemName = self.getName()
+        if itemName != "" then
+            memory[whichSlot].mod = modCount
+            memory[whichSlot].dice = diceCount
+            memory[whichSlot].name = itemName
+            self.editButton({index=whichSlot+9, label=memory[whichSlot].name, font_size=getLength(whichSlot)})
+            self.setName("")
+            resetCounts()
+        else
+            printThis("Error! Memory slot must be named.", "Red")
+            printThis("Right click the roller and input a name in the 'Name' field.", "White")
+            printThis("Then click a memory button to save the currently selected dice/modifier", "White")
+        end
+    else
+        modCount = memory[whichSlot].mod
+        diceCount = memory[whichSlot].dice
+        roll(o,c)
+    end
+end
+
+function memClear()
+    if clearSlot == true then
+        clearSlot = false
+        self.editButton({index=18, label="MemCLR"})
+    else
+        clearSlot = true
+        self.editButton({index=18, label="Cancel"})
+    end
+end
+
+--Creates all buttons
+function spawnCoreButtons()
+    self.createButton({
+        label='0d6', click_function="d6", function_owner=self,
+        position={-0.76,0.15,-1.56}, width=340, height=240, font_size=120
+    })
+    self.createButton({
+        label='0d8', click_function="d8", function_owner=self,
+        position={0,0.15,-1.56}, width=340, height=240, font_size=120
+    })
+    self.createButton({
+        label='0d10', click_function="d10", function_owner=self,
+        position={-0.76,0.15,-1.03}, width=340, height=240, font_size=120
+    })
+    self.createButton({
+        label='0d12', click_function="d12", function_owner=self,
+        position={0,0.15,-1.03}, width=340, height=240, font_size=120
+    })
+    self.createButton({
+        label='0d20', click_function="d20", function_owner=self,
+        position={-0.76,0.15,-0.5}, width=340, height=240, font_size=120
+    })
+    self.createButton({
+        label='0d100', click_function="d100", function_owner=self,
+        position={0,0.15,-0.5}, width=340, height=240, font_size=120
+    })
+    self.createButton({
+        label='Mod\n0', click_function="none", function_owner=self,
+        position={0.65,0.15,-1.56}, width=240, height=240, font_size=90
+    })
+
+
+    self.createButton({
+        label='ALL', click_function="printSwitch", function_owner=self,
+        position={0.76,0.15,-1.03}, width=340, height=240, font_size=120
+    })
+    self.createButton({
+        label='Reset', click_function="resetCounts", function_owner=self,
+        position={0.76,0.15,-0.5}, width=340, height=240, font_size=100
+    })
+    self.createButton({
+        label=string.char(8635)..' - Roll - '..string.char(8634), click_function="roll", function_owner=self,
+        position={0,0.15,0.13}, width=1080, height=320, font_size=180
+    })
+    self.createButton({
+        label=memory[1].name, click_function="mem1", function_owner=self,
+        position={-0.76,0.15,0.7}, width=340, height=180, font_size=getLength(1)
+    })
+    self.createButton({
+        label=memory[2].name, click_function="mem2", function_owner=self,
+        position={0,0.15,0.7}, width=340, height=180, font_size=getLength(2)
+    })
+    self.createButton({
+        label=memory[3].name, click_function="mem3", function_owner=self,
+        position={0.76,0.15,0.7}, width=340, height=180, font_size=getLength(3)
+    })
+    self.createButton({
+        label=memory[4].name, click_function="mem4", function_owner=self,
+        position={-0.76,0.15,1.16}, width=340, height=180, font_size=getLength(4)
+    })
+
+    self.createButton({
+        label=memory[5].name, click_function="mem5", function_owner=self,
+        position={0,0.15,1.16}, width=340, height=180, font_size=getLength(5)
+    })
+    self.createButton({
+        label=memory[6].name, click_function="mem6", function_owner=self,
+        position={0.76,0.15,1.16}, width=340, height=180, font_size=getLength(6)
+    })
+    self.createButton({
+        label=memory[7].name, click_function="mem7", function_owner=self,
+        position={-0.76,0.15,1.62}, width=340, height=180, font_size=getLength(7)
+    })
+    self.createButton({
+        label=memory[8].name, click_function="mem8", function_owner=self,
+        position={0,0.15,1.62}, width=340, height=180, font_size=getLength(8)
+    })
+    self.createButton({
+        label='MemCLR', click_function="memClear", function_owner=self,
+        position={0.76,0.15,1.62}, width=340, height=180, font_size=80
+    })
+
+    self.createButton({
+        label='+', click_function="modPlus", function_owner=self,
+        position={1,0.15,-1.68}, width=100, height=100, font_size=150
+    })
+    self.createButton({
+        label='-', click_function="modMinus", function_owner=self,
+        position={1,0.15,-1.44}, width=100, height=100, font_size=150
+    })
+end
+
+--Dynamically sets font size based on length of name (for memory buttons)
+function getLength(i)
+    local length = string.len(memory[i].name)
+    if length > 10 then return 40 elseif length > 6 then return 60 else return 80 end
+end

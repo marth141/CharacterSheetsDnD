@@ -1,0 +1,576 @@
+function onSave()
+    local data_to_save = memory
+    saved_data = JSON.encode(data_to_save)
+    return saved_data
+end
+
+function onload(saved_data)
+    if saved_data ~= nil and saved_data ~= "" then
+        memory = JSON.decode(saved_data)
+    else
+        memory = {
+            {mod=nil, dice=nil, name="---"}, {mod=nil, dice=nil, name="---"},
+            {mod=nil, dice=nil, name="---"}, {mod=nil, dice=nil, name="---"},
+            {mod=nil, dice=nil, name="---"}, {mod=nil, dice=nil, name="---"},
+            {mod=nil, dice=nil, name="---"}, {mod=nil, dice=nil, name="---"},
+            {mod=nil, dice=nil, name="---"}, {mod=nil, dice=nil, name="---"},
+            {mod=nil, dice=nil, name="---"}, {mod=nil, dice=nil, name="---"},
+            {mod=nil, dice=nil, name="---"}, {mod=nil, dice=nil, name="---"},
+            {mod=nil, dice=nil, name="---"}, {mod=nil, dice=nil, name="---"},
+            {mod=nil, dice=nil, name="---"}, {mod=nil, dice=nil, name="---"},
+            {mod=nil, dice=nil, name="---"}, {mod=nil, dice=nil, name="---"},
+            {mod=nil, dice=nil, name="---"}, {mod=nil, dice=nil, name="---"},
+            {mod=nil, dice=nil, name="---"}, {mod=nil, dice=nil, name="---"},
+            {mod=nil, dice=nil, name="---"}, {mod=nil, dice=nil, name="---"},
+            {mod=nil, dice=nil, name="---"}, {mod=nil, dice=nil, name="---"},
+            {mod=nil, dice=nil, name="---"}, {mod=nil, dice=nil, name="---"}
+        }
+    end
+    printMode = "ALL"
+    spawnCoreButtons()
+    resetCounts()
+
+end
+
+--Blank function to disable buttons when clicked
+function none()
+end
+
+--The + and - buttons changing the modifer
+function modPlus(thisOne)
+    modCount = modCount + 1
+    updateModDisplay(thisOne)
+end
+function modMinus(thisOne)
+    modCount = modCount - 1
+    updateModDisplay(thisOne)
+end
+
+--The + and - buttons changing the modifer
+function modPlus1()
+    modCount[1] = modCount[1] + 1
+    updateModDisplay(1)
+end
+function modMinus1()
+    modCount[1] = modCount[1] - 1
+    updateModDisplay(1)
+end
+
+--The + and - buttons changing the modifer
+function modPlus2()
+    modCount[2] = modCount[2] + 1
+    updateModDisplay(2)
+end
+function modMinus2()
+    modCount[2] = modCount[2] - 1
+    updateModDisplay(2)
+end
+
+--The + and - buttons changing the modifer
+function modPlus3()
+    modCount[3] = modCount[3] + 1
+    updateModDisplay(3)
+end
+function modMinus3()
+    modCount[3] = modCount[3] - 1
+    updateModDisplay(3)
+end
+
+--The + and - buttons changing the modifer
+function modPlus4()
+    modCount[4] = modCount[4] + 1
+    updateModDisplay(4)
+end
+function modMinus4()
+    modCount[4] = modCount[4] - 1
+    updateModDisplay(4)
+end
+
+--The + and - buttons changing the modifer
+function modPlus5()
+    modCount[5] = modCount[5] + 1
+    updateModDisplay(5)
+end
+function modMinus5()
+    modCount[5] = modCount[5] - 1
+    updateModDisplay(5)
+end
+
+--Click functions, passing a parameter to updateCount. Because buttons do not
+--currently let you pass parameters as part of the button. Sloppy fix.
+function d4() updateCount(1) end
+function d6() updateCount(2) end
+function d8() updateCount(3) end
+function d10() updateCount(4) end
+function d12() updateCount(5) end
+function d20() updateCount(6) end
+function d100() updateCount(7) end
+
+--Triggered by any of the d# buttons, adding to their count.
+function updateCount(whichOne)
+    diceCount[whichOne] = diceCount[whichOne] + 1
+    updateDiceDisplay(whichOne-1, diceCount[whichOne], diceSide[whichOne])
+end
+
+--Updates d# displays with the count of how many of each die is selected.
+function updateDiceDisplay(ind, dieCount, dieType)
+    self.editButton({index=ind, label=dieCount.."d"..dieType})
+end
+
+--Updating of the Mod display screen to show changing values
+function updateModDisplay(thisMod)
+    self.editButton({index=6+thisMod, label="Mod\n" .. modCount[thisMod]})
+end
+
+--Roll function. Displays roller, then does the random rolls
+function roll(o,c)
+    printThis("((Roll by " .. Player[c].steam_name.."))", c)
+    math.randomseed(os.time())
+    local modTotal = 0
+    local totalScore = 0
+    for i, v in pairs(diceCount) do
+        if v > 0 then
+            local printString = "[u](d"..diceSide[i]..")[/u]  "
+            for repeats=1, v do
+                local randomRoll = math.random(1, diceSide[i])
+                totalScore = totalScore + randomRoll
+                if repeats > 1 then printString = printString .. "," end
+                printString = printString .. " " .. randomRoll
+            end
+            printThis(printString, "White")
+        end
+    end
+    for i=1, 5 do
+        if modCount[i] ~= 0 then
+            printThis("[u](MOD" .. i ..")[/u]  "..modCount[i], "White")
+        end
+        modTotal = modTotal + modCount[i]
+    end
+    printThis("[u](TOTAL)[/u]  " .. tostring(totalScore + modTotal), "White")
+    resetCounts()
+end
+
+--Function which does the printing, called on by roll()
+function printThis(stringForPrint, colorForPrint)
+    if printMode == "ALL" then
+        printToAll(stringForPrint, stringColorToRGB(colorForPrint))
+    else
+        printToColor(stringForPrint, "Black", stringColorToRGB(colorForPrint))
+    end
+end
+
+--Resets counts and initializes diceSide/modCount/diceCount
+function resetCounts()
+    modCount = {0, 0, 0, 0, 0}
+    diceCount = {0, 0, 0, 0, 0, 0, 0}
+    diceSide = {4, 6, 8, 10, 12, 20, 100}
+    for i=1, 7 do
+      updateDiceDisplay(i-1, diceCount[i], diceSide[i])
+    end
+    for i=1, 5 do
+      updateModDisplay(i)
+    end
+end
+
+--Switches printMode and update the button associated (just changing variable)
+function printSwitch()
+    indexPrintSwitch = 22;
+    if printMode == "GM" then
+        printMode = "ALL"
+        self.editButton({index=indexPrintSwitch, label=printMode})
+    elseif Player["Black"].seated == false then
+        printToAll("Error. Cannot print results to GM only. No GM seated on Black.", {1, 0.2, 0.2})
+    else
+        printMode = "GM"
+        self.editButton({index=indexPrintSwitch, label=printMode})
+    end
+end
+
+--[[BEGIN MEMORY LOGIC BELOW]]--
+function mem1(o,c) remember(o,c,1) end
+function mem2(o,c) remember(o,c,2) end
+function mem3(o,c) remember(o,c,3) end
+function mem4(o,c) remember(o,c,4) end
+function mem5(o,c) remember(o,c,5) end
+function mem6(o,c) remember(o,c,6) end
+function mem7(o,c) remember(o,c,7) end
+function mem8(o,c) remember(o,c,8) end
+function mem9(o,c) remember(o,c,9) end
+function mem10(o,c) remember(o,c,10) end
+function mem11(o,c) remember(o,c,11) end
+function mem12(o,c) remember(o,c,12) end
+function mem13(o,c) remember(o,c,13) end
+function mem14(o,c) remember(o,c,14) end
+function mem15(o,c) remember(o,c,15) end
+function mem16(o,c) remember(o,c,16) end
+function mem17(o,c) remember(o,c,17) end
+function mem18(o,c) remember(o,c,18) end
+function mem19(o,c) remember(o,c,19) end
+function mem20(o,c) remember(o,c,20) end
+function mem21(o,c) remember(o,c,21) end
+function mem22(o,c) remember(o,c,22) end
+function mem23(o,c) remember(o,c,23) end
+function mem24(o,c) remember(o,c,24) end
+function mem25(o,c) remember(o,c,25) end
+function mem26(o,c) remember(o,c,26) end
+function mem27(o,c) remember(o,c,27) end
+function mem28(o,c) remember(o,c,28) end
+function mem29(o,c) remember(o,c,29) end
+function mem30(o,c) remember(o,c,30) end
+
+function remember(o,c,whichSlot)
+    if clearSlot == true then
+        memory[whichSlot].mod = nil
+        memory[whichSlot].dice = nil
+        memory[whichSlot].name = "---"
+        self.editButton({index=whichSlot+25, label="---", font_size=80})
+        clearSlot = false
+        self.editButton({index=25, label="MemCLR"})
+    elseif memory[whichSlot].mod == nil then
+        local itemName = self.getName()
+        if itemName != "" then
+            memory[whichSlot].mod = modCount
+            memory[whichSlot].dice = diceCount
+            memory[whichSlot].name = itemName
+            self.editButton({index=whichSlot+25, label=memory[whichSlot].name, font_size=getLength(whichSlot)})
+            self.setName("")
+            resetCounts()
+        else
+            printThis("Error! Memory slot must be named.", "Red")
+            printThis("Right click the roller and input a name in the 'Name' field.", "White")
+            printThis("Then click a memory button to save the currently selected dice/modifier", "White")
+        end
+    else
+        modCount = memory[whichSlot].mod
+        diceCount = memory[whichSlot].dice
+        roll(o,c)
+    end
+end
+
+function memClear()
+    memClrIndex = 25
+    if clearSlot == true then
+        clearSlot = false
+        self.editButton({index=memClrIndex, label="MemCLR"})
+    else
+        clearSlot = true
+        self.editButton({index=memClrIndex, label="Cancel"})
+    end
+end
+
+--Creates all buttons
+function spawnCoreButtons()
+
+    --Button sizes
+    btn_main_height = 200;
+    btn_main_width = 300;
+    btn_roll_height = 220;
+    btn_roll_width = 840;
+    btn_mod_height = 240;
+    btn_mod_width = 240;
+    btn_minplus_height = 100;
+    btn_minplus_width = btn_minplus_height;
+
+    --X positions
+    col_l3 = -1.8;
+    col_l2 = -1.2;
+    col_l1 = -0.6;
+    col_0 = 0;
+    col_r1 = 0.6;
+    col_r2 = 1.2;
+    col_r3 = 1.8;
+
+    col_r3_mod = 1.72;
+    col_r3_mod_btn = 2.04;
+
+    --Y positions
+    y_pos = 0.15;
+
+    --Z positions
+    row_t3 = -1.2;
+    row_t2 = -0.8;
+    row_t1 = -0.4;
+    row_0  = 0;
+    row_b1 = 0.4;
+    row_b2 = 0.8;
+    row_b3 = 1.2;
+
+    --Spacing Overrides
+    row_t3 = -1.3;
+    row_b3 = 1.25;
+    col_r3_mod = 1.82;
+    col_r3_mod_btn = 2.15;
+    --End Overrides
+
+    plus_minus_vert_spacing = 0.2;
+    plus_minus_horz_spacing = plus_minus_vert_spacing / 2;
+
+    row_t2_plus = row_t2 - plus_minus_horz_spacing;
+    row_t1_plus = row_t1 - plus_minus_horz_spacing;
+    row_0_plus  = row_0 - plus_minus_horz_spacing;
+    row_b1_plus = row_b1 - plus_minus_horz_spacing;
+    row_b2_plus = row_b2 - plus_minus_horz_spacing;
+    row_b3_plus = row_b3 - plus_minus_horz_spacing;
+
+    row_t2_minus = row_t2_plus + plus_minus_vert_spacing;
+    row_t1_minus = row_t1_plus + plus_minus_vert_spacing;
+    row_0_minus  = row_0_plus + plus_minus_vert_spacing;
+    row_b1_minus = row_b1_plus + plus_minus_vert_spacing;
+    row_b2_minus = row_b2_plus + plus_minus_vert_spacing;
+    row_b3_minus = row_b3_plus + plus_minus_vert_spacing;
+
+    self.createButton({
+        label='0d4', click_function="d4", function_owner=self,
+        position={col_l3,y_pos,row_t3}, width=btn_main_width, height=btn_main_height, font_size=100
+    })
+    self.createButton({
+        label='0d6', click_function="d6", function_owner=self,
+        position={col_l2,y_pos,row_t3}, width=btn_main_width, height=btn_main_height, font_size=100
+    })
+    self.createButton({
+        label='0d8', click_function="d8", function_owner=self,
+        position={col_l1,y_pos,row_t3}, width=btn_main_width, height=btn_main_height, font_size=100
+    })
+    self.createButton({
+        label='0d10', click_function="d10", function_owner=self,
+        position={col_0,y_pos,row_t3}, width=btn_main_width, height=btn_main_height, font_size=100
+    })
+    self.createButton({
+        label='0d12', click_function="d12", function_owner=self,
+        position={col_r1,y_pos,row_t3}, width=btn_main_width, height=btn_main_height, font_size=100
+    })
+    self.createButton({
+        label='0d20', click_function="d20", function_owner=self,
+        position={col_r2,y_pos,row_t3}, width=btn_main_width, height=btn_main_height, font_size=100
+    })
+    self.createButton({
+        label='0d100', click_function="d100", function_owner=self,
+        position={col_r3,y_pos,row_t3}, width=btn_main_width, height=btn_main_height, font_size=100
+    })
+
+    --Mods
+    self.createButton({
+        label='Mod\n0', click_function="none", function_owner=self,
+        position={col_r3_mod,y_pos,row_t2}, width=btn_mod_width, height=btn_main_height, font_size=80
+    })
+    self.createButton({
+        label='Mod\n0', click_function="none", function_owner=self,
+        position={col_r3_mod,y_pos,row_t1}, width=btn_mod_width, height=btn_main_height, font_size=80
+    })
+    self.createButton({
+        label='Mod\n0', click_function="none", function_owner=self,
+        position={col_r3_mod,y_pos,row_0}, width=btn_mod_width, height=btn_main_height, font_size=80
+    })
+    self.createButton({
+        label='Mod\n0', click_function="none", function_owner=self,
+        position={col_r3_mod,y_pos,row_b1}, width=btn_mod_width, height=btn_main_height, font_size=80
+    })
+    self.createButton({
+        label='Mod\n0', click_function="none", function_owner=self,
+        position={col_r3_mod,y_pos,row_b2}, width=btn_mod_width, height=btn_main_height, font_size=80
+    })
+
+    --Mod 1 +/-
+    self.createButton({
+        label='+', click_function="modPlus1", function_owner=self,
+        position={col_r3_mod_btn,y_pos,row_t2_plus}, width=btn_minplus_width, height=btn_minplus_height, font_size=150
+    })
+    self.createButton({
+        label='-', click_function="modMinus1", function_owner=self,
+        position={col_r3_mod_btn,y_pos,row_t2_minus}, width=btn_minplus_width, height=btn_minplus_height, font_size=150
+    })
+
+    --Mod 2 +/-
+    self.createButton({
+        label='+', click_function="modPlus2", function_owner=self,
+        position={col_r3_mod_btn,y_pos,row_t1_plus}, width=btn_minplus_width, height=btn_minplus_height, font_size=150
+    })
+    self.createButton({
+        label='-', click_function="modMinus2", function_owner=self,
+        position={col_r3_mod_btn,y_pos,row_t1_minus}, width=btn_minplus_width, height=btn_minplus_height, font_size=150
+    })
+
+    --Mod 3 +/-
+    self.createButton({
+        label='+', click_function="modPlus3", function_owner=self,
+        position={col_r3_mod_btn,y_pos,row_0_plus}, width=btn_minplus_width, height=btn_minplus_height, font_size=150
+    })
+    self.createButton({
+        label='-', click_function="modMinus3", function_owner=self,
+        position={col_r3_mod_btn,y_pos,row_0_minus}, width=btn_minplus_width, height=btn_minplus_height, font_size=150
+    })
+
+    --Mod 4 +/-
+    self.createButton({
+        label='+', click_function="modPlus4", function_owner=self,
+        position={col_r3_mod_btn,y_pos,row_b1_plus}, width=btn_minplus_width, height=btn_minplus_height, font_size=150
+    })
+    self.createButton({
+        label='-', click_function="modMinus4", function_owner=self,
+        position={col_r3_mod_btn,y_pos,row_b1_minus}, width=btn_minplus_width, height=btn_minplus_height, font_size=150
+    })
+
+    --Mod 5 +/-
+    self.createButton({
+        label='+', click_function="modPlus5", function_owner=self,
+        position={col_r3_mod_btn,y_pos,row_b2_plus}, width=btn_minplus_width, height=btn_minplus_height, font_size=150
+    })
+    self.createButton({
+        label='-', click_function="modMinus5", function_owner=self,
+        position={col_r3_mod_btn,y_pos,row_b2_minus}, width=btn_minplus_width, height=btn_minplus_height, font_size=150
+    })
+
+    --Utility Buttons
+    self.createButton({
+        label='ALL', click_function="printSwitch", function_owner=self,
+        position={col_l3-0.1,y_pos,row_b3}, width=btn_main_width, height=btn_main_height, font_size=120
+    })
+    self.createButton({
+        label='Reset', click_function="resetCounts", function_owner=self,
+        position={col_l2-0.1,y_pos,row_b3}, width=btn_main_width, height=btn_main_height, font_size=100
+    })
+    self.createButton({
+        label=string.char(8635)..' Roll '..string.char(8634), click_function="roll", function_owner=self,
+        position={col_0,y_pos,row_b3}, width=btn_roll_width, height=btn_roll_height, font_size=180
+    })
+    self.createInput({
+        label='', input_function="none", function_owner=self,
+        position={col_r2+0.1,y_pos,row_b3}, width=btn_main_width, height=btn_main_height, font_size=60
+    })
+    self.createButton({
+        label='Memory\nCLEAR', click_function="memClear", function_owner=self,
+        position={col_r3+0.15,y_pos,row_b3}, width=btn_main_width, height=btn_main_height, font_size=60
+    })
+
+    --Memory Buttons
+    self.createButton({
+        label=memory[1].name, click_function="mem1", function_owner=self,
+        position={col_l3,y_pos,row_t2}, width=btn_main_width, height=btn_main_height, font_size=getLength(1)
+    })
+    self.createButton({
+        label=memory[2].name, click_function="mem2", function_owner=self,
+        position={col_l2,y_pos,row_t2}, width=btn_main_width, height=btn_main_height, font_size=getLength(2)
+    })
+    self.createButton({
+        label=memory[3].name, click_function="mem3", function_owner=self,
+        position={col_l1,y_pos,row_t2}, width=btn_main_width, height=btn_main_height, font_size=getLength(3)
+    })
+    self.createButton({
+        label=memory[4].name, click_function="mem4", function_owner=self,
+        position={col_0,y_pos,row_t2}, width=btn_main_width, height=btn_main_height, font_size=getLength(4)
+    })
+    self.createButton({
+        label=memory[5].name, click_function="mem5", function_owner=self,
+        position={col_r1,y_pos,row_t2}, width=btn_main_width, height=btn_main_height, font_size=getLength(5)
+    })
+    self.createButton({
+        label=memory[6].name, click_function="mem6", function_owner=self,
+        position={col_r2,y_pos,row_t2}, width=btn_main_width, height=btn_main_height, font_size=getLength(6)
+    })
+
+    self.createButton({
+        label=memory[7].name, click_function="mem7", function_owner=self,
+        position={col_l3,y_pos,row_t1}, width=btn_main_width, height=btn_main_height, font_size=getLength(7)
+    })
+    self.createButton({
+        label=memory[8].name, click_function="mem8", function_owner=self,
+        position={col_l2,y_pos,row_t1}, width=btn_main_width, height=btn_main_height, font_size=getLength(8)
+    })
+    self.createButton({
+        label=memory[9].name, click_function="mem9", function_owner=self,
+        position={col_l1,y_pos,row_t1}, width=btn_main_width, height=btn_main_height, font_size=getLength(9)
+    })
+    self.createButton({
+        label=memory[10].name, click_function="mem10", function_owner=self,
+        position={col_0,y_pos,row_t1}, width=btn_main_width, height=btn_main_height, font_size=getLength(10)
+    })
+    self.createButton({
+        label=memory[11].name, click_function="mem11", function_owner=self,
+        position={col_r1,y_pos,row_t1}, width=btn_main_width, height=btn_main_height, font_size=getLength(11)
+    })
+    self.createButton({
+        label=memory[12].name, click_function="mem12", function_owner=self,
+        position={col_r2,y_pos,row_t1}, width=btn_main_width, height=btn_main_height, font_size=getLength(12)
+    })
+
+    self.createButton({
+        label=memory[13].name, click_function="mem13", function_owner=self,
+        position={col_l3,y_pos,row_0}, width=btn_main_width, height=btn_main_height, font_size=getLength(13)
+    })
+    self.createButton({
+        label=memory[14].name, click_function="mem14", function_owner=self,
+        position={col_l2,y_pos,row_0}, width=btn_main_width, height=btn_main_height, font_size=getLength(14)
+    })
+    self.createButton({
+        label=memory[15].name, click_function="mem15", function_owner=self,
+        position={col_l1,y_pos,row_0}, width=btn_main_width, height=btn_main_height, font_size=getLength(15)
+    })
+    self.createButton({
+        label=memory[16].name, click_function="mem16", function_owner=self,
+        position={col_0,y_pos,row_0}, width=btn_main_width, height=btn_main_height, font_size=getLength(16)
+    })
+    self.createButton({
+        label=memory[17].name, click_function="mem17", function_owner=self,
+        position={col_r1,y_pos,row_0}, width=btn_main_width, height=btn_main_height, font_size=getLength(17)
+    })
+    self.createButton({
+        label=memory[18].name, click_function="mem18", function_owner=self,
+        position={col_r2,y_pos,row_0}, width=btn_main_width, height=btn_main_height, font_size=getLength(18)
+    })
+
+    self.createButton({
+        label=memory[19].name, click_function="mem19", function_owner=self,
+        position={col_l3,y_pos,row_b1}, width=btn_main_width, height=btn_main_height, font_size=getLength(19)
+    })
+    self.createButton({
+        label=memory[20].name, click_function="mem20", function_owner=self,
+        position={col_l2,y_pos,row_b1}, width=btn_main_width, height=btn_main_height, font_size=getLength(20)
+    })
+    self.createButton({
+        label=memory[21].name, click_function="mem21", function_owner=self,
+        position={col_l1,y_pos,row_b1}, width=btn_main_width, height=btn_main_height, font_size=getLength(21)
+    })
+    self.createButton({
+        label=memory[22].name, click_function="mem22", function_owner=self,
+        position={col_0,y_pos,row_b1}, width=btn_main_width, height=btn_main_height, font_size=getLength(22)
+    })
+    self.createButton({
+        label=memory[23].name, click_function="mem23", function_owner=self,
+        position={col_r1,y_pos,row_b1}, width=btn_main_width, height=btn_main_height, font_size=getLength(23)
+    })
+    self.createButton({
+        label=memory[24].name, click_function="mem24", function_owner=self,
+        position={col_r2,y_pos,row_b1}, width=btn_main_width, height=btn_main_height, font_size=getLength(24)
+    })
+
+    self.createButton({
+        label=memory[25].name, click_function="mem25", function_owner=self,
+        position={col_l3,y_pos,row_b2}, width=btn_main_width, height=btn_main_height, font_size=getLength(25)
+    })
+    self.createButton({
+        label=memory[26].name, click_function="mem26", function_owner=self,
+        position={col_l2,y_pos,row_b2}, width=btn_main_width, height=btn_main_height, font_size=getLength(26)
+    })
+    self.createButton({
+        label=memory[27].name, click_function="mem27", function_owner=self,
+        position={col_l1,y_pos,row_b2}, width=btn_main_width, height=btn_main_height, font_size=getLength(27)
+    })
+    self.createButton({
+        label=memory[28].name, click_function="mem28", function_owner=self,
+        position={col_0,y_pos,row_b2}, width=btn_main_width, height=btn_main_height, font_size=getLength(28)
+    })
+    self.createButton({
+        label=memory[29].name, click_function="mem29", function_owner=self,
+        position={col_r1,y_pos,row_b2}, width=btn_main_width, height=btn_main_height, font_size=getLength(29)
+    })
+    self.createButton({
+        label=memory[30].name, click_function="mem30", function_owner=self,
+        position={col_r2,y_pos,row_b2}, width=btn_main_width, height=btn_main_height, font_size=getLength(30)
+    })
+end
+
+--Dynamically sets font size based on length of name (for memory buttons)
+function getLength(i)
+    local length = string.len(memory[i].name)
+    if length > 10 then return 40 elseif length > 6 then return 60 else return 80 end
+end

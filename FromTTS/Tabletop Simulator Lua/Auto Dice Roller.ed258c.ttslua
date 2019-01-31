@@ -1,0 +1,112 @@
+--[[    Holy Roller: by MrStump
+
+    Instructions for edit:
+        radius
+            This is how far away from the tool the dice will fall.
+            If you set it too low, items will fall back into the bag FOREVER. Fun.
+        height
+            This is how high off the table, relative to the tool, the dice will fall.
+            If you set it too low (negative numbers), dice can spawn in the table. Bad.
+        print
+            This decides if the results of the dice will print to chat. Will not work with custom dice.
+            Can be true or false. True prints, false does not print. ]]--
+
+radius = 4
+height = 4
+printResultsToChat = false
+
+--[[    End of edit section. below is the functional code, commented.    ]]--
+
+--[[Runs any time an object touches the bag (or it touches anything)]]
+function onCollisionEnter()
+    --Gets # of objects in bag. If there are some, it runs the emptyContents function
+    if self.getQuantity() > 0 then
+        allDice = {}
+        emptyContents()
+    end
+end
+
+--[[Empties the contents of the bag into a ring around the object.]]
+function emptyContents()
+    --Establish some necessary basic information on what is in the bag and where it is
+    local contents = self.getObjects()
+    local selfRot = self.getRotation()
+    local selfPos = self.getPosition()
+
+    --Establishes the X/Y/Z of position, and the Y of rotation.
+    local yRot = selfRot.y
+    local xPos = selfPos.x
+    local yPos = selfPos.y
+    local zPos = selfPos.z
+    --Establishes the variable we need for each spoke (placed item). Like spokes on a wheel.
+    --360 is our number of degrees, #contents is our number of individual spokes we will have.
+    local spokes = 360/#contents
+
+    --Loop, runs through each item in the bag, sets its position and rotation for its destination, and pulls it out
+    for i, v in pairs(contents) do
+        --This is how we determine the position of each individual removed item. (see end for more)
+        local xp = xPos + math.sin( ((spokes*i)+yRot)*0.0174532 ) * radius
+        local yp = yPos + height
+        local zp = zPos + math.cos( ((spokes*i)+yRot)*0.0174532 ) * radius
+        --We place our x/y/z for position into this table. We also place 3 random numbers for rotation X/Y/Z
+        takeParam = {
+            position = {xp,yp,zp},
+            rotation = {math.random(1,360),math.random(1,360),math.random(1,360)},
+            callback = 'lameFix'
+        }
+        --Use the info in the table to remove the item.
+        local die = self.takeObject(takeParam)
+        allDice[i] = die
+    end
+    --Activates a timer to call a function to print the dice values
+    if printResultsToChat == true then
+        --destroy makes sure a currently existing one is gone, in case timers overlap.
+        Timer.destroy(self.getGUID())
+        local timerParams = {
+            identifier=self.getGUID(), function_name='printResults',
+            function_owner=self, delay=3
+        }
+        Timer.create(timerParams)
+    end
+end
+
+--[[A fix to the bias towards 2/5. This puts torque on the dice, effectively rolling them.]]
+function lameFix(dieObject)
+    dieObject.addTorque( {math.random()*360, math.random()*360, math.random()*360} )
+end
+
+--[[Activated by the timer if printResultsToChat is true]]
+function printResults()
+    local printString = dropper .. ' rolled: '
+    for i, v in pairs(allDice) do
+        printString = printString .. v.getValue() .. '  '
+    end
+    printToAll(printString, {1,1,1})
+end
+
+--[[Tracks every object drops and adds it to a table. Needs]]--
+function onObjectDropped(col, obj)
+    if printResultsToChat == true then
+        dropper = Player[col].steam_name
+    end
+end
+
+--[[The core of determining direction from an object, based on its rotation, is based in trig.
+I barely understand it, but I might be able to explain how to use it (if that is what you are here for).
+    x = sourceXposition + math.sin( (0+sourceYrotation)*0.0174532)  * distance
+    y = yPosition
+    z = sourceZposition + math.cos( (0+sourceYrotation)*0.0174532)  * distance
+This is the heart of the formula. Let me explain each part of x.
+
+    sourceXposition || the halo's x position.
+        When we're giving our placed item coordinates, they will be relative to the world. Where 0,0,0 is the middle of the table.
+        Basically, if we didn't add sourceXposition, we would be making a ring of objects around table center instead of this object.
+    math.sin( (0 + sourceYrotation) * 0.017453 ) || converting an angle into a vector
+        math.sin() is our mathmatical function. for Z, you will notice we use math.cos() instead, and the z position, but the rest is the same.
+        sourceYrotation is the angle we are looking to convert into a vector (for our item to be placed)
+        0 is how much we want to add to our angle. If 0 comes out the left side, 90 would come out the top, 180 out the right, etc
+        0.0174532 is the number used to conver radians/degrees to/from eachother. Dont try to change this number.
+    distance || measurement of distance
+        How far from our item's center we want to spawn the object.
+
+If you cam here looking to understand how this works, I hope this helped. ]]--

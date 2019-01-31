@@ -1,0 +1,301 @@
+function onload()
+  refresh()
+end
+
+function refresh()
+  self.clearButtons()
+  soundobj=getObjectFromGUID(self.getDescription())
+  loopcnt=0 trigcnt=0
+  if soundobj~=nil and soundobj.name=='Custom_Assetbundle' then
+    if soundobj.AssetBundle.getLoopingEffects()~=nil then loopcnt=#soundobj.AssetBundle.getLoopingEffects() loopobj=soundobj end
+    if soundobj.AssetBundle.getTriggerEffects()~=nil then trigcnt=#soundobj.AssetBundle.getTriggerEffects() trigobj=soundobj end
+    scalefactor=(loopcnt+trigcnt)/15
+    if scalefactor>3 then scalefactor=3
+    elseif scalefactor<0.5 then scalefactor=0.5
+    end
+    self.setScale({3.18,1,3*scalefactor})
+    if soundobj.AssetBundle.getLoopingEffects() then
+      for i,v in ipairs(soundobj.AssetBundle.getLoopingEffects()) do
+        makeLoopButton(v.index,v.name,0)
+      end
+    end
+    if soundobj.AssetBundle.getTriggerEffects() then
+      for i,v in ipairs(soundobj.AssetBundle.getTriggerEffects()) do
+        makeTriggerButton(v.index+loopcnt,v.name,loopcnt)
+      end
+    end
+  end
+  if scalefactor==nil then scalefactor=1 end
+  local button1 = {}
+  button1.click_function = 'refresh'
+  button1.function_owner = self
+  button1.label = '!'
+  button1.position = {2.15,0.175,-1.4}
+  button1.rotation = {0,0,0}
+  button1.width = 100
+  button1.height = 100
+  button1.font_size = 100
+  self.createButton(button1)
+end
+
+function onCollisionEnter(collision_info)
+  if collision_info.collision_object.name=='Custom_Assetbundle' then
+    self.setDescription(collision_info.collision_object.guid)
+    self.setName(collision_info.collision_object.getName())
+    refresh()
+  end
+end
+
+function makeLoopButton(vindex,vname,vindexoffset)
+  local button1 = {}
+  button1.click_function = 'loop'..vindex-vindexoffset
+  button1.function_owner = self
+  button1.label = wrap(vname,12)
+  if row==nil then row=0 end
+  if vindex%5==0 then row=vindex/5 end
+  column=vindex
+  if vindex>=5 then column=vindex-5 end
+  if vindex>=10 then column=vindex-10 end
+  if vindex>=15 then column=vindex-15 end
+  if vindex>=20 then column=vindex-20 end
+  if vindex>=25 then column=vindex-25 end
+  if scalefactor>1 then rowspaceadj=0.7 else rowspaceadj=1 end
+  button1.position = {-1.6+(column*0.8),0.175,-0.8-(scalefactor/10)+(row*0.9*rowspaceadj)}
+  button1.rotation = {0,0,0}
+  button1.width = 400
+  if scalefactor>1 then
+    button1.height = 400/(scalefactor)
+  else
+    button1.height = 400
+  end
+  button1.font_size = 65
+  self.createButton(button1)
+end
+
+function makeTriggerButton(vindex,vname,vindexoffset)
+  local button1 = {}
+  button1.click_function = 'trigger'..vindex-vindexoffset
+  button1.function_owner = self
+  button1.label = wrap(vname,12)
+  if row==nil then row=0 end
+  if vindex%5==0 then row=vindex/5 end
+  column=vindex
+  if vindex>=5 then column=vindex-5 end
+  if vindex>=10 then column=vindex-10 end
+  if vindex>=15 then column=vindex-15 end
+  if vindex>=20 then column=vindex-20 end
+  if vindex>=25 then column=vindex-25 end
+  if scalefactor>1 then rowspaceadj=0.7 else rowspaceadj=1 end
+  button1.position = {-1.6+(column*0.8),0.175,-0.8-(scalefactor/10)+(row*0.9*rowspaceadj)}
+  button1.rotation = {0,0,0}
+  button1.width = 400
+  if scalefactor>1 then
+    button1.height = 400/(scalefactor)
+  else
+    button1.height = 400
+  end
+  button1.font_size = 65
+  self.createButton(button1)
+end
+
+function trigger0()
+  trigobj.AssetBundle.playTriggerEffect(0)
+end
+function trigger1()
+  trigobj.AssetBundle.playTriggerEffect(1)
+end
+function trigger2()
+  trigobj.AssetBundle.playTriggerEffect(2)
+end
+function trigger3()
+  trigobj.AssetBundle.playTriggerEffect(3)
+end
+function trigger4()
+  trigobj.AssetBundle.playTriggerEffect(4)
+end
+function trigger5()
+  trigobj.AssetBundle.playTriggerEffect(5)
+end
+function trigger6()
+  trigobj.AssetBundle.playTriggerEffect(6)
+end
+function trigger7()
+  trigobj.AssetBundle.playTriggerEffect(7)
+end
+function trigger8()
+  trigobj.AssetBundle.playTriggerEffect(8)
+end
+function trigger9()
+  trigobj.AssetBundle.playTriggerEffect(9)
+end
+function trigger10()
+  trigobj.AssetBundle.playTriggerEffect(10)
+end
+function trigger11()
+  trigobj.AssetBundle.playTriggerEffect(11)
+end
+function trigger12()
+  trigobj.AssetBundle.playTriggerEffect(12)
+end
+function trigger13()
+  trigobj.AssetBundle.playTriggerEffect(13)
+end
+function trigger14()
+  trigobj.AssetBundle.playTriggerEffect(14)
+end
+function trigger15()
+  trigobj.AssetBundle.playTriggerEffect(15)
+end
+function trigger16()
+  trigobj.AssetBundle.playTriggerEffect(16)
+end
+function trigger17()
+  trigobj.AssetBundle.playTriggerEffect(17)
+end
+function trigger18()
+  trigobj.AssetBundle.playTriggerEffect(18)
+end
+function trigger19()
+  trigobj.AssetBundle.playTriggerEffect(19)
+end
+function trigger20()
+  trigobj.AssetBundle.playTriggerEffect(20)
+end
+function trigger21()
+  trigobj.AssetBundle.playTriggerEffect(21)
+end
+function trigger22()
+  trigobj.AssetBundle.playTriggerEffect(22)
+end
+function trigger23()
+  trigobj.AssetBundle.playTriggerEffect(23)
+end
+function trigger24()
+  trigobj.AssetBundle.playTriggerEffect(24)
+end
+function trigger25()
+  trigobj.AssetBundle.playTriggerEffect(25)
+end
+function trigger26()
+  trigobj.AssetBundle.playTriggerEffect(26)
+end
+function trigger27()
+  trigobj.AssetBundle.playTriggerEffect(27)
+end
+function trigger28()
+  trigobj.AssetBundle.playTriggerEffect(28)
+end
+function trigger29()
+  trigobj.AssetBundle.playTriggerEffect(29)
+end
+function trigger30()
+  trigobj.AssetBundle.playTriggerEffect(30)
+end
+
+function loop0()
+  loopobj.AssetBundle.playLoopingEffect(0)
+end
+function loop1()
+  loopobj.AssetBundle.playLoopingEffect(1)
+end
+function loop2()
+  loopobj.AssetBundle.playLoopingEffect(2)
+end
+function loop3()
+  loopobj.AssetBundle.playLoopingEffect(3)
+end
+function loop4()
+  loopobj.AssetBundle.playLoopingEffect(4)
+end
+function loop5()
+  loopobj.AssetBundle.playLoopingEffect(5)
+end
+function loop6()
+  loopobj.AssetBundle.playLoopingEffect(6)
+end
+function loop7()
+  loopobj.AssetBundle.playLoopingEffect(7)
+end
+function loop8()
+  loopobj.AssetBundle.playLoopingEffect(8)
+end
+function loop9()
+  loopobj.AssetBundle.playLoopingEffect(9)
+end
+function loop10()
+  loopobj.AssetBundle.playLoopingEffect(10)
+end
+function loop11()
+  loopobj.AssetBundle.playLoopingEffect(11)
+end
+function loop12()
+  loopobj.AssetBundle.playLoopingEffect(12)
+end
+function loop13()
+  loopobj.AssetBundle.playLoopingEffect(13)
+end
+function loop14()
+  loopobj.AssetBundle.playLoopingEffect(14)
+end
+function loop15()
+  loopobj.AssetBundle.playLoopingEffect(15)
+end
+function loop16()
+  loopobj.AssetBundle.playLoopingEffect(16)
+end
+function loop17()
+  loopobj.AssetBundle.playLoopingEffect(17)
+end
+function loop18()
+  loopobj.AssetBundle.playLoopingEffect(18)
+end
+function loop19()
+  loopobj.AssetBundle.playLoopingEffect(19)
+end
+function loop20()
+  loopobj.AssetBundle.playLoopingEffect(20)
+end
+function loop21()
+  loopobj.AssetBundle.playLoopingEffect(21)
+end
+function loop22()
+  loopobj.AssetBundle.playLoopingEffect(22)
+end
+function loop23()
+  loopobj.AssetBundle.playLoopingEffect(23)
+end
+function loop24()
+  loopobj.AssetBundle.playLoopingEffect(24)
+end
+function loop25()
+  loopobj.AssetBundle.playLoopingEffect(25)
+end
+function loop26()
+  loopobj.AssetBundle.playLoopingEffect(26)
+end
+function loop27()
+  loopobj.AssetBundle.playLoopingEffect(27)
+end
+function loop28()
+  loopobj.AssetBundle.playLoopingEffect(28)
+end
+function loop29()
+  loopobj.AssetBundle.playLoopingEffect(29)
+end
+function loop30()
+  loopobj.AssetBundle.playLoopingEffect(30)
+end
+
+function wrap(str, limit, indent, indent1)
+  indent = indent or ""
+  indent1 = indent1 or indent
+  limit = limit or 72
+  local here = 1-#indent1
+  return indent1..str:gsub("(%s+)()(%S+)()",
+                          function(sp, st, word, fi)
+                            if fi-here > limit then
+                              here = st - #indent
+                              return "\n"..indent..word
+                            end
+                          end)
+end
