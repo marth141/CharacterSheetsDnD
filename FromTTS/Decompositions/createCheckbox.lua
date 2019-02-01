@@ -121,8 +121,8 @@ function createAllCheckboxes()
     createCheckbox({RollCHECKXcord, UI_Y_COORD, 5.21}, CHECK_FONT_SIZE, 0, false)
     StealthSkillCheckCheckboxButtonIdx = spawnedUiElementsWhichSaveData + 1
     createCheckbox({RollCHECKXcord, UI_Y_COORD, 5.62}, CHECK_FONT_SIZE, 0, false)
-    SurvivalSkillCheckCheckboxButtonIdx = spawnedUiElementsWhichSaveData + 1
-    createCheckbox({RollCHECKXcord, UI_Y_COORD, 6.03}, CHECK_FONT_SIZE, 0, false)
+    SurvivalSkillCheckCheckboxButtonIdx = spawnedUiElementsWhichSaveData + 1 --111
+    createCheckbox({RollCHECKXcord, UI_Y_COORD, 6.03}, CHECK_FONT_SIZE, 0, false) --112
 end
 --Makes checkboxes
 function createCheckbox(checkboxPos, checkboxSize, isChecked, isMulti)
