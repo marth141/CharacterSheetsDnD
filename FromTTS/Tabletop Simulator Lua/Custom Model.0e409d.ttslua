@@ -365,8 +365,8 @@ function onload(saved_data)
         isSavedDataAvailable = true
     end
     --populateUiElements()
-    createAllCheckboxes()
-    createAllDisplayNumbers()
+    --createAllCheckboxes()
+    --createAllDisplayNumbers()
     createAllTextboxes()
     allUiElementsLoaded = true
     updateSheet()
