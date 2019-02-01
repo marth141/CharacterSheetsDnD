@@ -365,8 +365,8 @@ function onload(saved_data)
         isSavedDataAvailable = true
     end
     --populateUiElements()
-    --createAllCheckboxes()
-    --createAllDisplayNumbers()
+    createAllCheckboxes()
+    createAllDisplayNumbers()
     createAllTextboxes()
     allUiElementsLoaded = true
     updateSheet()
@@ -1334,7 +1334,6 @@ function createTextBox(txtBoxPos, txtBoxRows, txtBoxWidth, txtBoxFontSize, txtBo
         updateSheet()
     end
 
-    print(savedDataTable[savedDataIdCopy + 1])
     self.createInput({
     input_function = funcName,
     function_owner = self,
