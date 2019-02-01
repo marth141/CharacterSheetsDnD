@@ -1,6 +1,48 @@
 spawnedButtonCount = 0
 spawnedUiElementsWhichSaveData = 0
 savedDataTable = {}
+
+checkboxIndexTable = {
+    ["InspirationCheckboxButtonIdx"] = 39,
+    ["SuccDeathSave1CheckboxButtonIdx"] = 55,
+    ["SuccDeathSave2CheckboxButtonIdx"] = 56,
+    ["SuccDeathSave3CheckboxButtonIdx"] = 57,
+    ["FailDeathSave1CheckboxButtonIdx"] = 58,
+    ["FailDeathSave2CheckboxButtonIdx"] = 59,
+    ["FailDeathSave3CheckboxButtonIdx"] = 60,
+    ["ProfArmorLightCheckboxButtonIdx"] = 61,
+    ["ProfArmorMediumCheckboxButtonIdx"] = 62,
+    ["ProfArmorHeavyCheckboxButtonIdx"] = 63,
+    ["ProfArmorShieldsCheckboxButtonIdx"] = 64,
+    ["ProfSimleWeaponCheckboxButtonIdx"] = 65,
+    ["ProfMartialWeaponCheckboxButtonIdx"] = 66,
+    ["ProfOtherWeaponCheckboxButtonIdx"] = 67,
+    ["SaveCheckSTRCheckboxButtonIdx"] = 88,
+    ["SaveCheckDEXCheckboxButtonIdx"] = 89,
+    ["SaveCheckCONCheckboxButtonIdx"] = 90,
+    ["SaveCheckINTCheckboxButtonIdx"] = 91,
+    ["SaveCheckWISCheckboxButtonIdx"] = 92,
+    ["SaveCheckCHACheckboxButtonIdx"] = 93,
+    ["AcrobaticsSkillCheckCheckboxButtonIdx"] = 94,
+    ["AnimalHandlingSkillCheckCheckboxButtonIdx"] = 95,
+    ["ArcanaSkillCheckCheckboxButtonIdx"] = 96,
+    ["AthleticsSkillCheckCheckboxButtonIdx"] = 97,
+    ["DeceptionSkillCheckCheckboxButtonIdx"] = 98,
+    ["HistorySkillCheckCheckboxButtonIdx"] = 99,
+    ["InsightSkillCheckCheckboxButtonIdx"] = 100,
+    ["IntimidationSkillCheckCheckboxButtonIdx"] = 101,
+    ["InvestigationSkillCheckCheckboxButtonIdx"] = 102,
+    ["MedicineSkillCheckCheckboxButtonIdx"] = 103,
+    ["NatureSkillCheckCheckboxButtonIdx"] = 104,
+    ["PerceptionSkillCheckCheckboxButtonIdx"] = 105,
+    ["PerformanceSkillCheckCheckboxButtonIdx"] = 106,
+    ["PersuasionSkillCheckCheckboxButtonIdx"] = 107,
+    ["ReligionSkillCheckCheckboxButtonIdx"] = 108,
+    ["SleightofHandSkillCheckCheckboxButtonIdx"] = 109,
+    ["StealthSkillCheckCheckboxButtonIdx"] = 110,
+    ["SurvivalSkillCheckCheckboxButtonIdx"] = 111
+}
+
 function createAllCheckboxes()
     local UI_Y_COORD = 0.04
     local CHECK_FONT_SIZE = 160
