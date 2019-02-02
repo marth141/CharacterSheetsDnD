@@ -1410,7 +1410,6 @@ function createTextBox(savedTableKey, txtBoxPos, txtBoxRows, txtBoxWidth, txtBox
         updateSheet()
     end
 
-    print(savedDataTable[savedDataIdCopy + 1])
     self.createInput({
         input_function = funcName,
         function_owner = self,
@@ -1433,7 +1432,6 @@ end
 function click_textbox(i, value, selected)
     if selected == false then
         savedDataTable_KV[i] = value
-        print(savedDataTable_KV[i])
         updateSheet()
     end
 end
