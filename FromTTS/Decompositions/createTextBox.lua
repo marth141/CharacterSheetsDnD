@@ -6,7 +6,7 @@ uiBackgroundColor = {1,1,1}
 uiFontColor = {0,0,0}
 uiScale = {0.8,0.8,0.8}
 
-textEntryTable = {
+textEntryIndexTable = {
     ["characterNameTxtEntry"] = 1,
     ["playerNameTxtEntry"] = 2,
     ["classLVL1TxtEntry"] = 3,
@@ -359,7 +359,7 @@ end
 -- Creates a textbox with the given parameters
 function createTextBox(savedTableKey, txtBoxPos, txtBoxRows, txtBoxWidth, txtBoxFontSize, txtBoxValue, defaultTxtBoxLabel, txtBoxAlignment, validationValue, uiBackgroundColor, uiFontColor)
     --Sets up reference function
-    local funcName = "textbox"..textEntryTable[savedTableKey]
+    local funcName = "textbox"..textEntryIndexTable[savedTableKey]
     local savedDataIdCopy = spawnedUiElementsWhichSaveData -- prevents passing spawnedUiElementsWhichSaveData by reference
     print(spawnedUiElementsWhichSaveData)
     local func = function(_,_,val,sel) click_textbox(savedDataIdCopy,val,sel) end
