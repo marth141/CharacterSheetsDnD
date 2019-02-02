@@ -1401,7 +1401,7 @@ function createTextBox(savedTableKey, txtBoxPos, txtBoxRows, txtBoxWidth, txtBox
     --Sets up reference function
     local funcName = "textbox"..textEntryIndexTable[savedTableKey]
     local savedDataIdCopy = spawnedUiElementsWhichSaveData -- prevents passing spawnedUiElementsWhichSaveData by reference
-    local func = function(_,_,val,sel) click_textbox(savedDataIdCopy,val,sel) end
+    local func = function(_,_,val,sel) click_textbox(savedTableKey,val,sel) end
     self.setVar(funcName, func)
 
     -- if the saved data does not exist, fill text field with default value
@@ -1429,9 +1429,11 @@ function createTextBox(savedTableKey, txtBoxPos, txtBoxRows, txtBoxWidth, txtBox
     spawnedTextInputCount = spawnedTextInputCount + 1
     spawnedUiElementsWhichSaveData = spawnedUiElementsWhichSaveData + 1
 end
+
 function click_textbox(i, value, selected)
     if selected == false then
-        savedDataTable[i+1] = value
+        savedDataTable_KV[i] = value
+        print(savedDataTable_KV[i])
         updateSheet()
     end
 end
