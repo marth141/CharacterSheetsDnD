@@ -1017,7 +1017,6 @@ function createCheckbox(checkBoxKey, checkboxPos, checkboxSize, isChecked, isMul
     self.setVar(funcName, func)
 
     -- if the saved data does not exist, fill text field with default value
-    -- NATE NOTE: THIS IS PROBABLY WHERE THE X IS BEING FILLED
     if isSavedDataAvailable == false then
         table.insert(savedDataTable, 0)
         checkTheBox = isChecked
@@ -1026,7 +1025,6 @@ function createCheckbox(checkBoxKey, checkboxPos, checkboxSize, isChecked, isMul
     end
 
     --Sets up label
-    -- NATE NOTE: THIS IS PROBABLY WHERE THE X IS BEING FILLED
     local label = ""
     if checkTheBox == 0.5 then label=tostring("/2") end
     if checkTheBox == 1 then label=tostring("x") end
