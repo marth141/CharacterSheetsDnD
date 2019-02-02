@@ -716,7 +716,6 @@ function click_checkbox(i, buttonIdx)
     if savedDataTable_KV[i] == true then
         savedDataTable_KV[i] = false
         self.editButton({index=buttonIdx, label=""})
-        print(savedDataTable_KV[i])
     else
         savedDataTable_KV[i] = true
         self.editButton({index=buttonIdx, label=string.char(10008)})
