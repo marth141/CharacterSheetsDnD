@@ -1,4 +1,4 @@
--- RezMar 2018 for Dungeons and Dragons 5e
+-- RezMar & marth141 2018 for Dungeons and Dragons 5e
 
 uiFontColor = {0,0,0}
 uiBackgroundColor = {1,1,1}
@@ -11,230 +11,6 @@ disableSave = true
 isSavedDataAvailable = false
 savedDataTable = {}
 allUiElementsLoaded = false
-
-characterNameTxtEntry = 0
-playerNameTxtEntry = 0
-className1DisplayIdx = 0
-className2DisplayIdx = 0
-classLVL1TxtEntry = 0
-classLVL2TxtEntry = 0
-totalLVLDisplayIdx = 0
-
-raceNameDisplayIdx = 0
-alignmentTxtEntry = 0
-deityTxtEntry = 0
-infoSizeDisplayIdx = 0
-infoGenderTxtEntry = 0
-infoAgeTxtEntry = 0
-infoHeightTxtEntry = 0
-infoWeightTxtEntry = 0
-infoSkinTxtEntry = 0
-infoHairTxtEntry = 0
-infoEyesTxtEntry = 0
-ExperienceTxtEntry = 0
-ExpLVLUPDisplayIdx = 0
-
-STRscoreDisplayIdx = 0
-DEXscoreDisplayIdx = 0
-CONscoreDisplayIdx = 0
-INTscoreDisplayIdx = 0
-WISscoreDisplayIdx = 0
-CHAscoreDisplayIdx = 0
-STRmodDisplayIdx = 0
-DEXmodDisplayIdx = 0
-CONmodDisplayIdx = 0
-INTmodDisplayIdx = 0
-WISmodDisplayIdx = 0
-CHAmodDisplayIdx = 0
-ProfBonusDisplayIdx = 0
-STRsaveCheckDisplayIdx = 0
-DEXsaveCheckDisplayIdx = 0
-CONsaveCheckDisplayIdx = 0
-INTsaveCheckDisplayIdx = 0
-WISsaveCheckDisplayIdx = 0
-CHAsaveCheckDisplayIdx = 0
-STRsaveTotalDisplayIdx = 0
-STRsaveItemDisplayIdx = 0
-STRsaveModDisplayIdx = 0
-DEXsaveTotalDisplayIdx = 0
-DEXsaveItemDisplayIdx = 0
-DEXsaveModDisplayIdx = 0
-CONsaveTotalDisplayIdx = 0
-CONsaveItemDisplayIdx = 0
-CONsaveModDisplayIdx = 0
-INTsaveTotalDisplayIdx = 0
-INTsaveItemDisplayIdx = 0
-INTsaveModDisplayIdx = 0
-WISsaveTotalDisplayIdx = 0
-WISsaveItemDisplayIdx = 0
-WISsaveModDisplayIdx = 0
-CHAsaveTotalDisplayIdx = 0
-CHAsaveItemDisplayIdx = 0
-CHAsaveModDisplayIdx = 0
-
-AcrobaticsCheckDisplayIdx = 0
-AnimalHandlingCheckDisplayIdx = 0
-ArcanaCheckDisplayIdx = 0
-AthleticsCheckDisplayIdx = 0
-DeceptionCheckDisplayIdx = 0
-HistoryCheckDisplayIdx = 0
-InsightCheckDisplayIdx = 0
-IntimidationCheckDisplayIdx = 0
-InvestigationCheckDisplayIdx = 0
-MedicineCheckDisplayIdx = 0
-NatureCheckDisplayIdx = 0
-PerceptionCheckDisplayIdx = 0
-PerformanceCheckDisplayIdx = 0
-PersuasionCheckDisplayIdx = 0
-ReligionCheckDisplayIdx = 0
-SleightofHandCheckDisplayIdx = 0
-StealthCheckDisplayIdx = 0
-SurvivalCheckDisplayIdx = 0
-AcrobaticsTotalDisplayIdx = 0
-AcrobaticsItemDisplayIdx = 0
-AcrobaticsModDisplayIdx = 0
-AnimalHandlingTotalDisplayIdx = 0
-AnimalHandlingItemDisplayIdx = 0
-AnimalHandlingModDisplayIdx = 0
-ArcanaTotalDisplayIdx = 0
-ArcanaItemDisplayIdx = 0
-ArcanaModDisplayIdx = 0
-AthleticsTotalDisplayIdx = 0
-AthleticsItemDisplayIdx = 0
-AthleticsModDisplayIdx = 0
-DeceptionTotalDisplayIdx = 0
-DeceptionItemDisplayIdx = 0
-DeceptionModDisplayIdx = 0
-HistoryTotalDisplayIdx = 0
-HistoryItemDisplayIdx = 0
-HistoryModDisplayIdx = 0
-InsightTotalDisplayIdx = 0
-InsightItemDisplayIdx = 0
-InsightModDisplayIdx = 0
-IntimidationTotalDisplayIdx = 0
-IntimidationItemDisplayIdx = 0
-IntimidationModDisplayIdx = 0
-InvestigationTotalDisplayIdx = 0
-InvestigationItemDisplayIdx = 0
-InvestigationModDisplayIdx = 0
-MedicineTotalDisplayIdx = 0
-MedicineItemDisplayIdx = 0
-MedicineModDisplayIdx = 0
-NatureTotalDisplayIdx = 0
-NatureItemDisplayIdx = 0
-NatureModDisplayIdx = 0
-PerceptionTotalDisplayIdx = 0
-PerceptionItemDisplayIdx = 0
-PerceptionModDisplayIdx = 0
-PerformanceTotalDisplayIdx = 0
-PerformanceItemDisplayIdx = 0
-PerformanceModDisplayIdx = 0
-PersuasionTotalDisplayIdx = 0
-PersuasionItemDisplayIdx = 0
-PersuasionModDisplayIdx = 0
-ReligionTotalDisplayIdx = 0
-ReligionItemDisplayIdx = 0
-ReligionModDisplayIdx = 0
-SleightofHandTotalDisplayIdx = 0
-SleightofHandItemDisplayIdx = 0
-SleightofHandModDisplayIdx = 0
-StealthTotalDisplayIdx = 0
-StealthItemDisplayIdx = 0
-StealthModDisplayIdx = 0
-SurvivalTotalDisplayIdx = 0
-SurvivalItemDisplayIdx = 0
-SurvivalModDisplayIdx = 0
-PassivePerceptionDisplayIdx = 0
-
-InspirationCheckboxButtonIdx = 0
-ACTxtEntry = 0
-ACtempTxtEntry = 0
-MAXHPTxtEntry = 0
-CurrentHPTxtEntry = 0
-TempHPTxtEntry = 0
-InitiativeDisplayIdx = 0
-VisionDisplayIdx = 0
-Vision1DisplayIdx = 0
-SpeedDisplayIdx = 0
-SpeedFlyTxtEntry = 0
-SpeedSwimTxtEntry = 0
-SpeedLongJumpTxtEntry = 0
-SpeedHighJumpTxtEntry = 0
-SpeedCrawlTxtEntry = 0
-SpeedClimbTxtEntry = 0
-HitDiceClass1DisplayIdx = 0
-HitDiceClass2DisplayIdx = 0
-HitDiceClass1TotalDisplayIdx = 0
-HitDiceClass2TotalDisplayIdx = 0
-HitDiceClass1LeftTxtEntry = 0
-HitDiceClass2LeftTxtEntry = 0
-ResImuTxtEntry = 0
-SpellSaveDC1DisplayIdx = 0
-SpellAtkBonus1DisplayIdx = 0
-SpellSaveDC2DisplayIdx = 0
-SpellAtkBonus2DisplayIdx = 0
-ExhaustionTxtEntry = 0
-SuccDeathSave1CheckboxButtonIdx = 0
-SuccDeathSave2CheckboxButtonIdx = 0
-SuccDeathSave3CheckboxButtonIdx = 0
-FailDeathSave1CheckboxButtonIdx = 0
-FailDeathSave2CheckboxButtonIdx = 0
-FailDeathSave3CheckboxButtonIdx = 0
-ProfArmorLightCheckboxButtonIdx = 0
-ProfArmorMediumCheckboxButtonIdx = 0
-ProfArmorHeavyCheckboxButtonIdx = 0
-ProfArmorShieldsCheckboxButtonIdx = 0
-ProfSimleWeaponCheckboxButtonIdx = 0
-ProfMartialWeaponCheckboxButtonIdx = 0
-ProfOtherWeaponCheckboxButtonIdx = 0
-ProfWeaponsTxtEntry = 0
-ProfToolsTxtEntry = 0
-LanguagesTxtEntry = 0
-
-coinCPTxtEntry = 0
-coinSPTxtEntry = 0
-coinEPTxtEntry = 0
-coinGPTxtEntry = 0
-coinPPTxtEntry = 0
-
-weapon1TxtEntry = 0
-weapon2TxtEntry = 0
-weapon3TxtEntry = 0
-weapon4TxtEntry = 0
-weapon5TxtEntry = 0
-ammo1TxtEntry = 0
-ammo2TxtEntry = 0
-ammo3TxtEntry = 0
-potions1TxtEntry = 0
-potions2TxtEntry = 0
-potions3TxtEntry = 0
-potions4TxtEntry = 0
-
-SaveCheckSTRCheckboxButtonIdx = 0
-SaveCheckDEXCheckboxButtonIdx = 0
-SaveCheckCONCheckboxButtonIdx = 0
-SaveCheckINTCheckboxButtonIdx = 0
-SaveCheckWISCheckboxButtonIdx = 0
-SaveCheckCHACheckboxButtonIdx = 0
-
-AcrobaticsSkillCheckCheckboxButtonIdx = 0
-AnimalHandlingSkillCheckCheckboxButtonIdx = 0
-ArcanaSkillCheckCheckboxButtonIdx = 0
-AthleticsSkillCheckCheckboxButtonIdx = 0
-DeceptionSkillCheckCheckboxButtonIdx = 0
-HistorySkillCheckCheckboxButtonIdx = 0
-InsightSkillCheckCheckboxButtonIdx = 0
-IntimidationSkillCheckCheckboxButtonIdx = 0
-InvestigationSkillCheckCheckboxButtonIdx = 0
-MedicineSkillCheckCheckboxButtonIdx = 0
-NatureSkillCheckCheckboxButtonIdx = 0
-PerceptionSkillCheckCheckboxButtonIdx = 0
-PerformanceSkillCheckCheckboxButtonIdx = 0
-PersuasionSkillCheckCheckboxButtonIdx = 0
-ReligionSkillCheckCheckboxButtonIdx = 0
-SleightofHandSkillCheckCheckboxButtonIdx = 0
-StealthSkillCheckCheckboxButtonIdx = 0
-SurvivalSkillCheckCheckboxButtonIdx = 0
 
 playerName = " "
 displayCol = {1,1,1}
@@ -282,7 +58,7 @@ savedDataTable_KV = {
     ["SleightofHandItemDisplayIdx"] = "",
     ["StealthItemDisplayIdx"] = "",
     ["SurvivalItemDisplayIdx"] = "",
-    ["InspirationCheckboxButtonIdx"] = "",
+    ["InspirationCheckboxButtonIdx"] = false,
     ["ACTxtEntry"] = 0,
     ["ACtempTxtEntry"] = 0,
     ["MAXHPTxtEntry"] = 0,
@@ -358,120 +134,227 @@ savedDataTable_KV = {
 }
 
 textEntryIndexTable = {
-    ["characterNameTxtEntry"] = 1,
-    ["playerNameTxtEntry"] = 2,
-    ["classLVL1TxtEntry"] = 3,
-    ["classLVL2TxtEntry"] = 4,
-    ["alignmentTxtEntry"] = 5,
-    ["deityTxtEntry"] = 6,
-    ["infoGenderTxtEntry"] = 7,
-    ["infoAgeTxtEntry"] = 8,
-    ["infoHeightTxtEntry"] = 9,
-    ["infoWeightTxtEntry"] = 10,
-    ["infoSkinTxtEntry"] = 11,
-    ["infoHairTxtEntry"] = 12,
-    ["infoEyesTxtEntry"] = 13,
-    ["ExperienceTxtEntry"] = 14,
-    ["STRsaveItemDisplayIdx"] = 15,
-    ["DEXsaveItemDisplayIdx"] = 16,
-    ["CONsaveItemDisplayIdx"] = 17,
-    ["INTsaveItemDisplayIdx"] = 18,
-    ["WISsaveItemDisplayIdx"] = 19,
-    ["CHAsaveItemDisplayIdx"] = 20,
-    ["AcrobaticsItemDisplayIdx"] = 21,
-    ["AnimalHandlingItemDisplayIdx"] = 22,
-    ["ArcanaItemDisplayIdx"] = 23,
-    ["AthleticsItemDisplayIdx"] = 24,
-    ["DeceptionItemDisplayIdx"] = 25,
-    ["HistoryItemDisplayIdx"] = 26,
-    ["InsightItemDisplayIdx"] = 27,
-    ["IntimidationItemDisplayIdx"] = 28,
-    ["InvestigationItemDisplayIdx"] = 29,
-    ["MedicineItemDisplayIdx"] = 30,
-    ["NatureItemDisplayIdx"] = 31,
-    ["PerceptionItemDisplayIdx"] = 32,
-    ["PerformanceItemDisplayIdx"] = 33,
-    ["PersuasionItemDisplayIdx"] = 34,
-    ["ReligionItemDisplayIdx"] = 35,
-    ["SleightofHandItemDisplayIdx"] = 36,
-    ["StealthItemDisplayIdx"] = 37,
-    ["SurvivalItemDisplayIdx"] = 38,
-    ["ACTxtEntry"] = 40,
-    ["ACtempTxtEntry"] = 41,
-    ["MAXHPTxtEntry"] = 42,
-    ["CurrentHPTxtEntry"] = 43,
-    ["TempHPTxtEntry"] = 44,
-    ["SpeedFlyTxtEntry"] = 45,
-    ["SpeedSwimTxtEntry"] = 46,
-    ["SpeedLongTxtEntry"] = 47,
-    ["SpeedHighTxtEntry"] = 48,
-    ["SpeedCrawlTxtEntry"] = 49,
-    ["SpeedClimbTxtEntry"] = 50,
-    ["HitDiceClass1LeftTxtEntry"] = 51,
-    ["HitDiceClass2LeftTxtEntry"] = 52,
-    ["ResImuTxtEntry"] = 53,
-    ["ExhaustionTxtEntry"] = 54,
-    ["ProfWeaponsTxtEntry"] = 68,
-    ["ProfToolsTxtEntry"] = 69,
-    ["LanguagesTxtEntry"] = 70,
-    ["coinCPTxtEntry"] = 71,
-    ["coinSPTxtEntry"] = 72,
-    ["coinEPTxtEntry"] = 73,
-    ["coinGPTxtEntry"] = 74,
-    ["coinPPTxtEntry"] = 75,
-    ["weapon1TxtEntry"] = 76,
-    ["weapon2TxtEntry"] = 77,
-    ["weapon3TxtEntry"] = 78,
-    ["weapon4TxtEntry"] = 79,
-    ["weapon5TxtEntry"] = 80,
-    ["ammo1TxtEntry"] = 81,
-    ["ammo2TxtEntry"] = 82,
-    ["ammo3TxtEntry"] = 83,
-    ["potions1TxtEntry"] = 84,
-    ["potions2TxtEntry"] = 85,
-    ["potions3TxtEntry"] = 86,
-    ["potions4TxtEntry"] = 87
+    ["characterNameTxtEntry"] = 0,
+    ["playerNameTxtEntry"] = 1,
+    ["classLVL1TxtEntry"] = 2,
+    ["classLVL2TxtEntry"] = 3,
+    ["alignmentTxtEntry"] = 4,
+    ["deityTxtEntry"] = 5,
+    ["infoGenderTxtEntry"] = 6,
+    ["infoAgeTxtEntry"] = 7,
+    ["infoHeightTxtEntry"] = 8,
+    ["infoWeightTxtEntry"] = 9,
+    ["infoSkinTxtEntry"] = 10,
+    ["infoHairTxtEntry"] = 11,
+    ["infoEyesTxtEntry"] = 12,
+    ["ExperienceTxtEntry"] = 13,
+    ["STRsaveItemDisplayIdx"] = 14,
+    ["DEXsaveItemDisplayIdx"] = 15,
+    ["CONsaveItemDisplayIdx"] = 16,
+    ["INTsaveItemDisplayIdx"] = 17,
+    ["WISsaveItemDisplayIdx"] = 18,
+    ["CHAsaveItemDisplayIdx"] = 19,
+    ["AcrobaticsItemDisplayIdx"] = 20,
+    ["AnimalHandlingItemDisplayIdx"] = 21,
+    ["ArcanaItemDisplayIdx"] = 22,
+    ["AthleticsItemDisplayIdx"] = 23,
+    ["DeceptionItemDisplayIdx"] = 24,
+    ["HistoryItemDisplayIdx"] = 25,
+    ["InsightItemDisplayIdx"] = 26,
+    ["IntimidationItemDisplayIdx"] = 27,
+    ["InvestigationItemDisplayIdx"] = 28,
+    ["MedicineItemDisplayIdx"] = 29,
+    ["NatureItemDisplayIdx"] = 30,
+    ["PerceptionItemDisplayIdx"] = 31,
+    ["PerformanceItemDisplayIdx"] = 32,
+    ["PersuasionItemDisplayIdx"] = 33,
+    ["ReligionItemDisplayIdx"] = 34,
+    ["SleightofHandItemDisplayIdx"] = 35,
+    ["StealthItemDisplayIdx"] = 36,
+    ["SurvivalItemDisplayIdx"] = 37,
+    ["ACTxtEntry"] = 38,
+    ["ACtempTxtEntry"] = 39,
+    ["MAXHPTxtEntry"] = 40,
+    ["CurrentHPTxtEntry"] = 41,
+    ["TempHPTxtEntry"] = 42,
+    ["SpeedFlyTxtEntry"] = 43,
+    ["SpeedSwimTxtEntry"] = 44,
+    ["SpeedLongTxtEntry"] = 45,
+    ["SpeedHighTxtEntry"] = 46,
+    ["SpeedCrawlTxtEntry"] = 47,
+    ["SpeedClimbTxtEntry"] = 48,
+    ["HitDiceClass1LeftTxtEntry"] = 49,
+    ["HitDiceClass2LeftTxtEntry"] = 50,
+    ["ResImuTxtEntry"] = 51,
+    ["ExhaustionTxtEntry"] = 52,
+    ["ProfWeaponsTxtEntry"] = 53,
+    ["ProfToolsTxtEntry"] = 54,
+    ["LanguagesTxtEntry"] = 55,
+    ["coinCPTxtEntry"] = 56,
+    ["coinSPTxtEntry"] = 57,
+    ["coinEPTxtEntry"] = 58,
+    ["coinGPTxtEntry"] = 59,
+    ["coinPPTxtEntry"] = 60,
+    ["weapon1TxtEntry"] = 61,
+    ["weapon2TxtEntry"] = 62,
+    ["weapon3TxtEntry"] = 63,
+    ["weapon4TxtEntry"] = 64,
+    ["weapon5TxtEntry"] = 65,
+    ["ammo1TxtEntry"] = 66,
+    ["ammo2TxtEntry"] = 67,
+    ["ammo3TxtEntry"] = 68,
+    ["potions1TxtEntry"] = 69,
+    ["potions2TxtEntry"] = 70,
+    ["potions3TxtEntry"] = 71,
+    ["potions4TxtEntry"] = 72
 }
 
-checkboxIndexTable = {
-    ["InspirationCheckboxButtonIdx"] = 39,
-    ["SuccDeathSave1CheckboxButtonIdx"] = 55,
-    ["SuccDeathSave2CheckboxButtonIdx"] = 56,
-    ["SuccDeathSave3CheckboxButtonIdx"] = 57,
-    ["FailDeathSave1CheckboxButtonIdx"] = 58,
-    ["FailDeathSave2CheckboxButtonIdx"] = 59,
-    ["FailDeathSave3CheckboxButtonIdx"] = 60,
-    ["ProfArmorLightCheckboxButtonIdx"] = 61,
-    ["ProfArmorMediumCheckboxButtonIdx"] = 62,
-    ["ProfArmorHeavyCheckboxButtonIdx"] = 63,
-    ["ProfArmorShieldsCheckboxButtonIdx"] = 64,
-    ["ProfSimleWeaponCheckboxButtonIdx"] = 65,
-    ["ProfMartialWeaponCheckboxButtonIdx"] = 66,
-    ["ProfOtherWeaponCheckboxButtonIdx"] = 67,
-    ["SaveCheckSTRCheckboxButtonIdx"] = 88,
-    ["SaveCheckDEXCheckboxButtonIdx"] = 89,
-    ["SaveCheckCONCheckboxButtonIdx"] = 90,
-    ["SaveCheckINTCheckboxButtonIdx"] = 91,
-    ["SaveCheckWISCheckboxButtonIdx"] = 92,
-    ["SaveCheckCHACheckboxButtonIdx"] = 93,
-    ["AcrobaticsSkillCheckCheckboxButtonIdx"] = 94,
-    ["AnimalHandlingSkillCheckCheckboxButtonIdx"] = 95,
-    ["ArcanaSkillCheckCheckboxButtonIdx"] = 96,
-    ["AthleticsSkillCheckCheckboxButtonIdx"] = 97,
-    ["DeceptionSkillCheckCheckboxButtonIdx"] = 98,
-    ["HistorySkillCheckCheckboxButtonIdx"] = 99,
-    ["InsightSkillCheckCheckboxButtonIdx"] = 100,
-    ["IntimidationSkillCheckCheckboxButtonIdx"] = 101,
-    ["InvestigationSkillCheckCheckboxButtonIdx"] = 102,
-    ["MedicineSkillCheckCheckboxButtonIdx"] = 103,
-    ["NatureSkillCheckCheckboxButtonIdx"] = 104,
-    ["PerceptionSkillCheckCheckboxButtonIdx"] = 105,
-    ["PerformanceSkillCheckCheckboxButtonIdx"] = 106,
-    ["PersuasionSkillCheckCheckboxButtonIdx"] = 107,
-    ["ReligionSkillCheckCheckboxButtonIdx"] = 108,
-    ["SleightofHandSkillCheckCheckboxButtonIdx"] = 109,
-    ["StealthSkillCheckCheckboxButtonIdx"] = 110,
-    ["SurvivalSkillCheckCheckboxButtonIdx"] = 111
+checkboxSpawnIndexTable = {
+    ["InspirationCheckboxButtonIdx"] = 0,
+    ["SuccDeathSave1CheckboxButtonIdx"] = 1,
+    ["SuccDeathSave2CheckboxButtonIdx"] = 2,
+    ["SuccDeathSave3CheckboxButtonIdx"] = 3,
+    ["FailDeathSave1CheckboxButtonIdx"] = 4,
+    ["FailDeathSave2CheckboxButtonIdx"] = 5,
+    ["FailDeathSave3CheckboxButtonIdx"] = 6,
+    ["ProfArmorLightCheckboxButtonIdx"] = 7,
+    ["ProfArmorMediumCheckboxButtonIdx"] = 8,
+    ["ProfArmorHeavyCheckboxButtonIdx"] = 9,
+    ["ProfArmorShieldsCheckboxButtonIdx"] = 10,
+    ["ProfSimleWeaponCheckboxButtonIdx"] = 11,
+    ["ProfMartialWeaponCheckboxButtonIdx"] = 12,
+    ["ProfOtherWeaponCheckboxButtonIdx"] = 13,
+    ["SaveCheckSTRCheckboxButtonIdx"] = 14,
+    ["SaveCheckDEXCheckboxButtonIdx"] = 15,
+    ["SaveCheckCONCheckboxButtonIdx"] = 16,
+    ["SaveCheckINTCheckboxButtonIdx"] = 17,
+    ["SaveCheckWISCheckboxButtonIdx"] = 18,
+    ["SaveCheckCHACheckboxButtonIdx"] = 19,
+    ["AcrobaticsSkillCheckCheckboxButtonIdx"] = 20,
+    ["AnimalHandlingSkillCheckCheckboxButtonIdx"] = 21,
+    ["ArcanaSkillCheckCheckboxButtonIdx"] = 22,
+    ["AthleticsSkillCheckCheckboxButtonIdx"] = 23,
+    ["DeceptionSkillCheckCheckboxButtonIdx"] = 24,
+    ["HistorySkillCheckCheckboxButtonIdx"] = 25,
+    ["InsightSkillCheckCheckboxButtonIdx"] = 26,
+    ["IntimidationSkillCheckCheckboxButtonIdx"] = 27,
+    ["InvestigationSkillCheckCheckboxButtonIdx"] = 28,
+    ["MedicineSkillCheckCheckboxButtonIdx"] = 29,
+    ["NatureSkillCheckCheckboxButtonIdx"] = 30,
+    ["PerceptionSkillCheckCheckboxButtonIdx"] = 31,
+    ["PerformanceSkillCheckCheckboxButtonIdx"] = 32,
+    ["PersuasionSkillCheckCheckboxButtonIdx"] = 33,
+    ["ReligionSkillCheckCheckboxButtonIdx"] = 34,
+    ["SleightofHandSkillCheckCheckboxButtonIdx"] = 35,
+    ["StealthSkillCheckCheckboxButtonIdx"] = 36,
+    ["SurvivalSkillCheckCheckboxButtonIdx"] = 37,
+}
+
+displayNumberIndex = {
+    ["Vision1DisplayIdx"] = 38,
+    ["className1DisplayIdx"] = 39,
+    ["className2DisplayIdx"] = 40,
+    ["totalLVLDisplayIdx"] = 41,
+    ["raceNameDisplayIdx"] = 42,
+    ["infoSizeDisplayIdx"] = 43,
+    ["ExpLVLUPDisplayIdx"] = 44,
+    ["ProfBonusDisplayIdx"] = 45,
+    ["STRscoreDisplayIdx"] = 46,
+    ["DEXscoreDisplayIdx"] = 47,
+    ["CONscoreDisplayIdx"] = 48,
+    ["INTscoreDisplayIdx"] = 49,
+    ["WISscoreDisplayIdx"] = 50,
+    ["CHAscoreDisplayIdx"] = 51,
+    ["STRmodDisplayIdx"] = 52,
+    ["DEXmodDisplayIdx"] = 53,
+    ["CONmodDisplayIdx"] = 54,
+    ["INTmodDisplayIdx"] = 55,
+    ["WISmodDisplayIdx"] = 56,
+    ["CHAmodDisplayIdx"] = 57,
+    ["STRsaveCheckDisplayIdx"] = 58,
+    ["DEXsaveCheckDisplayIdx"] = 59,
+    ["CONsaveCheckDisplayIdx"] = 60,
+    ["INTsaveCheckDisplayIdx"] = 61,
+    ["WISsaveCheckDisplayIdx"] = 62,
+    ["CHAsaveCheckDisplayIdx"] = 63,
+    ["STRsaveTotalDisplayIdx"] = 64,
+    ["DEXsaveTotalDisplayIdx"] = 65,
+    ["CONsaveTotalDisplayIdx"] = 66,
+    ["INTsaveTotalDisplayIdx"] = 67,
+    ["WISsaveTotalDisplayIdx"] = 68,
+    ["CHAsaveTotalDisplayIdx"] = 69,
+    ["STRsaveModDisplayIdx"] = 70,
+    ["DEXsaveModDisplayIdx"] = 71,
+    ["CONsaveModDisplayIdx"] = 72,
+    ["INTsaveModDisplayIdx"] = 73,
+    ["WISsaveModDisplayIdx"] = 74,
+    ["CHAsaveModDisplayIdx"] = 75,
+    ["AcrobaticsCheckDisplayIdx"] = 76,
+    ["AnimalHandlingCheckDisplayIdx"] = 77,
+    ["ArcanaCheckDisplayIdx"] = 78,
+    ["AthleticsCheckDisplayIdx"] = 79,
+    ["DeceptionCheckDisplayIdx"] = 80,
+    ["HistoryCheckDisplayIdx"] = 81,
+    ["InsightCheckDisplayIdx"] = 82,
+    ["IntimidationCheckDisplayIdx"] = 83,
+    ["InvestigationCheckDisplayIdx"] = 84,
+    ["MedicineCheckDisplayIdx"] = 85,
+    ["NatureCheckDisplayIdx"] = 86,
+    ["PerceptionCheckDisplayIdx"] = 87,
+    ["PerformanceCheckDisplayIdx"] = 88,
+    ["PersuasionCheckDisplayIdx"] = 89,
+    ["ReligionCheckDisplayIdx"] = 90,
+    ["SleightofHandCheckDisplayIdx"] = 91,
+    ["StealthCheckDisplayIdx"] = 92,
+    ["SurvivalCheckDisplayIdx"] = 93,
+    ["AcrobaticsTotalDisplayIdx"] = 94,
+    ["AnimalHandlingTotalDisplayIdx"] = 95,
+    ["ArcanaTotalDisplayIdx"] = 96,
+    ["AthleticsTotalDisplayIdx"] = 97,
+    ["DeceptionTotalDisplayIdx"] = 98,
+    ["HistoryTotalDisplayIdx"] = 99,
+    ["InsightTotalDisplayIdx"] = 100,
+    ["IntimidationTotalDisplayIdx"] = 101,
+    ["InvestigationTotalDisplayIdx"] = 102,
+    ["MedicineTotalDisplayIdx"] = 103,
+    ["NatureTotalDisplayIdx"] = 104,
+    ["PerceptionTotalDisplayIdx"] = 105,
+    ["PerformanceTotalDisplayIdx"] = 106,
+    ["PersuasionTotalDisplayIdx"] = 107,
+    ["ReligionTotalDisplayIdx"] = 108,
+    ["SleightofHandTotalDisplayIdx"] = 109,
+    ["StealthTotalDisplayIdx"] = 110,
+    ["SurvivalTotalDisplayIdx"] = 111,
+    ["AcrobaticsModDisplayIdx"] = 112,
+    ["AnimalHandlingModDisplayIdx"] = 113,
+    ["ArcanaModDisplayIdx"] = 114,
+    ["AthleticsModDisplayIdx"] = 115,
+    ["DeceptionModDisplayIdx"] = 116,
+    ["HistoryModDisplayIdx"] = 117,
+    ["InsightModDisplayIdx"] = 118,
+    ["IntimidationModDisplayIdx"] = 119,
+    ["InvestigationModDisplayIdx"] = 120,
+    ["MedicineModDisplayIdx"] = 121,
+    ["NatureModDisplayIdx"] = 122,
+    ["PerceptionModDisplayIdx"] = 123,
+    ["PerformanceModDisplayIdx"] = 124,
+    ["PersuasionModDisplayIdx"] = 125,
+    ["ReligionModDisplayIdx"] = 126,
+    ["SleightofHandModDisplayIdx"] = 127,
+    ["StealthModDisplayIdx"] = 128,
+    ["SurvivalModDisplayIdx"] = 129,
+    ["PassivePerceptionDisplayIdx"] = 130,
+    ["InitiativeDisplayIdx"] = 131,
+    ["VisionDisplayIdx"] = 132,
+    ["SpeedDisplayIdx"] = 133,
+    ["HitDiceClass1DisplayIdx"] = 134,
+    ["HitDiceClass2DisplayIdx"] = 135,
+    ["HitDiceClass1TotalDisplayIdx"] = 136,
+    ["HitDiceClass2TotalDisplayIdx"] = 137,
+    ["SpellSaveDC1DisplayIdx"] = 138,
+    ["SpellAtkBonus1DisplayIdx"] = 139,
+    ["SpellSaveDC2DisplayIdx"] = 140,
+    ["SpellAtkBonus2DisplayIdx"] = 141,
 }
 
 function onload(saved_data)
@@ -489,6 +372,13 @@ function onload(saved_data)
     updateSheet()
     createButtons()
     math.randomseed(os.time())
+    -- buttons = self.getButtons()
+    -- for key, value in pairs(buttons) do
+    --     for k, v in pairs(value) do
+    --         print(k, v)
+    --     end
+    --     print("=== STOP ===")
+    -- end
 end
 
 function updateSheet()
@@ -505,82 +395,44 @@ function createAllCheckboxes()
     local UI_Y_COORD = 0.04
     local CHECK_FONT_SIZE = 160
     local RollCHECKXcord = -6.05
-    InspirationCheckboxButtonIdx = spawnedUiElementsWhichSaveData + 1
-    createCheckbox("InspirationCheckboxButtonIdx", {-9.35, UI_Y_COORD, -6.65}, 400, 0, false)
-    SuccDeathSave1CheckboxButtonIdx = spawnedUiElementsWhichSaveData + 1
-    createCheckbox("SuccDeathSave1CheckboxButtonIdx", {-4.02, UI_Y_COORD, 6.72}, CHECK_FONT_SIZE, 0, false)
-    SuccDeathSave2CheckboxButtonIdx = spawnedUiElementsWhichSaveData + 1
-    createCheckbox("SuccDeathSave2CheckboxButtonIdx", {-3.63, UI_Y_COORD, 6.72}, CHECK_FONT_SIZE, 0, false)
-    SuccDeathSave3CheckboxButtonIdx = spawnedUiElementsWhichSaveData + 1
-    createCheckbox("SuccDeathSave3CheckboxButtonIdx", {-3.24, UI_Y_COORD, 6.72}, CHECK_FONT_SIZE, 0, false)
-    FailDeathSave1CheckboxButtonIdx = spawnedUiElementsWhichSaveData + 1
-    createCheckbox("FailDeathSave1CheckboxButtonIdx", {-4.02, UI_Y_COORD, 7.18}, CHECK_FONT_SIZE, 0, false)
-    FailDeathSave2CheckboxButtonIdx = spawnedUiElementsWhichSaveData + 1
-    createCheckbox("FailDeathSave2CheckboxButtonIdx", {-3.63, UI_Y_COORD, 7.18}, CHECK_FONT_SIZE, 0, false)
-    FailDeathSave3CheckboxButtonIdx = spawnedUiElementsWhichSaveData + 1
-    createCheckbox("FailDeathSave3CheckboxButtonIdx", {-3.24, UI_Y_COORD, 7.18}, CHECK_FONT_SIZE, 0, false)
-    ProfArmorLightCheckboxButtonIdx = spawnedUiElementsWhichSaveData + 1
-    createCheckbox("ProfArmorLightCheckboxButtonIdx", {6.17, UI_Y_COORD, -7.7}, CHECK_FONT_SIZE, 0, false)
-    ProfArmorMediumCheckboxButtonIdx = spawnedUiElementsWhichSaveData + 1
-    createCheckbox("ProfArmorMediumCheckboxButtonIdx", {7.03, UI_Y_COORD, -7.7}, CHECK_FONT_SIZE, 0, false)
-    ProfArmorHeavyCheckboxButtonIdx = spawnedUiElementsWhichSaveData + 1
-    createCheckbox("ProfArmorHeavyCheckboxButtonIdx", {8.03, UI_Y_COORD, -7.7}, CHECK_FONT_SIZE, 0, false)
-    ProfArmorShieldsCheckboxButtonIdx = spawnedUiElementsWhichSaveData + 1
-    createCheckbox("ProfArmorShieldsCheckboxButtonIdx", {8.94, UI_Y_COORD, -7.7}, CHECK_FONT_SIZE, 0, false)
-    ProfSimleWeaponCheckboxButtonIdx = spawnedUiElementsWhichSaveData + 1
-    createCheckbox("ProfSimleWeaponCheckboxButtonIdx", {6.17, UI_Y_COORD, -7.36}, CHECK_FONT_SIZE, 0, false)
-    ProfMartialWeaponCheckboxButtonIdx = spawnedUiElementsWhichSaveData + 1
-    createCheckbox("ProfMartialWeaponCheckboxButtonIdx", {7.03, UI_Y_COORD, -7.36}, CHECK_FONT_SIZE, 0, false)
-    ProfOtherWeaponCheckboxButtonIdx = spawnedUiElementsWhichSaveData + 1
-    createCheckbox("ProfOtherWeaponCheckboxButtonIdx", {8.03, UI_Y_COORD, -7.36}, CHECK_FONT_SIZE, 0, false)
-    SaveCheckSTRCheckboxButtonIdx = spawnedUiElementsWhichSaveData + 1
-    createCheckbox("SaveCheckSTRCheckboxButtonIdx", {RollCHECKXcord, UI_Y_COORD, -4.45}, CHECK_FONT_SIZE, 0, false)
-    SaveCheckDEXCheckboxButtonIdx = spawnedUiElementsWhichSaveData + 1
-    createCheckbox("SaveCheckDEXCheckboxButtonIdx", {RollCHECKXcord, UI_Y_COORD, -4.04}, CHECK_FONT_SIZE, 0, false)
-    SaveCheckCONCheckboxButtonIdx = spawnedUiElementsWhichSaveData + 1
-    createCheckbox("SaveCheckCONCheckboxButtonIdx", {RollCHECKXcord, UI_Y_COORD, -3.63}, CHECK_FONT_SIZE, 0, false)
-    SaveCheckINTCheckboxButtonIdx = spawnedUiElementsWhichSaveData + 1
-    createCheckbox("SaveCheckINTCheckboxButtonIdx", {RollCHECKXcord, UI_Y_COORD, -3.22}, CHECK_FONT_SIZE, 0, false)
-    SaveCheckWISCheckboxButtonIdx = spawnedUiElementsWhichSaveData + 1
-    createCheckbox("SaveCheckWISCheckboxButtonIdx", {RollCHECKXcord, UI_Y_COORD, -2.81}, CHECK_FONT_SIZE, 0, false)
-    SaveCheckCHACheckboxButtonIdx = spawnedUiElementsWhichSaveData + 1
-    createCheckbox("SaveCheckCHACheckboxButtonIdx", {RollCHECKXcord, UI_Y_COORD, -2.4}, CHECK_FONT_SIZE, 0, false)
-    AcrobaticsSkillCheckCheckboxButtonIdx = spawnedUiElementsWhichSaveData + 1
-    createCheckbox("AcrobaticsSkillCheckCheckboxButtonIdx", {RollCHECKXcord, UI_Y_COORD, -0.94}, CHECK_FONT_SIZE, 0, false)
-    AnimalHandlingSkillCheckCheckboxButtonIdx = spawnedUiElementsWhichSaveData + 1
-    createCheckbox("AnimalHandlingSkillCheckCheckboxButtonIdx", {RollCHECKXcord, UI_Y_COORD, -0.53}, CHECK_FONT_SIZE, 0, false)
-    ArcanaSkillCheckCheckboxButtonIdx = spawnedUiElementsWhichSaveData + 1
-    createCheckbox("ArcanaSkillCheckCheckboxButtonIdx", {RollCHECKXcord, UI_Y_COORD, -0.12}, CHECK_FONT_SIZE, 0, false)
-    AthleticsSkillCheckCheckboxButtonIdx = spawnedUiElementsWhichSaveData + 1
-    createCheckbox("AthleticsSkillCheckCheckboxButtonIdx", {RollCHECKXcord, UI_Y_COORD, 0.29}, CHECK_FONT_SIZE, 0, false)
-    DeceptionSkillCheckCheckboxButtonIdx = spawnedUiElementsWhichSaveData + 1
-    createCheckbox("DeceptionSkillCheckCheckboxButtonIdx", {RollCHECKXcord, UI_Y_COORD, 0.7}, CHECK_FONT_SIZE, 0, false)
-    HistorySkillCheckCheckboxButtonIdx = spawnedUiElementsWhichSaveData + 1
-    createCheckbox("HistorySkillCheckCheckboxButtonIdx", {RollCHECKXcord, UI_Y_COORD, 1.11}, CHECK_FONT_SIZE, 0, false)
-    InsightSkillCheckCheckboxButtonIdx = spawnedUiElementsWhichSaveData + 1
-    createCheckbox("InsightSkillCheckCheckboxButtonIdx", {RollCHECKXcord, UI_Y_COORD, 1.52}, CHECK_FONT_SIZE, 0, false)
-    IntimidationSkillCheckCheckboxButtonIdx = spawnedUiElementsWhichSaveData + 1
-    createCheckbox("IntimidationSkillCheckCheckboxButtonIdx", {RollCHECKXcord, UI_Y_COORD, 1.93}, CHECK_FONT_SIZE, 0, false)
-    InvestigationSkillCheckCheckboxButtonIdx = spawnedUiElementsWhichSaveData + 1
-    createCheckbox("InvestigationSkillCheckCheckboxButtonIdx", {RollCHECKXcord, UI_Y_COORD, 2.34}, CHECK_FONT_SIZE, 0, false)
-    MedicineSkillCheckCheckboxButtonIdx = spawnedUiElementsWhichSaveData + 1
-    createCheckbox("MedicineSkillCheckCheckboxButtonIdx", {RollCHECKXcord, UI_Y_COORD, 2.75}, CHECK_FONT_SIZE, 0, false)
-    NatureSkillCheckCheckboxButtonIdx = spawnedUiElementsWhichSaveData + 1
-    createCheckbox("NatureSkillCheckCheckboxButtonIdx", {RollCHECKXcord, UI_Y_COORD, 3.16}, CHECK_FONT_SIZE, 0, false)
-    PerceptionSkillCheckCheckboxButtonIdx = spawnedUiElementsWhichSaveData + 1
-    createCheckbox("PerceptionSkillCheckCheckboxButtonIdx", {RollCHECKXcord, UI_Y_COORD, 3.57}, CHECK_FONT_SIZE, 0, false)
-    PerformanceSkillCheckCheckboxButtonIdx = spawnedUiElementsWhichSaveData + 1
-    createCheckbox("PerformanceSkillCheckCheckboxButtonIdx", {RollCHECKXcord, UI_Y_COORD, 3.98}, CHECK_FONT_SIZE, 0, false)
-    PersuasionSkillCheckCheckboxButtonIdx = spawnedUiElementsWhichSaveData + 1
-    createCheckbox("PersuasionSkillCheckCheckboxButtonIdx", {RollCHECKXcord, UI_Y_COORD, 4.39}, CHECK_FONT_SIZE, 0, false)
-    ReligionSkillCheckCheckboxButtonIdx = spawnedUiElementsWhichSaveData + 1
-    createCheckbox("ReligionSkillCheckCheckboxButtonIdx", {RollCHECKXcord, UI_Y_COORD, 4.8}, CHECK_FONT_SIZE, 0, false)
-    SleightofHandSkillCheckCheckboxButtonIdx = spawnedUiElementsWhichSaveData + 1
-    createCheckbox("SleightofHandSkillCheckCheckboxButtonIdx", {RollCHECKXcord, UI_Y_COORD, 5.21}, CHECK_FONT_SIZE, 0, false)
-    StealthSkillCheckCheckboxButtonIdx = spawnedUiElementsWhichSaveData + 1
-    createCheckbox("StealthSkillCheckCheckboxButtonIdx", {RollCHECKXcord, UI_Y_COORD, 5.62}, CHECK_FONT_SIZE, 0, false)
-    SurvivalSkillCheckCheckboxButtonIdx = spawnedUiElementsWhichSaveData + 1
-    createCheckbox("SurvivalSkillCheckCheckboxButtonIdx", {RollCHECKXcord, UI_Y_COORD, 6.03}, CHECK_FONT_SIZE, 0, false)
+    createCheckbox("InspirationCheckboxButtonIdx", {-9.35, UI_Y_COORD, -6.65}, 400)
+    createCheckbox("SuccDeathSave1CheckboxButtonIdx", {-4.02, UI_Y_COORD, 6.72}, CHECK_FONT_SIZE)
+    createCheckbox("SuccDeathSave2CheckboxButtonIdx", {-3.63, UI_Y_COORD, 6.72}, CHECK_FONT_SIZE)
+    createCheckbox("SuccDeathSave3CheckboxButtonIdx", {-3.24, UI_Y_COORD, 6.72}, CHECK_FONT_SIZE)
+    createCheckbox("FailDeathSave1CheckboxButtonIdx", {-4.02, UI_Y_COORD, 7.18}, CHECK_FONT_SIZE)
+    createCheckbox("FailDeathSave2CheckboxButtonIdx", {-3.63, UI_Y_COORD, 7.18}, CHECK_FONT_SIZE)
+    createCheckbox("FailDeathSave3CheckboxButtonIdx", {-3.24, UI_Y_COORD, 7.18}, CHECK_FONT_SIZE)
+    createCheckbox("ProfArmorLightCheckboxButtonIdx", {6.17, UI_Y_COORD, -7.7}, CHECK_FONT_SIZE)
+    createCheckbox("ProfArmorMediumCheckboxButtonIdx", {7.03, UI_Y_COORD, -7.7}, CHECK_FONT_SIZE)
+    createCheckbox("ProfArmorHeavyCheckboxButtonIdx", {8.03, UI_Y_COORD, -7.7}, CHECK_FONT_SIZE)
+    createCheckbox("ProfArmorShieldsCheckboxButtonIdx", {8.94, UI_Y_COORD, -7.7}, CHECK_FONT_SIZE)
+    createCheckbox("ProfSimleWeaponCheckboxButtonIdx", {6.17, UI_Y_COORD, -7.36}, CHECK_FONT_SIZE)
+    createCheckbox("ProfMartialWeaponCheckboxButtonIdx", {7.03, UI_Y_COORD, -7.36}, CHECK_FONT_SIZE)
+    createCheckbox("ProfOtherWeaponCheckboxButtonIdx", {8.03, UI_Y_COORD, -7.36}, CHECK_FONT_SIZE)
+    createCheckbox("SaveCheckSTRCheckboxButtonIdx", {RollCHECKXcord, UI_Y_COORD, -4.45}, CHECK_FONT_SIZE)
+    createCheckbox("SaveCheckDEXCheckboxButtonIdx", {RollCHECKXcord, UI_Y_COORD, -4.04}, CHECK_FONT_SIZE)
+    createCheckbox("SaveCheckCONCheckboxButtonIdx", {RollCHECKXcord, UI_Y_COORD, -3.63}, CHECK_FONT_SIZE)
+    createCheckbox("SaveCheckINTCheckboxButtonIdx", {RollCHECKXcord, UI_Y_COORD, -3.22}, CHECK_FONT_SIZE)
+    createCheckbox("SaveCheckWISCheckboxButtonIdx", {RollCHECKXcord, UI_Y_COORD, -2.81}, CHECK_FONT_SIZE)
+    createCheckbox("SaveCheckCHACheckboxButtonIdx", {RollCHECKXcord, UI_Y_COORD, -2.4}, CHECK_FONT_SIZE)
+    createCheckbox("AcrobaticsSkillCheckCheckboxButtonIdx", {RollCHECKXcord, UI_Y_COORD, -0.94}, CHECK_FONT_SIZE)
+    createCheckbox("AnimalHandlingSkillCheckCheckboxButtonIdx", {RollCHECKXcord, UI_Y_COORD, -0.53}, CHECK_FONT_SIZE)
+    createCheckbox("ArcanaSkillCheckCheckboxButtonIdx", {RollCHECKXcord, UI_Y_COORD, -0.12}, CHECK_FONT_SIZE)
+    createCheckbox("AthleticsSkillCheckCheckboxButtonIdx", {RollCHECKXcord, UI_Y_COORD, 0.29}, CHECK_FONT_SIZE)
+    createCheckbox("DeceptionSkillCheckCheckboxButtonIdx", {RollCHECKXcord, UI_Y_COORD, 0.7}, CHECK_FONT_SIZE)
+    createCheckbox("HistorySkillCheckCheckboxButtonIdx", {RollCHECKXcord, UI_Y_COORD, 1.11}, CHECK_FONT_SIZE)
+    createCheckbox("InsightSkillCheckCheckboxButtonIdx", {RollCHECKXcord, UI_Y_COORD, 1.52}, CHECK_FONT_SIZE)
+    createCheckbox("IntimidationSkillCheckCheckboxButtonIdx", {RollCHECKXcord, UI_Y_COORD, 1.93}, CHECK_FONT_SIZE)
+    createCheckbox("InvestigationSkillCheckCheckboxButtonIdx", {RollCHECKXcord, UI_Y_COORD, 2.34}, CHECK_FONT_SIZE)
+    createCheckbox("MedicineSkillCheckCheckboxButtonIdx", {RollCHECKXcord, UI_Y_COORD, 2.75}, CHECK_FONT_SIZE)
+    createCheckbox("NatureSkillCheckCheckboxButtonIdx", {RollCHECKXcord, UI_Y_COORD, 3.16}, CHECK_FONT_SIZE)
+    createCheckbox("PerceptionSkillCheckCheckboxButtonIdx", {RollCHECKXcord, UI_Y_COORD, 3.57}, CHECK_FONT_SIZE)
+    createCheckbox("PerformanceSkillCheckCheckboxButtonIdx", {RollCHECKXcord, UI_Y_COORD, 3.98}, CHECK_FONT_SIZE)
+    createCheckbox("PersuasionSkillCheckCheckboxButtonIdx", {RollCHECKXcord, UI_Y_COORD, 4.39}, CHECK_FONT_SIZE)
+    createCheckbox("ReligionSkillCheckCheckboxButtonIdx", {RollCHECKXcord, UI_Y_COORD, 4.8}, CHECK_FONT_SIZE)
+    createCheckbox("SleightofHandSkillCheckCheckboxButtonIdx", {RollCHECKXcord, UI_Y_COORD, 5.21}, CHECK_FONT_SIZE)
+    createCheckbox("StealthSkillCheckCheckboxButtonIdx", {RollCHECKXcord, UI_Y_COORD, 5.62}, CHECK_FONT_SIZE)
+    createCheckbox("SurvivalSkillCheckCheckboxButtonIdx", {RollCHECKXcord, UI_Y_COORD, 6.03}, CHECK_FONT_SIZE)
 end
 
 function createAllTextboxes()
@@ -596,151 +448,78 @@ function createAllTextboxes()
     local LEVEL_WIDTH = 280
     local IS_NUMERIC_ENTRY = 2
     local SKILL_FONT_SIZE = 200
-    characterNameTxtEntry = spawnedUiElementsWhichSaveData + 1
     createTextBox("characterNameTxtEntry", {0.77, UI_Y_COORD, -6.33}, ONE_ROW, 3180, 280, "", NO_LABEL, LEFT_ALIGNED_TEXT, IS_TEXT_ENTRY)
-    playerNameTxtEntry = spawnedUiElementsWhichSaveData + 1
     createTextBox("playerNameTxtEntry", {6.64, UI_Y_COORD, -3.89}, ONE_ROW, PLAYER_WIDTH, STANDARD_FONT_SIZE, "", NO_LABEL, LEFT_ALIGNED_TEXT, IS_TEXT_ENTRY)
-    classLVL1TxtEntry = spawnedUiElementsWhichSaveData + 1
     createTextBox("classLVL1TxtEntry", {1.73, UI_Y_COORD, -3.89}, ONE_ROW, LEVEL_WIDTH, STANDARD_FONT_SIZE, "1", NO_LABEL, CENTER_ALIGNED_TEXT, IS_NUMERIC_ENTRY)
-    classLVL2TxtEntry = spawnedUiElementsWhichSaveData + 1
     createTextBox("classLVL2TxtEntry", {5.115, UI_Y_COORD, -3.89}, ONE_ROW, LEVEL_WIDTH, STANDARD_FONT_SIZE, "", NO_LABEL, CENTER_ALIGNED_TEXT, IS_NUMERIC_ENTRY)
-    alignmentTxtEntry = spawnedUiElementsWhichSaveData + 1
     createTextBox("alignmentTxtEntry", {3.6, UI_Y_COORD, -3.235}, ONE_ROW, 1840, STANDARD_FONT_SIZE, "", NO_LABEL, LEFT_ALIGNED_TEXT, IS_TEXT_ENTRY)
-    deityTxtEntry = spawnedUiElementsWhichSaveData + 1
     createTextBox("deityTxtEntry", {6.51, UI_Y_COORD, -3.245}, ONE_ROW, 1590, STANDARD_FONT_SIZE, "", NO_LABEL, LEFT_ALIGNED_TEXT, IS_TEXT_ENTRY)
-    infoGenderTxtEntry = spawnedUiElementsWhichSaveData + 1
     createTextBox("infoGenderTxtEntry", {-0.36, UI_Y_COORD, -2.47}, ONE_ROW, 560, 100, "", NO_LABEL, CENTER_ALIGNED_TEXT, IS_TEXT_ENTRY)
-    infoAgeTxtEntry = spawnedUiElementsWhichSaveData + 1
     createTextBox("infoAgeTxtEntry", {0.51, UI_Y_COORD, -2.47}, ONE_ROW, 440, 100, "", NO_LABEL, CENTER_ALIGNED_TEXT, IS_TEXT_ENTRY)
-    infoHeightTxtEntry = spawnedUiElementsWhichSaveData + 1
     createTextBox("infoHeightTxtEntry", {1.345, UI_Y_COORD, -2.47}, ONE_ROW, 520, 100, "", NO_LABEL, CENTER_ALIGNED_TEXT, IS_TEXT_ENTRY)
-    infoWeightTxtEntry = spawnedUiElementsWhichSaveData + 1
     createTextBox("infoWeightTxtEntry", {2.27, UI_Y_COORD, -2.47}, ONE_ROW, 540, 100, "", NO_LABEL, CENTER_ALIGNED_TEXT, IS_TEXT_ENTRY)
-    infoSkinTxtEntry = spawnedUiElementsWhichSaveData + 1
     createTextBox("infoSkinTxtEntry", {3.14, UI_Y_COORD, -2.56}, 2, 460, 100, "", NO_LABEL, CENTER_ALIGNED_TEXT, IS_TEXT_ENTRY)
-    infoHairTxtEntry = spawnedUiElementsWhichSaveData + 1
     createTextBox("infoHairTxtEntry", {3.95, UI_Y_COORD, -2.56}, 2, 460, 100, "", NO_LABEL, CENTER_ALIGNED_TEXT, IS_TEXT_ENTRY)
-    infoEyesTxtEntry = spawnedUiElementsWhichSaveData + 1
     createTextBox("infoEyesTxtEntry", {4.75, UI_Y_COORD, -2.56}, 2, 460, 100, "", NO_LABEL, CENTER_ALIGNED_TEXT, IS_TEXT_ENTRY)
-    ExperienceTxtEntry = spawnedUiElementsWhichSaveData + 1
     createTextBox("ExperienceTxtEntry", {5.84, UI_Y_COORD, -2.59}, ONE_ROW, 820, STANDARD_FONT_SIZE, "", NO_LABEL, CENTER_ALIGNED_TEXT, IS_TEXT_ENTRY)
-    STRsaveItemDisplayIdx = spawnedUiElementsWhichSaveData + 1
     createTextBox("STRsaveItemDisplayIdx", {saveITEMXcord, UI_Y_COORD, -4.45}, ONE_ROW, 240, SKILL_FONT_SIZE, "", NO_LABEL, CENTER_ALIGNED_TEXT, IS_NUMERIC_ENTRY)
-    DEXsaveItemDisplayIdx = spawnedUiElementsWhichSaveData + 1
     createTextBox("DEXsaveItemDisplayIdx", {saveITEMXcord, UI_Y_COORD, -4.04}, ONE_ROW, 240, SKILL_FONT_SIZE, "", NO_LABEL, CENTER_ALIGNED_TEXT, IS_NUMERIC_ENTRY)
-    CONsaveItemDisplayIdx = spawnedUiElementsWhichSaveData + 1
     createTextBox("CONsaveItemDisplayIdx", {saveITEMXcord, UI_Y_COORD, -3.63}, ONE_ROW, 240, SKILL_FONT_SIZE, "", NO_LABEL, CENTER_ALIGNED_TEXT, IS_NUMERIC_ENTRY)
-    INTsaveItemDisplayIdx = spawnedUiElementsWhichSaveData + 1
     createTextBox("INTsaveItemDisplayIdx", {saveITEMXcord, UI_Y_COORD, -3.22}, ONE_ROW, 240, SKILL_FONT_SIZE, "", NO_LABEL, CENTER_ALIGNED_TEXT, IS_NUMERIC_ENTRY)
-    WISsaveItemDisplayIdx = spawnedUiElementsWhichSaveData + 1
     createTextBox("WISsaveItemDisplayIdx", {saveITEMXcord, UI_Y_COORD, -2.81}, ONE_ROW, 240, SKILL_FONT_SIZE, "", NO_LABEL, CENTER_ALIGNED_TEXT, IS_NUMERIC_ENTRY)
-    CHAsaveItemDisplayIdx = spawnedUiElementsWhichSaveData + 1
     createTextBox("CHAsaveItemDisplayIdx", {saveITEMXcord, UI_Y_COORD, -2.4}, ONE_ROW, 240, SKILL_FONT_SIZE, "", NO_LABEL, CENTER_ALIGNED_TEXT, IS_NUMERIC_ENTRY)
-    AcrobaticsItemDisplayIdx = spawnedUiElementsWhichSaveData + 1
     createTextBox("AcrobaticsItemDisplayIdx", {saveITEMXcord, UI_Y_COORD, -0.94}, ONE_ROW, 240, SKILL_FONT_SIZE, "", NO_LABEL, CENTER_ALIGNED_TEXT, IS_NUMERIC_ENTRY)
-    AnimalHandlingItemDisplayIdx = spawnedUiElementsWhichSaveData + 1
     createTextBox("AnimalHandlingItemDisplayIdx", {saveITEMXcord, UI_Y_COORD, -0.53}, ONE_ROW, 240, SKILL_FONT_SIZE, "", NO_LABEL, CENTER_ALIGNED_TEXT, IS_NUMERIC_ENTRY)
-    ArcanaItemDisplayIdx = spawnedUiElementsWhichSaveData + 1
     createTextBox("ArcanaItemDisplayIdx", {saveITEMXcord, UI_Y_COORD, -0.12}, ONE_ROW, 240, SKILL_FONT_SIZE, "", NO_LABEL, CENTER_ALIGNED_TEXT, IS_NUMERIC_ENTRY)
-    AthleticsItemDisplayIdx = spawnedUiElementsWhichSaveData + 1
     createTextBox("AthleticsItemDisplayIdx", {saveITEMXcord, UI_Y_COORD, 0.29}, ONE_ROW, 240, SKILL_FONT_SIZE, "", NO_LABEL, CENTER_ALIGNED_TEXT, IS_NUMERIC_ENTRY)
-    DeceptionItemDisplayIdx = spawnedUiElementsWhichSaveData + 1
     createTextBox("DeceptionItemDisplayIdx", {saveITEMXcord, UI_Y_COORD, 0.7}, ONE_ROW, 240, SKILL_FONT_SIZE, "", NO_LABEL, CENTER_ALIGNED_TEXT, IS_NUMERIC_ENTRY)
-    HistoryItemDisplayIdx = spawnedUiElementsWhichSaveData + 1
     createTextBox("HistoryItemDisplayIdx", {saveITEMXcord, UI_Y_COORD, 1.11}, ONE_ROW, 240, SKILL_FONT_SIZE, "", NO_LABEL, CENTER_ALIGNED_TEXT, IS_NUMERIC_ENTRY)
-    InsightItemDisplayIdx = spawnedUiElementsWhichSaveData + 1
     createTextBox("InsightItemDisplayIdx", {saveITEMXcord, UI_Y_COORD, 1.52}, ONE_ROW, 240, SKILL_FONT_SIZE, "", NO_LABEL, CENTER_ALIGNED_TEXT, IS_NUMERIC_ENTRY)
-    IntimidationItemDisplayIdx = spawnedUiElementsWhichSaveData + 1
     createTextBox("IntimidationItemDisplayIdx", {saveITEMXcord, UI_Y_COORD, 1.93}, ONE_ROW, 240, SKILL_FONT_SIZE, "", NO_LABEL, CENTER_ALIGNED_TEXT, IS_NUMERIC_ENTRY)
-    InvestigationItemDisplayIdx = spawnedUiElementsWhichSaveData + 1
     createTextBox("InvestigationItemDisplayIdx", {saveITEMXcord, UI_Y_COORD, 2.34}, ONE_ROW, 240, SKILL_FONT_SIZE, "", NO_LABEL, CENTER_ALIGNED_TEXT, IS_NUMERIC_ENTRY)
-    MedicineItemDisplayIdx = spawnedUiElementsWhichSaveData + 1
     createTextBox("MedicineItemDisplayIdx", {saveITEMXcord, UI_Y_COORD, 2.75}, ONE_ROW, 240, SKILL_FONT_SIZE, "", NO_LABEL, CENTER_ALIGNED_TEXT, IS_NUMERIC_ENTRY)
-    NatureItemDisplayIdx = spawnedUiElementsWhichSaveData + 1
     createTextBox("NatureItemDisplayIdx", {saveITEMXcord, UI_Y_COORD, 3.16}, ONE_ROW, 240, SKILL_FONT_SIZE, "", NO_LABEL, CENTER_ALIGNED_TEXT, IS_NUMERIC_ENTRY)
-    PerceptionItemDisplayIdx = spawnedUiElementsWhichSaveData + 1
     createTextBox("PerceptionItemDisplayIdx", {saveITEMXcord, UI_Y_COORD, 3.57}, ONE_ROW, 240, SKILL_FONT_SIZE, "", NO_LABEL, CENTER_ALIGNED_TEXT, IS_NUMERIC_ENTRY)
-    PerformanceItemDisplayIdx = spawnedUiElementsWhichSaveData + 1
     createTextBox("PerformanceItemDisplayIdx", {saveITEMXcord, UI_Y_COORD, 3.98}, ONE_ROW, 240, SKILL_FONT_SIZE, "", NO_LABEL, CENTER_ALIGNED_TEXT, IS_NUMERIC_ENTRY)
-    PersuasionItemDisplayIdx = spawnedUiElementsWhichSaveData + 1
     createTextBox("PersuasionItemDisplayIdx", {saveITEMXcord, UI_Y_COORD, 4.39}, ONE_ROW, 240, SKILL_FONT_SIZE, "", NO_LABEL, CENTER_ALIGNED_TEXT, IS_NUMERIC_ENTRY)
-    ReligionItemDisplayIdx = spawnedUiElementsWhichSaveData + 1
     createTextBox("ReligionItemDisplayIdx", {saveITEMXcord, UI_Y_COORD, 4.8}, ONE_ROW, 240, SKILL_FONT_SIZE, "", NO_LABEL, CENTER_ALIGNED_TEXT, IS_NUMERIC_ENTRY)
-    SleightofHandItemDisplayIdx = spawnedUiElementsWhichSaveData + 1
     createTextBox("SleightofHandItemDisplayIdx", {saveITEMXcord, UI_Y_COORD, 5.21}, ONE_ROW, 240, SKILL_FONT_SIZE, "", NO_LABEL, CENTER_ALIGNED_TEXT, IS_NUMERIC_ENTRY)
-    StealthItemDisplayIdx = spawnedUiElementsWhichSaveData + 1
     createTextBox("StealthItemDisplayIdx", {saveITEMXcord, UI_Y_COORD, 5.62}, ONE_ROW, 240, SKILL_FONT_SIZE, "", NO_LABEL, CENTER_ALIGNED_TEXT, IS_NUMERIC_ENTRY)
-    SurvivalItemDisplayIdx = spawnedUiElementsWhichSaveData + 1
     createTextBox("SurvivalItemDisplayIdx", {saveITEMXcord, UI_Y_COORD, 6.03}, ONE_ROW, 240, SKILL_FONT_SIZE, "", NO_LABEL, CENTER_ALIGNED_TEXT, IS_NUMERIC_ENTRY)
-    ACTxtEntry = spawnedUiElementsWhichSaveData + 1
     createTextBox("ACTxtEntry", {-4.91, UI_Y_COORD, -7.28}, ONE_ROW, 500, 400, "0", NO_LABEL, CENTER_ALIGNED_TEXT, IS_NUMERIC_ENTRY, uiBackgroundColor)
-    ACtempTxtEntry = spawnedUiElementsWhichSaveData + 1
     createTextBox("ACtempTxtEntry", {-3.193, UI_Y_COORD, -6.91}, ONE_ROW, 370, 400, "0", NO_LABEL, CENTER_ALIGNED_TEXT, IS_NUMERIC_ENTRY, uiBackgroundColor, {0.25,0.28,0.8})
-    MAXHPTxtEntry = spawnedUiElementsWhichSaveData + 1
     createTextBox("MAXHPTxtEntry", {-4.93, UI_Y_COORD, -5.12}, ONE_ROW, 600, 340, "0", NO_LABEL, CENTER_ALIGNED_TEXT, IS_NUMERIC_ENTRY)
-    CurrentHPTxtEntry = spawnedUiElementsWhichSaveData + 1
     createTextBox("CurrentHPTxtEntry", {-3.25, UI_Y_COORD, -5.82}, ONE_ROW, 600, 300, "0", NO_LABEL, CENTER_ALIGNED_TEXT, IS_NUMERIC_ENTRY, uiBackgroundColor, {0.0,0.5,0.0})
-    TempHPTxtEntry = spawnedUiElementsWhichSaveData + 1
     createTextBox("TempHPTxtEntry", {-3.25, UI_Y_COORD, -4.92}, ONE_ROW, 370, 300, "0", NO_LABEL, CENTER_ALIGNED_TEXT, IS_NUMERIC_ENTRY, uiBackgroundColor, {0.25,0.28,0.8})
-    SpeedFlyTxtEntry = spawnedUiElementsWhichSaveData + 1
     createTextBox("SpeedFlyTxtEntry", {-2.785, UI_Y_COORD, -2.6}, ONE_ROW, 400, 110, "", NO_LABEL, LEFT_ALIGNED_TEXT, IS_TEXT_ENTRY)
-    SpeedSwimTxtEntry = spawnedUiElementsWhichSaveData + 1
     createTextBox("SpeedSwimTxtEntry", {-2.785, UI_Y_COORD, -2.36}, ONE_ROW, 400, 110, "", NO_LABEL, LEFT_ALIGNED_TEXT, IS_TEXT_ENTRY)
-    SpeedLongTxtEntry = spawnedUiElementsWhichSaveData + 1
     createTextBox("SpeedLongTxtEntry", {-2.785, UI_Y_COORD, -2.12}, ONE_ROW, 400, 110, "", NO_LABEL, LEFT_ALIGNED_TEXT, IS_TEXT_ENTRY)
-    SpeedHighTxtEntry = spawnedUiElementsWhichSaveData + 1
     createTextBox("SpeedHighTxtEntry", {-2.785, UI_Y_COORD, -1.88}, ONE_ROW, 400, 110, "", NO_LABEL, LEFT_ALIGNED_TEXT, IS_TEXT_ENTRY)
-    SpeedCrawlTxtEntry = spawnedUiElementsWhichSaveData + 1
     createTextBox("SpeedCrawlTxtEntry", {-2.785, UI_Y_COORD, -1.64}, ONE_ROW, 400, 110, "", NO_LABEL, LEFT_ALIGNED_TEXT, IS_TEXT_ENTRY)
-    SpeedClimbTxtEntry = spawnedUiElementsWhichSaveData + 1
     createTextBox("SpeedClimbTxtEntry", {-2.785, UI_Y_COORD, -1.4}, ONE_ROW, 400, 110, "", NO_LABEL, LEFT_ALIGNED_TEXT, IS_TEXT_ENTRY)
-    HitDiceClass1LeftTxtEntry = spawnedUiElementsWhichSaveData + 1
     createTextBox("HitDiceClass1LeftTxtEntry", {-3.215, UI_Y_COORD, -0.705}, ONE_ROW, 250, 180, "", NO_LABEL, CENTER_ALIGNED_TEXT, IS_TEXT_ENTRY, uiBackgroundColor, {0.25,0.28,0.8})
-    HitDiceClass2LeftTxtEntry = spawnedUiElementsWhichSaveData + 1
     createTextBox("HitDiceClass2LeftTxtEntry", {-3.215, UI_Y_COORD, -0.186}, ONE_ROW, 250, 180, "", NO_LABEL, CENTER_ALIGNED_TEXT, IS_TEXT_ENTRY, uiBackgroundColor, {0.25,0.28,0.8})
-    ResImuTxtEntry = spawnedUiElementsWhichSaveData + 1
     createTextBox("ResImuTxtEntry", {-4.1, UI_Y_COORD, 0.94}, 3, 1700, 150, "", NO_LABEL, LEFT_ALIGNED_TEXT, IS_TEXT_ENTRY)
-    ExhaustionTxtEntry = spawnedUiElementsWhichSaveData + 1
     createTextBox("ExhaustionTxtEntry", {-4.1, UI_Y_COORD, 5.45}, ONE_ROW, 500, 500, "0", NO_LABEL, CENTER_ALIGNED_TEXT, IS_NUMERIC_ENTRY, uiBackgroundColor, {0.93,0.11,0.14})
-    ProfWeaponsTxtEntry = spawnedUiElementsWhichSaveData + 1
     createTextBox("ProfWeaponsTxtEntry", {7.33, UI_Y_COORD, -6.87}, 3, 2800, 130, "", NO_LABEL, LEFT_ALIGNED_TEXT, IS_TEXT_ENTRY)
-    ProfToolsTxtEntry = spawnedUiElementsWhichSaveData + 1
     createTextBox("ProfToolsTxtEntry", {7.33, UI_Y_COORD, -6.0}, 3, 2800, 130, "", NO_LABEL, LEFT_ALIGNED_TEXT, IS_TEXT_ENTRY)
-    LanguagesTxtEntry = spawnedUiElementsWhichSaveData + 1
     createTextBox("LanguagesTxtEntry", {7.33, UI_Y_COORD, -5.06}, 3, 2800, 130, "", NO_LABEL, LEFT_ALIGNED_TEXT, IS_TEXT_ENTRY)
-    coinCPTxtEntry = spawnedUiElementsWhichSaveData + 1
     createTextBox("coinCPTxtEntry", {10.6, UI_Y_COORD, -7.3}, ONE_ROW, 550, 230, "0", NO_LABEL, CENTER_ALIGNED_TEXT, IS_NUMERIC_ENTRY, {0.76,0.53,0.38})
-    coinSPTxtEntry = spawnedUiElementsWhichSaveData + 1
     createTextBox("coinSPTxtEntry", {10.6, UI_Y_COORD, -6.51}, ONE_ROW, 550, 230, "0", NO_LABEL, CENTER_ALIGNED_TEXT, IS_NUMERIC_ENTRY, {0.83,0.81,0.74})
-    coinEPTxtEntry = spawnedUiElementsWhichSaveData + 1
     createTextBox("coinEPTxtEntry", {10.6, UI_Y_COORD, -5.715}, ONE_ROW, 550, 230, "0", NO_LABEL, CENTER_ALIGNED_TEXT, IS_NUMERIC_ENTRY, {0.46,0.54,0.53})
-    coinGPTxtEntry = spawnedUiElementsWhichSaveData + 1
     createTextBox("coinGPTxtEntry", {10.6, UI_Y_COORD, -4.923}, ONE_ROW, 550, 230, "0", NO_LABEL, CENTER_ALIGNED_TEXT, IS_NUMERIC_ENTRY, {0.92,0.72,0.0})
-    coinPPTxtEntry = spawnedUiElementsWhichSaveData + 1
     createTextBox("coinPPTxtEntry", {10.6, UI_Y_COORD, -4.125}, ONE_ROW, 550, 230, "0", NO_LABEL, CENTER_ALIGNED_TEXT, IS_NUMERIC_ENTRY, {0.78,0.75,0.9})
-    weapon1TxtEntry = spawnedUiElementsWhichSaveData + 1
     createTextBox("weapon1TxtEntry", {-1.275, UI_Y_COORD, -1.317}, 2, 1090, 90, "", NO_LABEL, CENTER_ALIGNED_TEXT, IS_TEXT_ENTRY)
-    weapon2TxtEntry = spawnedUiElementsWhichSaveData + 1
     createTextBox("weapon2TxtEntry", {0.975, UI_Y_COORD, -1.32}, 2, 1090, 90, "", NO_LABEL, CENTER_ALIGNED_TEXT, IS_TEXT_ENTRY)
-    weapon3TxtEntry = spawnedUiElementsWhichSaveData + 1
     createTextBox("weapon3TxtEntry", {3.245, UI_Y_COORD, -1.324}, 2, 1090, 90, "", NO_LABEL, CENTER_ALIGNED_TEXT, IS_TEXT_ENTRY)
-    weapon4TxtEntry = spawnedUiElementsWhichSaveData + 1
     createTextBox("weapon4TxtEntry", {5.505, UI_Y_COORD, -1.33}, 2, 1090, 90, "", NO_LABEL, CENTER_ALIGNED_TEXT, IS_TEXT_ENTRY)
-    weapon5TxtEntry = spawnedUiElementsWhichSaveData + 1
     createTextBox("weapon5TxtEntry", {7.765, UI_Y_COORD, -1.34}, 2, 1090, 90, "", NO_LABEL, CENTER_ALIGNED_TEXT, IS_TEXT_ENTRY)
-    ammo1TxtEntry = spawnedUiElementsWhichSaveData + 1
     createTextBox("ammo1TxtEntry", {9.32, UI_Y_COORD, -1.6}, ONE_ROW, 360, 200, "0", NO_LABEL, CENTER_ALIGNED_TEXT, IS_NUMERIC_ENTRY, uiBackgroundColor, {0.93,0.11,0.14})
-    ammo2TxtEntry = spawnedUiElementsWhichSaveData + 1
     createTextBox("ammo2TxtEntry", {9.308, UI_Y_COORD, 0.65}, ONE_ROW, 360, 200, "0", NO_LABEL, CENTER_ALIGNED_TEXT, IS_NUMERIC_ENTRY, uiBackgroundColor, {0.93,0.11,0.14})
-    ammo3TxtEntry = spawnedUiElementsWhichSaveData + 1
     createTextBox("ammo3TxtEntry", {9.295, UI_Y_COORD, 2.9}, ONE_ROW, 360, 200, "0", NO_LABEL, CENTER_ALIGNED_TEXT, IS_NUMERIC_ENTRY, uiBackgroundColor, {0.93,0.11,0.14})
-    potions1TxtEntry = spawnedUiElementsWhichSaveData + 1
     createTextBox("potions1TxtEntry", {9.19, UI_Y_COORD, 3.855}, ONE_ROW, 360, 200, "0", NO_LABEL, CENTER_ALIGNED_TEXT, IS_NUMERIC_ENTRY, uiBackgroundColor, {0.93,0.11,0.14})
-    potions2TxtEntry = spawnedUiElementsWhichSaveData + 1
     createTextBox("potions2TxtEntry", {9.28, UI_Y_COORD, 5.22}, ONE_ROW, 360, 200, "0", NO_LABEL, CENTER_ALIGNED_TEXT, IS_NUMERIC_ENTRY, uiBackgroundColor, {0.93,0.11,0.14})
-    potions3TxtEntry = spawnedUiElementsWhichSaveData + 1
     createTextBox("potions3TxtEntry", {9.175, UI_Y_COORD, 6.1}, ONE_ROW, 360, 200, "0", NO_LABEL, CENTER_ALIGNED_TEXT, IS_NUMERIC_ENTRY, uiBackgroundColor, {0.93,0.11,0.14})
-    potions4TxtEntry = spawnedUiElementsWhichSaveData + 1
     createTextBox("potions4TxtEntry", {9.275, UI_Y_COORD, 7.46}, ONE_ROW, 360, 200, "0", NO_LABEL, CENTER_ALIGNED_TEXT, IS_NUMERIC_ENTRY, uiBackgroundColor, {0.93,0.11,0.14})
 end
 
@@ -756,213 +535,109 @@ function createAllDisplayNumbers()
     local SKILL_FONT_SIZE = 200
     local saveTOTALXcord = -9.2
     local saveMODXcord = -8.28
-    Vision1DisplayIdx = spawnedButtonCount
     createDisplayNumber({-3.73, UI_Y_COORD, -4.04}, CHECK_FONT_SIZE, 160, 160)
-    className1DisplayIdx = spawnedButtonCount
     createDisplayNumber({0.065, UI_Y_COORD, -3.8}, 140, 0, 0)
-    className2DisplayIdx = spawnedButtonCount
     createDisplayNumber({3.45, UI_Y_COORD, -3.8}, 140, 0, 0)
-    totalLVLDisplayIdx = spawnedButtonCount
     createDisplayNumber({0.39, UI_Y_COORD, -4.42}, TOTAL_LEVEL_FONT_SIZE, 0, 0)
-    raceNameDisplayIdx = spawnedButtonCount
     createDisplayNumber({0.34, UI_Y_COORD, -3.18}, 180, 0, 0)
-    infoSizeDisplayIdx = spawnedButtonCount
     createDisplayNumber({-1.17, UI_Y_COORD, -2.47}, 100, 0, 0)
-    ExpLVLUPDisplayIdx = spawnedButtonCount
     createDisplayNumber({7.24, UI_Y_COORD, -2.59}, STANDARD_FONT_SIZE, 0, 0)
-    ProfBonusDisplayIdx = spawnedButtonCount
     createDisplayNumber({-9.33, UI_Y_COORD, -5.47}, 400, 0, 0)
-    STRscoreDisplayIdx = spawnedButtonCount
     createDisplayNumber({abilityXcord, UI_Y_COORD, -4.98}, ABILITY_SCORE_FONT_SIZE, 0, 0)
-    DEXscoreDisplayIdx = spawnedButtonCount
     createDisplayNumber({abilityXcord, UI_Y_COORD, -2.79}, ABILITY_SCORE_FONT_SIZE, 0, 0)
-    CONscoreDisplayIdx = spawnedButtonCount
     createDisplayNumber({abilityXcord, UI_Y_COORD, -0.62}, ABILITY_SCORE_FONT_SIZE, 0, 0)
-    INTscoreDisplayIdx = spawnedButtonCount
     createDisplayNumber({abilityXcord, UI_Y_COORD, 1.54}, ABILITY_SCORE_FONT_SIZE, 0, 0)
-    WISscoreDisplayIdx = spawnedButtonCount
     createDisplayNumber({abilityXcord, UI_Y_COORD, 3.72}, ABILITY_SCORE_FONT_SIZE, 0, 0)
-    CHAscoreDisplayIdx = spawnedButtonCount
     createDisplayNumber({abilityXcord, UI_Y_COORD, 5.89}, ABILITY_SCORE_FONT_SIZE, 0, 0)
-    STRmodDisplayIdx = spawnedButtonCount
     createDisplayNumber({abilityXcord, UI_Y_COORD, -5.7}, ABILITY_MOD_FONT_SIZE, 0, 0)
-    DEXmodDisplayIdx = spawnedButtonCount
     createDisplayNumber({abilityXcord, UI_Y_COORD, -3.52}, ABILITY_MOD_FONT_SIZE, 0, 0)
-    CONmodDisplayIdx = spawnedButtonCount
     createDisplayNumber({abilityXcord, UI_Y_COORD, -1.34}, ABILITY_MOD_FONT_SIZE, 0, 0)
-    INTmodDisplayIdx = spawnedButtonCount
     createDisplayNumber({abilityXcord, UI_Y_COORD, 0.84}, ABILITY_MOD_FONT_SIZE, 0, 0)
-    WISmodDisplayIdx = spawnedButtonCount
     createDisplayNumber({abilityXcord, UI_Y_COORD, 3.02}, ABILITY_MOD_FONT_SIZE, 0, 0)
-    CHAmodDisplayIdx = spawnedButtonCount
     createDisplayNumber({abilityXcord, UI_Y_COORD, 5.2}, ABILITY_MOD_FONT_SIZE, 0, 0)
-    STRsaveCheckDisplayIdx = spawnedButtonCount
     createDisplayNumber({saveCHECKXcord, UI_Y_COORD, -4.45}, CHECK_FONT_SIZE, 160, 160)
-    DEXsaveCheckDisplayIdx = spawnedButtonCount
     createDisplayNumber({saveCHECKXcord, UI_Y_COORD, -4.04}, CHECK_FONT_SIZE, 160, 160)
-    CONsaveCheckDisplayIdx = spawnedButtonCount
     createDisplayNumber({saveCHECKXcord, UI_Y_COORD, -3.63}, CHECK_FONT_SIZE, 160, 160)
-    INTsaveCheckDisplayIdx = spawnedButtonCount
     createDisplayNumber({saveCHECKXcord, UI_Y_COORD, -3.22}, CHECK_FONT_SIZE, 160, 160)
-    WISsaveCheckDisplayIdx = spawnedButtonCount
     createDisplayNumber({saveCHECKXcord, UI_Y_COORD, -2.81}, CHECK_FONT_SIZE, 160, 160)
-    CHAsaveCheckDisplayIdx = spawnedButtonCount
     createDisplayNumber({saveCHECKXcord, UI_Y_COORD, -2.4}, CHECK_FONT_SIZE, 160, 160)
-    STRsaveTotalDisplayIdx = spawnedButtonCount
     createDisplayNumber({saveTOTALXcord, UI_Y_COORD, -4.45}, SKILL_FONT_SIZE, 0, 0)
-    DEXsaveTotalDisplayIdx = spawnedButtonCount
     createDisplayNumber({saveTOTALXcord, UI_Y_COORD, -4.04}, SKILL_FONT_SIZE, 0, 0)
-    CONsaveTotalDisplayIdx = spawnedButtonCount
     createDisplayNumber({saveTOTALXcord, UI_Y_COORD, -3.63}, SKILL_FONT_SIZE, 0, 0)
-    INTsaveTotalDisplayIdx = spawnedButtonCount
     createDisplayNumber({saveTOTALXcord, UI_Y_COORD, -3.22}, SKILL_FONT_SIZE, 0, 0)
-    WISsaveTotalDisplayIdx = spawnedButtonCount
     createDisplayNumber({saveTOTALXcord, UI_Y_COORD, -2.81}, SKILL_FONT_SIZE, 0, 0)
-    CHAsaveTotalDisplayIdx = spawnedButtonCount
     createDisplayNumber({saveTOTALXcord, UI_Y_COORD, -2.4}, SKILL_FONT_SIZE, 0, 0)
-    STRsaveModDisplayIdx = spawnedButtonCount
     createDisplayNumber({saveMODXcord, UI_Y_COORD, -4.45}, SKILL_FONT_SIZE, 0, 0)
-    DEXsaveModDisplayIdx = spawnedButtonCount
     createDisplayNumber({saveMODXcord, UI_Y_COORD, -4.04}, SKILL_FONT_SIZE, 0, 0)
-    CONsaveModDisplayIdx = spawnedButtonCount
     createDisplayNumber({saveMODXcord, UI_Y_COORD, -3.63}, SKILL_FONT_SIZE, 0, 0)
-    INTsaveModDisplayIdx = spawnedButtonCount
     createDisplayNumber({saveMODXcord, UI_Y_COORD, -3.22}, SKILL_FONT_SIZE, 0, 0)
-    WISsaveModDisplayIdx = spawnedButtonCount
     createDisplayNumber({saveMODXcord, UI_Y_COORD, -2.81}, SKILL_FONT_SIZE, 0, 0)
-    CHAsaveModDisplayIdx = spawnedButtonCount
     createDisplayNumber({saveMODXcord, UI_Y_COORD, -2.4}, SKILL_FONT_SIZE, 0, 0)
-    AcrobaticsCheckDisplayIdx = spawnedButtonCount
     createDisplayNumber({saveCHECKXcord, UI_Y_COORD, -0.94}, CHECK_FONT_SIZE, 160, 160)
-    AnimalHandlingCheckDisplayIdx = spawnedButtonCount
     createDisplayNumber({saveCHECKXcord, UI_Y_COORD, -0.53}, CHECK_FONT_SIZE, 160, 160)
-    ArcanaCheckDisplayIdx = spawnedButtonCount
     createDisplayNumber({saveCHECKXcord, UI_Y_COORD, -0.12}, CHECK_FONT_SIZE, 160, 160)
-    AthleticsCheckDisplayIdx = spawnedButtonCount
     createDisplayNumber({saveCHECKXcord, UI_Y_COORD, 0.29}, CHECK_FONT_SIZE, 160, 160)
-    DeceptionCheckDisplayIdx = spawnedButtonCount
     createDisplayNumber({saveCHECKXcord, UI_Y_COORD, 0.7}, CHECK_FONT_SIZE, 160, 160)
-    HistoryCheckDisplayIdx = spawnedButtonCount
     createDisplayNumber({saveCHECKXcord, UI_Y_COORD, 1.11}, CHECK_FONT_SIZE, 160, 160)
-    InsightCheckDisplayIdx = spawnedButtonCount
     createDisplayNumber({saveCHECKXcord, UI_Y_COORD, 1.52}, CHECK_FONT_SIZE, 160, 160)
-    IntimidationCheckDisplayIdx = spawnedButtonCount
     createDisplayNumber({saveCHECKXcord, UI_Y_COORD, 1.93}, CHECK_FONT_SIZE, 160, 160)
-    InvestigationCheckDisplayIdx = spawnedButtonCount
     createDisplayNumber({saveCHECKXcord, UI_Y_COORD, 2.34}, CHECK_FONT_SIZE, 160, 160)
-    MedicineCheckDisplayIdx = spawnedButtonCount
     createDisplayNumber({saveCHECKXcord, UI_Y_COORD, 2.75}, CHECK_FONT_SIZE, 160, 160)
-    NatureCheckDisplayIdx = spawnedButtonCount
     createDisplayNumber({saveCHECKXcord, UI_Y_COORD, 3.16}, CHECK_FONT_SIZE, 160, 160)
-    PerceptionCheckDisplayIdx = spawnedButtonCount
     createDisplayNumber({saveCHECKXcord, UI_Y_COORD, 3.57}, CHECK_FONT_SIZE, 160, 160)
-    PerformanceCheckDisplayIdx = spawnedButtonCount
     createDisplayNumber({saveCHECKXcord, UI_Y_COORD, 3.98}, CHECK_FONT_SIZE, 160, 160)
-    PersuasionCheckDisplayIdx = spawnedButtonCount
     createDisplayNumber({saveCHECKXcord, UI_Y_COORD, 4.39}, CHECK_FONT_SIZE, 160, 160)
-    ReligionCheckDisplayIdx = spawnedButtonCount
     createDisplayNumber({saveCHECKXcord, UI_Y_COORD, 4.8}, CHECK_FONT_SIZE, 160, 160)
-    SleightofHandCheckDisplayIdx = spawnedButtonCount
     createDisplayNumber({saveCHECKXcord, UI_Y_COORD, 5.21}, CHECK_FONT_SIZE, 160, 160)
-    StealthCheckDisplayIdx = spawnedButtonCount
     createDisplayNumber({saveCHECKXcord, UI_Y_COORD, 5.62}, CHECK_FONT_SIZE, 160, 160)
-    SurvivalCheckDisplayIdx = spawnedButtonCount
     createDisplayNumber({saveCHECKXcord, UI_Y_COORD, 6.03}, CHECK_FONT_SIZE, 160, 160)
-    AcrobaticsTotalDisplayIdx = spawnedButtonCount
     createDisplayNumber({saveTOTALXcord, UI_Y_COORD, -0.94}, SKILL_FONT_SIZE, 0, 0)
-    AnimalHandlingTotalDisplayIdx = spawnedButtonCount
     createDisplayNumber({saveTOTALXcord, UI_Y_COORD, -0.53}, SKILL_FONT_SIZE, 0, 0)
-    ArcanaTotalDisplayIdx = spawnedButtonCount
     createDisplayNumber({saveTOTALXcord, UI_Y_COORD, -0.12}, SKILL_FONT_SIZE, 0, 0)
-    AthleticsTotalDisplayIdx = spawnedButtonCount
     createDisplayNumber({saveTOTALXcord, UI_Y_COORD, 0.29}, SKILL_FONT_SIZE, 0, 0)
-    DeceptionTotalDisplayIdx = spawnedButtonCount
     createDisplayNumber({saveTOTALXcord, UI_Y_COORD, 0.7}, SKILL_FONT_SIZE, 0, 0)
-    HistoryTotalDisplayIdx = spawnedButtonCount
     createDisplayNumber({saveTOTALXcord, UI_Y_COORD, 1.11}, SKILL_FONT_SIZE, 0, 0)
-    InsightTotalDisplayIdx = spawnedButtonCount
     createDisplayNumber({saveTOTALXcord, UI_Y_COORD, 1.52}, SKILL_FONT_SIZE, 0, 0)
-    IntimidationTotalDisplayIdx = spawnedButtonCount
     createDisplayNumber({saveTOTALXcord, UI_Y_COORD, 1.93}, SKILL_FONT_SIZE, 0, 0)
-    InvestigationTotalDisplayIdx = spawnedButtonCount
     createDisplayNumber({saveTOTALXcord, UI_Y_COORD, 2.34}, SKILL_FONT_SIZE, 0, 0)
-    MedicineTotalDisplayIdx = spawnedButtonCount
     createDisplayNumber({saveTOTALXcord, UI_Y_COORD, 2.75}, SKILL_FONT_SIZE, 0, 0)
-    NatureTotalDisplayIdx = spawnedButtonCount
     createDisplayNumber({saveTOTALXcord, UI_Y_COORD, 3.16}, SKILL_FONT_SIZE, 0, 0)
-    PerceptionTotalDisplayIdx = spawnedButtonCount
     createDisplayNumber({saveTOTALXcord, UI_Y_COORD, 3.57}, SKILL_FONT_SIZE, 0, 0)
-    PerformanceTotalDisplayIdx = spawnedButtonCount
     createDisplayNumber({saveTOTALXcord, UI_Y_COORD, 3.98}, SKILL_FONT_SIZE, 0, 0)
-    PersuasionTotalDisplayIdx = spawnedButtonCount
     createDisplayNumber({saveTOTALXcord, UI_Y_COORD, 4.39}, SKILL_FONT_SIZE, 0, 0)
-    ReligionTotalDisplayIdx = spawnedButtonCount
     createDisplayNumber({saveTOTALXcord, UI_Y_COORD, 4.8}, SKILL_FONT_SIZE, 0, 0)
-    SleightofHandTotalDisplayIdx = spawnedButtonCount
     createDisplayNumber({saveTOTALXcord, UI_Y_COORD, 5.21}, SKILL_FONT_SIZE, 0, 0)
-    StealthTotalDisplayIdx = spawnedButtonCount
     createDisplayNumber({saveTOTALXcord, UI_Y_COORD, 5.62}, SKILL_FONT_SIZE, 0, 0)
-    SurvivalTotalDisplayIdx = spawnedButtonCount
     createDisplayNumber({saveTOTALXcord, UI_Y_COORD, 6.03}, SKILL_FONT_SIZE, 0, 0)
-    AcrobaticsModDisplayIdx = spawnedButtonCount
     createDisplayNumber({saveMODXcord, UI_Y_COORD, -0.94}, SKILL_FONT_SIZE, 0, 0)
-    AnimalHandlingModDisplayIdx = spawnedButtonCount
     createDisplayNumber({saveMODXcord, UI_Y_COORD, -0.53}, SKILL_FONT_SIZE, 0, 0)
-    ArcanaModDisplayIdx = spawnedButtonCount
     createDisplayNumber({saveMODXcord, UI_Y_COORD, -0.12}, SKILL_FONT_SIZE, 0, 0)
-    AthleticsModDisplayIdx = spawnedButtonCount
     createDisplayNumber({saveMODXcord, UI_Y_COORD, 0.29}, SKILL_FONT_SIZE, 0, 0)
-    DeceptionModDisplayIdx = spawnedButtonCount
     createDisplayNumber({saveMODXcord, UI_Y_COORD, 0.7}, SKILL_FONT_SIZE, 0, 0)
-    HistoryModDisplayIdx = spawnedButtonCount
     createDisplayNumber({saveMODXcord, UI_Y_COORD, 1.11}, SKILL_FONT_SIZE, 0, 0)
-    InsightModDisplayIdx = spawnedButtonCount
     createDisplayNumber({saveMODXcord, UI_Y_COORD, 1.52}, SKILL_FONT_SIZE, 0, 0)
-    IntimidationModDisplayIdx = spawnedButtonCount
     createDisplayNumber({saveMODXcord, UI_Y_COORD, 1.93}, SKILL_FONT_SIZE, 0, 0)
-    InvestigationModDisplayIdx = spawnedButtonCount
     createDisplayNumber({saveMODXcord, UI_Y_COORD, 2.34}, SKILL_FONT_SIZE, 0, 0)
-    MedicineModDisplayIdx = spawnedButtonCount
     createDisplayNumber({saveMODXcord, UI_Y_COORD, 2.75}, SKILL_FONT_SIZE, 0, 0)
-    NatureModDisplayIdx = spawnedButtonCount
     createDisplayNumber({saveMODXcord, UI_Y_COORD, 3.16}, SKILL_FONT_SIZE, 0, 0)
-    PerceptionModDisplayIdx = spawnedButtonCount
     createDisplayNumber({saveMODXcord, UI_Y_COORD, 3.57}, SKILL_FONT_SIZE, 0, 0)
-    PerformanceModDisplayIdx = spawnedButtonCount
     createDisplayNumber({saveMODXcord, UI_Y_COORD, 3.98}, SKILL_FONT_SIZE, 0, 0)
-    PersuasionModDisplayIdx = spawnedButtonCount
     createDisplayNumber({saveMODXcord, UI_Y_COORD, 4.39}, SKILL_FONT_SIZE, 0, 0)
-    ReligionModDisplayIdx = spawnedButtonCount
     createDisplayNumber({saveMODXcord, UI_Y_COORD, 4.8}, SKILL_FONT_SIZE, 0, 0)
-    SleightofHandModDisplayIdx = spawnedButtonCount
     createDisplayNumber({saveMODXcord, UI_Y_COORD, 5.21}, SKILL_FONT_SIZE, 0, 0)
-    StealthModDisplayIdx = spawnedButtonCount
     createDisplayNumber({saveMODXcord, UI_Y_COORD, 5.62}, SKILL_FONT_SIZE, 0, 0)
-    SurvivalModDisplayIdx = spawnedButtonCount
     createDisplayNumber({saveMODXcord, UI_Y_COORD, 6.03}, SKILL_FONT_SIZE, 0, 0)
-    PassivePerceptionDisplayIdx = spawnedButtonCount
     createDisplayNumber({-11.13, UI_Y_COORD, 7.24}, 400, 0, 0)
-    InitiativeDisplayIdx = spawnedButtonCount
     createDisplayNumber({-4.93, UI_Y_COORD, -3.55}, 500, 0, 0)
-    VisionDisplayIdx = spawnedButtonCount
     createDisplayNumber({-3.25, UI_Y_COORD, -3.55}, 500, 0, 0)
-    SpeedDisplayIdx = spawnedButtonCount
     createDisplayNumber({-4.93, UI_Y_COORD, -2.05}, 500, 0, 0)
-    HitDiceClass1DisplayIdx = spawnedButtonCount
     createDisplayNumber({-4.766, UI_Y_COORD, -0.705}, 180, 0, 0)
-    HitDiceClass2DisplayIdx = spawnedButtonCount
     createDisplayNumber({-4.766, UI_Y_COORD, -0.186}, 180, 0, 0)
-    HitDiceClass1TotalDisplayIdx = spawnedButtonCount
     createDisplayNumber({-3.875, UI_Y_COORD, -0.705}, 180, 0, 0)
-    HitDiceClass2TotalDisplayIdx = spawnedButtonCount
     createDisplayNumber({-3.875, UI_Y_COORD, -0.186}, 180, 0, 0)
-    SpellSaveDC1DisplayIdx = spawnedButtonCount
     createDisplayNumber({-4.76, UI_Y_COORD, 2.83}, 250, 0, 0)
-    SpellAtkBonus1DisplayIdx = spawnedButtonCount
     createDisplayNumber({-3.49, UI_Y_COORD, 2.83}, 250, 0, 0)
-    SpellSaveDC2DisplayIdx = spawnedButtonCount
     createDisplayNumber({-4.76, UI_Y_COORD, 3.96}, 250, 0, 0)
-    SpellAtkBonus2DisplayIdx = spawnedButtonCount
     createDisplayNumber({-3.49, UI_Y_COORD, 3.96}, 250, 0, 0)
 end
 
@@ -970,7 +645,6 @@ end
 function createTextBox(savedTableKey, txtBoxPos, txtBoxRows, txtBoxWidth, txtBoxFontSize, txtBoxValue, defaultTxtBoxLabel, txtBoxAlignment, validationValue, uiBackgroundColor, uiFontColor)
     --Sets up reference function
     local funcName = "textbox"..textEntryIndexTable[savedTableKey]
-    local savedDataIdCopy = spawnedUiElementsWhichSaveData -- prevents passing spawnedUiElementsWhichSaveData by reference
     local func = function(_,_,val,sel) click_textbox(savedTableKey,val,sel) end
     self.setVar(funcName, func)
 
@@ -995,8 +669,6 @@ function createTextBox(savedTableKey, txtBoxPos, txtBoxRows, txtBoxWidth, txtBox
         value          = savedDataTable_KV[savedTableKey],
         validation     = validationValue
     })
-    spawnedTextInputCount = spawnedTextInputCount + 1
-    spawnedUiElementsWhichSaveData = spawnedUiElementsWhichSaveData + 1
 end
 
 function click_textbox(i, value, selected)
@@ -1007,28 +679,22 @@ function click_textbox(i, value, selected)
 end
 
 --Makes checkboxes
-function createCheckbox(checkBoxKey, checkboxPos, checkboxSize, isChecked, isMulti)
+function createCheckbox(checkBoxKey, checkboxPos, checkboxSize)
     --Sets up reference function
-    local funcName = "checkbox"..checkboxIndexTable[checkBoxKey]
+    local funcName = "checkbox"..checkboxSpawnIndexTable[checkBoxKey]
     local savedDataIdCopy = checkBoxKey --prevents spawnedUiElementsWhichSaveData from being passed by reference
-    local spawnedButtonCountCopy = checkboxIndexTable[checkBoxKey] -- prevents spawnedButtonCount from being passed by reference
-    local func = function(val,sel) click_checkbox(savedDataIdCopy, spawnedButtonCountCopy, isMulti) end
-    local checkTheBox = false
+    local spawnedButtonCountCopy = checkboxSpawnIndexTable[checkBoxKey] -- prevents spawnedButtonCount from being passed by reference
+    local func = function(val,sel) click_checkbox(savedDataIdCopy, spawnedButtonCountCopy) end
+    local checkTheBox = savedDataTable_KV[checkBoxKey]
     self.setVar(funcName, func)
-
-    -- if the saved data does not exist, fill text field with default value
-    if isSavedDataAvailable == false then
-        table.insert(savedDataTable, 0)
-        checkTheBox = isChecked
-    else
-        checkTheBox = savedDataTable_KV[savedDataIdCopy]
-    end
 
     --Sets up label
     local label = ""
-    if checkTheBox == 0.5 then label=tostring("/2") end
-    if checkTheBox == 1 then label=tostring("x") end
-    if checkTheBox == 2 then label=tostring("x2") end
+    if checkTheBox == false then label = "" else label = string.char(10008) end
+    -- USED ON STAT CHECKS
+    -- if checkTheBox == 0.5 then label=tostring("/2") end
+    -- if checkTheBox == 1 then label=tostring("x") end
+    -- if checkTheBox == 2 then label=tostring("x2") end
     --Creates button and counts it
     self.createButton({
         label=label,
@@ -1042,103 +708,16 @@ function createCheckbox(checkBoxKey, checkboxPos, checkboxSize, isChecked, isMul
         color=uiBackgroundColor,
         font_color=uiFontColor
     })
-    spawnedButtonCount = spawnedButtonCount + 1
-    spawnedUiElementsWhichSaveData = spawnedUiElementsWhichSaveData + 1
 end
 
 --Checks or unchecks the given box
-function click_checkbox(i, buttonIdx, isMulti)
-    print(i, buttonIdx, isMulti)
+function click_checkbox(i, buttonIdx)
 
---[[    if savedDataTable[i+1] == 0 then
-        if isMulti == true then
-            savedDataTable[i+1] = 0.5
-            self.editButton({index=buttonIdx, label=tostring("/2")})
-        else
-            savedDataTable[i+1] = 1
-            self.editButton({index=buttonIdx, label=string.char(10008)})
-        end
-
-
-    elseif savedDataTable[i+1] == 0.5 then
-      savedDataTable[i+1] = 1
-      self.editButton({index=buttonIdx, label=string.char(10008)})
-
-
-    elseif savedDataTable[i+1] == 1 then
-
-        if isMulti == true then
-          savedDataTable[i+1] = 2
-          self.editButton({index=buttonIdx, label=tostring("x2")})
-        else
-          savedDataTable[i+1] = 0
-          self.editButton({index=buttonIdx, label=""})
-        end
-
-
-    elseif savedDataTable[i+1] == 2 then
-        savedDataTable[i+1] = 0
-        self.editButton({index=buttonIdx, label=""})
-    end]]
-    print(savedDataTable_KV[i])
     if savedDataTable_KV[i] == true then
         savedDataTable_KV[i] = false
         self.editButton({index=buttonIdx, label=""})
+        print(savedDataTable_KV[i])
     else
-
-        if buttonIdx == 118 or buttonIdx == 119 or buttonIdx == 120 or buttonIdx == 121 or buttonIdx == 122 or buttonIdx == 123 then
-            self.editButton({index=118, label=""})
-            self.editButton({index=119, label=""})
-            self.editButton({index=120, label=""})
-            self.editButton({index=121, label=""})
-            self.editButton({index=122, label=""})
-            self.editButton({index=123, label=""})
-            savedDataTable_KV["SaveCheckSTRCheckboxButtonIdx"] = false
-            savedDataTable_KV["SaveCheckDEXCheckboxButtonIdx"] = false
-            savedDataTable_KV["SaveCheckCONCheckboxButtonIdx"] = false
-            savedDataTable_KV["SaveCheckINTCheckboxButtonIdx"] = false
-            savedDataTable_KV["SaveCheckWISCheckboxButtonIdx"] = false
-            savedDataTable_KV["SaveCheckCHACheckboxButtonIdx"] = false
-        end
-        if buttonIdx == 124 or buttonIdx == 125 or buttonIdx == 126 or buttonIdx == 127 or buttonIdx == 128 or buttonIdx == 129 or buttonIdx == 130 or buttonIdx == 131 or buttonIdx == 132 or buttonIdx == 133 or buttonIdx == 134 or buttonIdx == 135 or buttonIdx == 136 or buttonIdx == 137 or buttonIdx == 138 or buttonIdx == 139 or buttonIdx == 140 or buttonIdx == 141 then
-            self.editButton({index=124, label=""})
-            self.editButton({index=125, label=""})
-            self.editButton({index=126, label=""})
-            self.editButton({index=127, label=""})
-            self.editButton({index=128, label=""})
-            self.editButton({index=129, label=""})
-            self.editButton({index=130, label=""})
-            self.editButton({index=131, label=""})
-            self.editButton({index=132, label=""})
-            self.editButton({index=133, label=""})
-            self.editButton({index=134, label=""})
-            self.editButton({index=135, label=""})
-            self.editButton({index=136, label=""})
-            self.editButton({index=137, label=""})
-            self.editButton({index=138, label=""})
-            self.editButton({index=139, label=""})
-            self.editButton({index=140, label=""})
-            self.editButton({index=141, label=""})
-            savedDataTable[AcrobaticsSkillCheckCheckboxButtonIdx] = false
-            savedDataTable[AnimalHandlingSkillCheckCheckboxButtonIdx] = false
-            savedDataTable[ArcanaSkillCheckCheckboxButtonIdx] = false
-            savedDataTable[AthleticsSkillCheckCheckboxButtonIdx] = false
-            savedDataTable[DeceptionSkillCheckCheckboxButtonIdx] = false
-            savedDataTable[HistorySkillCheckCheckboxButtonIdx] = false
-            savedDataTable[InsightSkillCheckCheckboxButtonIdx] = false
-            savedDataTable[IntimidationSkillCheckCheckboxButtonIdx] = false
-            savedDataTable[InvestigationSkillCheckCheckboxButtonIdx] = false
-            savedDataTable[MedicineSkillCheckCheckboxButtonIdx] = false
-            savedDataTable[NatureSkillCheckCheckboxButtonIdx] = false
-            savedDataTable[PerceptionSkillCheckCheckboxButtonIdx] = false
-            savedDataTable[PerformanceSkillCheckCheckboxButtonIdx] = false
-            savedDataTable[PersuasionSkillCheckCheckboxButtonIdx] = false
-            savedDataTable[ReligionSkillCheckCheckboxButtonIdx] = false
-            savedDataTable[SleightofHandSkillCheckCheckboxButtonIdx] = false
-            savedDataTable[StealthSkillCheckCheckboxButtonIdx] = false
-            savedDataTable[SurvivalSkillCheckCheckboxButtonIdx] = false
-        end
-
         savedDataTable_KV[i] = true
         self.editButton({index=buttonIdx, label=string.char(10008)})
     end
@@ -1157,7 +736,6 @@ function createDisplayNumber(displayNumPos, displayNumSize, txtBoxFontSize, txtB
     font_size=displayNumSize, scale=uiScale,
     color=uiBackgroundColor, font_color=uiFontColor
     })
-    spawnedButtonCount = spawnedButtonCount + 1
 end
 
 --Dud function for displayNumber buttons
@@ -1167,8 +745,8 @@ function updateCalculatedValues()
     if allUiElementsLoaded == true then
         totalLVL = 0
         ExpLVLUP = 0
-        classLVL1 = tonumber(savedDataTable[classLVL1TxtEntry])
-        classLVL2 = tonumber(savedDataTable[classLVL2TxtEntry])
+        classLVL1 = tonumber(savedDataTable_KV["classLVL1TxtEntry"])
+        classLVL2 = tonumber(savedDataTable_KV["classLVL2TxtEntry"])
         if classLVL1 == nil then classLVL1 = 0 end
         if classLVL2 == nil then classLVL2 = 0 end
         totalLVL = classLVL1 + classLVL2
@@ -1193,8 +771,8 @@ function updateCalculatedValues()
         elseif totalLVL == 19 then ExpLVLUP = "355,000"
         elseif totalLVL >= 20 then ExpLVLUP = "max"
         end
-        self.editButton({index = totalLVLDisplayIdx, label = tostring(totalLVL)})
-        self.editButton({index = ExpLVLUPDisplayIdx, label = tostring(ExpLVLUP)})
+        self.editButton({index = displayNumberIndex["totalLVLDisplayIdx"], label = tostring(totalLVL)})
+        self.editButton({index = displayNumberIndex["ExpLVLUPDisplayIdx"], label = tostring(ExpLVLUP)})
         -- STR, DEX, CON, INT, WIS, CHA
         STRmod = math.floor(STRscore/2) - 5
         DEXmod = math.floor(DEXscore/2) - 5
@@ -1202,18 +780,18 @@ function updateCalculatedValues()
         INTmod = math.floor(INTscore/2) - 5
         WISmod = math.floor(WISscore/2) - 5
         CHAmod = math.floor(CHAscore/2) - 5
-        self.editButton({index = STRscoreDisplayIdx, label = tostring(STRscore)})
-        self.editButton({index = DEXscoreDisplayIdx, label = tostring(DEXscore)})
-        self.editButton({index = CONscoreDisplayIdx, label = tostring(CONscore)})
-        self.editButton({index = INTscoreDisplayIdx, label = tostring(INTscore)})
-        self.editButton({index = WISscoreDisplayIdx, label = tostring(WISscore)})
-        self.editButton({index = CHAscoreDisplayIdx, label = tostring(CHAscore)})
-        self.editButton({index = STRmodDisplayIdx, label = tostring(STRmod)})
-        self.editButton({index = DEXmodDisplayIdx, label = tostring(DEXmod)})
-        self.editButton({index = CONmodDisplayIdx, label = tostring(CONmod)})
-        self.editButton({index = INTmodDisplayIdx, label = tostring(INTmod)})
-        self.editButton({index = WISmodDisplayIdx, label = tostring(WISmod)})
-        self.editButton({index = CHAmodDisplayIdx, label = tostring(CHAmod)})
+        self.editButton({index = displayNumberIndex["STRscoreDisplayIdx"], label = tostring(STRscore)})
+        self.editButton({index = displayNumberIndex["DEXscoreDisplayIdx"], label = tostring(DEXscore)})
+        self.editButton({index = displayNumberIndex["CONscoreDisplayIdx"], label = tostring(CONscore)})
+        self.editButton({index = displayNumberIndex["INTscoreDisplayIdx"], label = tostring(INTscore)})
+        self.editButton({index = displayNumberIndex["WISscoreDisplayIdx"], label = tostring(WISscore)})
+        self.editButton({index = displayNumberIndex["CHAscoreDisplayIdx"], label = tostring(CHAscore)})
+        self.editButton({index = displayNumberIndex["STRmodDisplayIdx"], label = tostring(STRmod)})
+        self.editButton({index = displayNumberIndex["DEXmodDisplayIdx"], label = tostring(DEXmod)})
+        self.editButton({index = displayNumberIndex["CONmodDisplayIdx"], label = tostring(CONmod)})
+        self.editButton({index = displayNumberIndex["INTmodDisplayIdx"], label = tostring(INTmod)})
+        self.editButton({index = displayNumberIndex["WISmodDisplayIdx"], label = tostring(WISmod)})
+        self.editButton({index = displayNumberIndex["CHAmodDisplayIdx"], label = tostring(CHAmod)})
         if ProfBonus == nil then ProfBonus = 0 end
         if totalLVL >= 1 and totalLVL <=4 then ProfBonus = "+2" end
         if totalLVL >= 5 and totalLVL <=8 then ProfBonus = "+3" end
@@ -1221,14 +799,14 @@ function updateCalculatedValues()
         if totalLVL >= 13 and totalLVL <=16 then ProfBonus = "+5" end
         if totalLVL >= 17 and totalLVL <=20 then ProfBonus = "+6" end
         if totalLVL >= 21 then ProfBonus = 0 end
-        self.editButton({index = ProfBonusDisplayIdx, label = tostring(ProfBonus)})
+        self.editButton({index = displayNumberIndex["ProfBonusDisplayIdx"], label = tostring(ProfBonus)})
         -- Saving Throws
-        STRsaveItem = tonumber(savedDataTable[STRsaveItemDisplayIdx])
-        DEXsaveItem = tonumber(savedDataTable[DEXsaveItemDisplayIdx])
-        CONsaveItem = tonumber(savedDataTable[CONsaveItemDisplayIdx])
-        INTsaveItem = tonumber(savedDataTable[INTsaveItemDisplayIdx])
-        WISsaveItem = tonumber(savedDataTable[WISsaveItemDisplayIdx])
-        CHAsaveItem = tonumber(savedDataTable[CHAsaveItemDisplayIdx])
+        STRsaveItem = tonumber(savedDataTable_KV["STRsaveItemDisplayIdx"])
+        DEXsaveItem = tonumber(savedDataTable_KV["DEXsaveItemDisplayIdx"])
+        CONsaveItem = tonumber(savedDataTable_KV["CONsaveItemDisplayIdx"])
+        INTsaveItem = tonumber(savedDataTable_KV["INTsaveItemDisplayIdx"])
+        WISsaveItem = tonumber(savedDataTable_KV["WISsaveItemDisplayIdx"])
+        CHAsaveItem = tonumber(savedDataTable_KV["CHAsaveItemDisplayIdx"])
         if STRsaveItem == nil then STRsaveItem = 0 end
         if DEXsaveItem == nil then DEXsaveItem = 0 end
         if CONsaveItem == nil then CONsaveItem = 0 end
@@ -1247,44 +825,44 @@ function updateCalculatedValues()
         if INTsaveCheck ~= nil and INTsaveCheck == string.char(10008) then INTsaveTotal = INTsaveTotal + ProfBonus end
         if WISsaveCheck ~= nil and WISsaveCheck == string.char(10008) then WISsaveTotal = WISsaveTotal + ProfBonus end
         if CHAsaveCheck ~= nil and CHAsaveCheck == string.char(10008) then CHAsaveTotal = CHAsaveTotal + ProfBonus end
-        self.editButton({index = STRsaveCheckDisplayIdx, label = tostring(STRsaveCheck)})
-        self.editButton({index = DEXsaveCheckDisplayIdx, label = tostring(DEXsaveCheck)})
-        self.editButton({index = CONsaveCheckDisplayIdx, label = tostring(CONsaveCheck)})
-        self.editButton({index = INTsaveCheckDisplayIdx, label = tostring(INTsaveCheck)})
-        self.editButton({index = WISsaveCheckDisplayIdx, label = tostring(WISsaveCheck)})
-        self.editButton({index = CHAsaveCheckDisplayIdx, label = tostring(CHAsaveCheck)})
+        self.editButton({index = displayNumberIndex["STRsaveCheckDisplayIdx"], label = tostring(STRsaveCheck)})
+        self.editButton({index = displayNumberIndex["DEXsaveCheckDisplayIdx"], label = tostring(DEXsaveCheck)})
+        self.editButton({index = displayNumberIndex["CONsaveCheckDisplayIdx"], label = tostring(CONsaveCheck)})
+        self.editButton({index = displayNumberIndex["INTsaveCheckDisplayIdx"], label = tostring(INTsaveCheck)})
+        self.editButton({index = displayNumberIndex["WISsaveCheckDisplayIdx"], label = tostring(WISsaveCheck)})
+        self.editButton({index = displayNumberIndex["CHAsaveCheckDisplayIdx"], label = tostring(CHAsaveCheck)})
 
-        self.editButton({index = STRsaveTotalDisplayIdx, label = tostring(STRsaveTotal)})
-        self.editButton({index = STRsaveModDisplayIdx, label = tostring(STRmod)})
-        self.editButton({index = DEXsaveTotalDisplayIdx, label = tostring(DEXsaveTotal)})
-        self.editButton({index = DEXsaveModDisplayIdx, label = tostring(DEXmod)})
-        self.editButton({index = CONsaveTotalDisplayIdx, label = tostring(CONsaveTotal)})
-        self.editButton({index = CONsaveModDisplayIdx, label = tostring(CONmod)})
-        self.editButton({index = INTsaveTotalDisplayIdx, label = tostring(INTsaveTotal)})
-        self.editButton({index = INTsaveModDisplayIdx, label = tostring(INTmod)})
-        self.editButton({index = WISsaveTotalDisplayIdx, label = tostring(WISsaveTotal)})
-        self.editButton({index = WISsaveModDisplayIdx, label = tostring(WISmod)})
-        self.editButton({index = CHAsaveTotalDisplayIdx, label = tostring(CHAsaveTotal)})
-        self.editButton({index = CHAsaveModDisplayIdx, label = tostring(CHAmod)})
+        self.editButton({index = displayNumberIndex["STRsaveTotalDisplayIdx"], label = tostring(STRsaveTotal)})
+        self.editButton({index = displayNumberIndex["STRsaveModDisplayIdx"], label = tostring(STRmod)})
+        self.editButton({index = displayNumberIndex["DEXsaveTotalDisplayIdx"], label = tostring(DEXsaveTotal)})
+        self.editButton({index = displayNumberIndex["DEXsaveModDisplayIdx"], label = tostring(DEXmod)})
+        self.editButton({index = displayNumberIndex["CONsaveTotalDisplayIdx"], label = tostring(CONsaveTotal)})
+        self.editButton({index = displayNumberIndex["CONsaveModDisplayIdx"], label = tostring(CONmod)})
+        self.editButton({index = displayNumberIndex["INTsaveTotalDisplayIdx"], label = tostring(INTsaveTotal)})
+        self.editButton({index = displayNumberIndex["INTsaveModDisplayIdx"], label = tostring(INTmod)})
+        self.editButton({index = displayNumberIndex["WISsaveTotalDisplayIdx"], label = tostring(WISsaveTotal)})
+        self.editButton({index = displayNumberIndex["WISsaveModDisplayIdx"], label = tostring(WISmod)})
+        self.editButton({index = displayNumberIndex["CHAsaveTotalDisplayIdx"], label = tostring(CHAsaveTotal)})
+        self.editButton({index = displayNumberIndex["CHAsaveModDisplayIdx"], label = tostring(CHAmod)})
         -- Skills
-        AcrobaticsItem = tonumber(savedDataTable[AcrobaticsItemDisplayIdx])
-        AnimalHandlingItem = tonumber(savedDataTable[AnimalHandlingItemDisplayIdx])
-        ArcanaItem = tonumber(savedDataTable[ArcanaItemDisplayIdx])
-        AthleticsItem = tonumber(savedDataTable[AthleticsItemDisplayIdx])
-        DeceptionItem = tonumber(savedDataTable[DeceptionItemDisplayIdx])
-        HistoryItem = tonumber(savedDataTable[HistoryItemDisplayIdx])
-        InsightItem = tonumber(savedDataTable[InsightItemDisplayIdx])
-        IntimidationItem = tonumber(savedDataTable[IntimidationItemDisplayIdx])
-        InvestigationItem = tonumber(savedDataTable[InvestigationItemDisplayIdx])
-        MedicineItem = tonumber(savedDataTable[MedicineItemDisplayIdx])
-        NatureItem = tonumber(savedDataTable[NatureItemDisplayIdx])
-        PerceptionItem = tonumber(savedDataTable[PerceptionItemDisplayIdx])
-        PerformanceItem = tonumber(savedDataTable[PerformanceItemDisplayIdx])
-        PersuasionItem = tonumber(savedDataTable[PersuasionItemDisplayIdx])
-        ReligionItem = tonumber(savedDataTable[ReligionItemDisplayIdx])
-        SleightofHandItem = tonumber(savedDataTable[SleightofHandItemDisplayIdx])
-        StealthItem = tonumber(savedDataTable[StealthItemDisplayIdx])
-        SurvivalItem = tonumber(savedDataTable[SurvivalItemDisplayIdx])
+        AcrobaticsItem = tonumber(savedDataTable_KV["AcrobaticsItemDisplayIdx"])
+        AnimalHandlingItem = tonumber(savedDataTable_KV["AnimalHandlingItemDisplayIdx"])
+        ArcanaItem = tonumber(savedDataTable_KV["ArcanaItemDisplayIdx"])
+        AthleticsItem = tonumber(savedDataTable_KV["AthleticsItemDisplayIdx"])
+        DeceptionItem = tonumber(savedDataTable_KV["DeceptionItemDisplayIdx"])
+        HistoryItem = tonumber(savedDataTable_KV["HistoryItemDisplayIdx"])
+        InsightItem = tonumber(savedDataTable_KV["InsightItemDisplayIdx"])
+        IntimidationItem = tonumber(savedDataTable_KV["IntimidationItemDisplayIdx"])
+        InvestigationItem = tonumber(savedDataTable_KV["InvestigationItemDisplayIdx"])
+        MedicineItem = tonumber(savedDataTable_KV["MedicineItemDisplayIdx"])
+        NatureItem = tonumber(savedDataTable_KV["NatureItemDisplayIdx"])
+        PerceptionItem = tonumber(savedDataTable_KV["PerceptionItemDisplayIdx"])
+        PerformanceItem = tonumber(savedDataTable_KV["PerformanceItemDisplayIdx"])
+        PersuasionItem = tonumber(savedDataTable_KV["PersuasionItemDisplayIdx"])
+        ReligionItem = tonumber(savedDataTable_KV["ReligionItemDisplayIdx"])
+        SleightofHandItem = tonumber(savedDataTable_KV["SleightofHandItemDisplayIdx"])
+        StealthItem = tonumber(savedDataTable_KV["StealthItemDisplayIdx"])
+        SurvivalItem = tonumber(savedDataTable_KV["SurvivalItemDisplayIdx"])
         if AcrobaticsItem == nil then AcrobaticsItem = 0 end
         if AnimalHandlingItem == nil then AnimalHandlingItem = 0 end
         if ArcanaItem == nil then ArcanaItem = 0 end
@@ -1393,71 +971,71 @@ function updateCalculatedValues()
         elseif SurvivalCheck ~= nil and SurvivalCheck == string.char(10008) then SurvivalTotal = SurvivalTotal + ProfBonus
         elseif SurvivalCheck ~= nil and SurvivalCheck == "x2" then SurvivalTotal = SurvivalTotal + (ProfBonus * 2)
         end
-        self.editButton({index = AcrobaticsCheckDisplayIdx, label = tostring(AcrobaticsCheck)})
-        self.editButton({index = AnimalHandlingCheckDisplayIdx, label = tostring(AnimalHandlingCheck)})
-        self.editButton({index = ArcanaCheckDisplayIdx, label = tostring(ArcanaCheck)})
-        self.editButton({index = AthleticsCheckDisplayIdx, label = tostring(AthleticsCheck)})
-        self.editButton({index = DeceptionCheckDisplayIdx, label = tostring(DeceptionCheck)})
-        self.editButton({index = HistoryCheckDisplayIdx, label = tostring(HistoryCheck)})
-        self.editButton({index = InsightCheckDisplayIdx, label = tostring(InsightCheck)})
-        self.editButton({index = IntimidationCheckDisplayIdx, label = tostring(IntimidationCheck)})
-        self.editButton({index = InvestigationCheckDisplayIdx, label = tostring(InvestigationCheck)})
-        self.editButton({index = MedicineCheckDisplayIdx, label = tostring(MedicineCheck)})
-        self.editButton({index = NatureCheckDisplayIdx, label = tostring(NatureCheck)})
-        self.editButton({index = PerceptionCheckDisplayIdx, label = tostring(PerceptionCheck)})
-        self.editButton({index = PerformanceCheckDisplayIdx, label = tostring(PerformanceCheck)})
-        self.editButton({index = PersuasionCheckDisplayIdx, label = tostring(PersuasionCheck)})
-        self.editButton({index = ReligionCheckDisplayIdx, label = tostring(ReligionCheck)})
-        self.editButton({index = SleightofHandCheckDisplayIdx, label = tostring(SleightofHandCheck)})
-        self.editButton({index = StealthCheckDisplayIdx, label = tostring(StealthCheck)})
-        self.editButton({index = SurvivalCheckDisplayIdx, label = tostring(SurvivalCheck)})
-        self.editButton({index = AcrobaticsTotalDisplayIdx, label = tostring(AcrobaticsTotal)})
-        self.editButton({index = AnimalHandlingTotalDisplayIdx, label = tostring(AnimalHandlingTotal)})
-        self.editButton({index = ArcanaTotalDisplayIdx, label = tostring(ArcanaTotal)})
-        self.editButton({index = AthleticsTotalDisplayIdx, label = tostring(AthleticsTotal)})
-        self.editButton({index = DeceptionTotalDisplayIdx, label = tostring(DeceptionTotal)})
-        self.editButton({index = HistoryTotalDisplayIdx, label = tostring(HistoryTotal)})
-        self.editButton({index = InsightTotalDisplayIdx, label = tostring(InsightTotal)})
-        self.editButton({index = IntimidationTotalDisplayIdx, label = tostring(IntimidationTotal)})
-        self.editButton({index = InvestigationTotalDisplayIdx, label = tostring(InvestigationTotal)})
-        self.editButton({index = MedicineTotalDisplayIdx, label = tostring(MedicineTotal)})
-        self.editButton({index = NatureTotalDisplayIdx, label = tostring(NatureTotal)})
-        self.editButton({index = PerceptionTotalDisplayIdx, label = tostring(PerceptionTotal)})
-        self.editButton({index = PerformanceTotalDisplayIdx, label = tostring(PerformanceTotal)})
-        self.editButton({index = PersuasionTotalDisplayIdx, label = tostring(PersuasionTotal)})
-        self.editButton({index = ReligionTotalDisplayIdx, label = tostring(ReligionTotal)})
-        self.editButton({index = SleightofHandTotalDisplayIdx, label = tostring(SleightofHandTotal)})
-        self.editButton({index = StealthTotalDisplayIdx, label = tostring(StealthTotal)})
-        self.editButton({index = SurvivalTotalDisplayIdx, label = tostring(SurvivalTotal)})
-        self.editButton({index = AcrobaticsModDisplayIdx, label = tostring(DEXmod)})
-        self.editButton({index = AnimalHandlingModDisplayIdx, label = tostring(WISmod)})
-        self.editButton({index = ArcanaModDisplayIdx, label = tostring(INTmod)})
-        self.editButton({index = AthleticsModDisplayIdx, label = tostring(STRmod)})
-        self.editButton({index = DeceptionModDisplayIdx, label = tostring(CHAmod)})
-        self.editButton({index = HistoryModDisplayIdx, label = tostring(INTmod)})
-        self.editButton({index = InsightModDisplayIdx, label = tostring(WISmod)})
-        self.editButton({index = IntimidationModDisplayIdx, label = tostring(CHAmod)})
-        self.editButton({index = InvestigationModDisplayIdx, label = tostring(INTmod)})
-        self.editButton({index = MedicineModDisplayIdx, label = tostring(WISmod)})
-        self.editButton({index = NatureModDisplayIdx, label = tostring(INTmod)})
-        self.editButton({index = PerceptionModDisplayIdx, label = tostring(WISmod)})
-        self.editButton({index = PerformanceModDisplayIdx, label = tostring(CHAmod)})
-        self.editButton({index = PersuasionModDisplayIdx, label = tostring(CHAmod)})
-        self.editButton({index = ReligionModDisplayIdx, label = tostring(INTmod)})
-        self.editButton({index = SleightofHandModDisplayIdx, label = tostring(DEXmod)})
-        self.editButton({index = StealthModDisplayIdx, label = tostring(DEXmod)})
-        self.editButton({index = SurvivalModDisplayIdx, label = tostring(WISmod)})
+        self.editButton({index = displayNumberIndex["AcrobaticsCheckDisplayIdx"], label = tostring(AcrobaticsCheck)})
+        self.editButton({index = displayNumberIndex["AnimalHandlingCheckDisplayIdx"], label = tostring(AnimalHandlingCheck)})
+        self.editButton({index = displayNumberIndex["ArcanaCheckDisplayIdx"], label = tostring(ArcanaCheck)})
+        self.editButton({index = displayNumberIndex["AthleticsCheckDisplayIdx"], label = tostring(AthleticsCheck)})
+        self.editButton({index = displayNumberIndex["DeceptionCheckDisplayIdx"], label = tostring(DeceptionCheck)})
+        self.editButton({index = displayNumberIndex["HistoryCheckDisplayIdx"], label = tostring(HistoryCheck)})
+        self.editButton({index = displayNumberIndex["InsightCheckDisplayIdx"], label = tostring(InsightCheck)})
+        self.editButton({index = displayNumberIndex["IntimidationCheckDisplayIdx"], label = tostring(IntimidationCheck)})
+        self.editButton({index = displayNumberIndex["InvestigationCheckDisplayIdx"], label = tostring(InvestigationCheck)})
+        self.editButton({index = displayNumberIndex["MedicineCheckDisplayIdx"], label = tostring(MedicineCheck)})
+        self.editButton({index = displayNumberIndex["NatureCheckDisplayIdx"], label = tostring(NatureCheck)})
+        self.editButton({index = displayNumberIndex["PerceptionCheckDisplayIdx"], label = tostring(PerceptionCheck)})
+        self.editButton({index = displayNumberIndex["PerformanceCheckDisplayIdx"], label = tostring(PerformanceCheck)})
+        self.editButton({index = displayNumberIndex["PersuasionCheckDisplayIdx"], label = tostring(PersuasionCheck)})
+        self.editButton({index = displayNumberIndex["ReligionCheckDisplayIdx"], label = tostring(ReligionCheck)})
+        self.editButton({index = displayNumberIndex["SleightofHandCheckDisplayIdx"], label = tostring(SleightofHandCheck)})
+        self.editButton({index = displayNumberIndex["StealthCheckDisplayIdx"], label = tostring(StealthCheck)})
+        self.editButton({index = displayNumberIndex["SurvivalCheckDisplayIdx"], label = tostring(SurvivalCheck)})
+        self.editButton({index = displayNumberIndex["AcrobaticsTotalDisplayIdx"], label = tostring(AcrobaticsTotal)})
+        self.editButton({index = displayNumberIndex["AnimalHandlingTotalDisplayIdx"], label = tostring(AnimalHandlingTotal)})
+        self.editButton({index = displayNumberIndex["ArcanaTotalDisplayIdx"], label = tostring(ArcanaTotal)})
+        self.editButton({index = displayNumberIndex["AthleticsTotalDisplayIdx"], label = tostring(AthleticsTotal)})
+        self.editButton({index = displayNumberIndex["DeceptionTotalDisplayIdx"], label = tostring(DeceptionTotal)})
+        self.editButton({index = displayNumberIndex["HistoryTotalDisplayIdx"], label = tostring(HistoryTotal)})
+        self.editButton({index = displayNumberIndex["InsightTotalDisplayIdx"], label = tostring(InsightTotal)})
+        self.editButton({index = displayNumberIndex["IntimidationTotalDisplayIdx"], label = tostring(IntimidationTotal)})
+        self.editButton({index = displayNumberIndex["InvestigationTotalDisplayIdx"], label = tostring(InvestigationTotal)})
+        self.editButton({index = displayNumberIndex["MedicineTotalDisplayIdx"], label = tostring(MedicineTotal)})
+        self.editButton({index = displayNumberIndex["NatureTotalDisplayIdx"], label = tostring(NatureTotal)})
+        self.editButton({index = displayNumberIndex["PerceptionTotalDisplayIdx"], label = tostring(PerceptionTotal)})
+        self.editButton({index = displayNumberIndex["PerformanceTotalDisplayIdx"], label = tostring(PerformanceTotal)})
+        self.editButton({index = displayNumberIndex["PersuasionTotalDisplayIdx"], label = tostring(PersuasionTotal)})
+        self.editButton({index = displayNumberIndex["ReligionTotalDisplayIdx"], label = tostring(ReligionTotal)})
+        self.editButton({index = displayNumberIndex["SleightofHandTotalDisplayIdx"], label = tostring(SleightofHandTotal)})
+        self.editButton({index = displayNumberIndex["StealthTotalDisplayIdx"], label = tostring(StealthTotal)})
+        self.editButton({index = displayNumberIndex["SurvivalTotalDisplayIdx"], label = tostring(SurvivalTotal)})
+        self.editButton({index = displayNumberIndex["AcrobaticsModDisplayIdx"], label = tostring(DEXmod)})
+        self.editButton({index = displayNumberIndex["AnimalHandlingModDisplayIdx"], label = tostring(WISmod)})
+        self.editButton({index = displayNumberIndex["ArcanaModDisplayIdx"], label = tostring(INTmod)})
+        self.editButton({index = displayNumberIndex["AthleticsModDisplayIdx"], label = tostring(STRmod)})
+        self.editButton({index = displayNumberIndex["DeceptionModDisplayIdx"], label = tostring(CHAmod)})
+        self.editButton({index = displayNumberIndex["HistoryModDisplayIdx"], label = tostring(INTmod)})
+        self.editButton({index = displayNumberIndex["InsightModDisplayIdx"], label = tostring(WISmod)})
+        self.editButton({index = displayNumberIndex["IntimidationModDisplayIdx"], label = tostring(CHAmod)})
+        self.editButton({index = displayNumberIndex["InvestigationModDisplayIdx"], label = tostring(INTmod)})
+        self.editButton({index = displayNumberIndex["MedicineModDisplayIdx"], label = tostring(WISmod)})
+        self.editButton({index = displayNumberIndex["NatureModDisplayIdx"], label = tostring(INTmod)})
+        self.editButton({index = displayNumberIndex["PerceptionModDisplayIdx"], label = tostring(WISmod)})
+        self.editButton({index = displayNumberIndex["PerformanceModDisplayIdx"], label = tostring(CHAmod)})
+        self.editButton({index = displayNumberIndex["PersuasionModDisplayIdx"], label = tostring(CHAmod)})
+        self.editButton({index = displayNumberIndex["ReligionModDisplayIdx"], label = tostring(INTmod)})
+        self.editButton({index = displayNumberIndex["SleightofHandModDisplayIdx"], label = tostring(DEXmod)})
+        self.editButton({index = displayNumberIndex["StealthModDisplayIdx"], label = tostring(DEXmod)})
+        self.editButton({index = displayNumberIndex["SurvivalModDisplayIdx"], label = tostring(WISmod)})
         PassivePerception = 10 + PerceptionTotal
-        self.editButton({index = PassivePerceptionDisplayIdx, label = tostring(PassivePerception)})
+        self.editButton({index = displayNumberIndex["PassivePerceptionDisplayIdx"], label = tostring(PassivePerception)})
         --
         Initiative = DEXmod
-        self.editButton({index = InitiativeDisplayIdx, label = tostring(Initiative)})
+        self.editButton({index = displayNumberIndex["InitiativeDisplayIdx"], label = tostring(Initiative)})
         if HitDiceClass1Total == nil then HitDiceClass1Total = 0 end
         if HitDiceClass2Total == nil then HitDiceClass2Total = 0 end
         HitDiceClass1Total = classLVL1
         HitDiceClass2Total = classLVL2
-        self.editButton({index = HitDiceClass1TotalDisplayIdx, label = tostring(HitDiceClass1Total)})
-        self.editButton({index = HitDiceClass2TotalDisplayIdx, label = tostring(HitDiceClass2Total)})
+        self.editButton({index = displayNumberIndex["HitDiceClass1TotalDisplayIdx"], label = tostring(HitDiceClass1Total)})
+        self.editButton({index = displayNumberIndex["HitDiceClass2TotalDisplayIdx"], label = tostring(HitDiceClass2Total)})
         SpellSaveDC1 = 0
         SpellSaveDC2 = 0
         SpellAtkBonus1 = 0
@@ -1486,8 +1064,8 @@ function updateCalculatedValues()
         elseif className2 ~= nil and className2 == tostring("") then
             HitDiceClass2 = tostring("")
         end
-        self.editButton({index = HitDiceClass1DisplayIdx, label = tostring(HitDiceClass1)})
-        self.editButton({index = HitDiceClass2DisplayIdx, label = tostring(HitDiceClass2)})
+        self.editButton({index = displayNumberIndex["HitDiceClass1DisplayIdx"], label = tostring(HitDiceClass1)})
+        self.editButton({index = displayNumberIndex["HitDiceClass2DisplayIdx"], label = tostring(HitDiceClass2)})
         if className1 ~= nil and className1 == tostring("Wizard") or className1 == tostring("Abjuration Wizard") or className1 == tostring("Conjuration Wizard") or className1 == tostring("Divination Wizard") or className1 == tostring("Enchantment Wizard") or className1 == tostring("Evocation Wizard") or className1 == tostring("Illusion Wizard") or className1 == tostring("Necromancy Wizard") or className1 == tostring("Transmutation Wizard") or className1 == tostring("War Magic Wizard") or className1 == tostring("Eldritch Knight Fighter") or className1 == tostring("Arcane Trickster Rogue") then
             Caster = 8
             SpellSaveDC1 = SpellSaveDC1 + ProfBonus + Caster + INTmod;
@@ -1536,25 +1114,25 @@ function updateCalculatedValues()
             SpellSaveDC2 = "NA"
             SpellAtkBonus2 = "NA"
         end
-        self.editButton({index = SpellSaveDC1DisplayIdx, label = tostring(SpellSaveDC1)})
-        self.editButton({index = SpellSaveDC2DisplayIdx, label = tostring(SpellSaveDC2)})
-        self.editButton({index = SpellAtkBonus1DisplayIdx, label = tostring(SpellAtkBonus1)})
-        self.editButton({index = SpellAtkBonus2DisplayIdx, label = tostring(SpellAtkBonus2)})
+        self.editButton({index = displayNumberIndex["SpellSaveDC1DisplayIdx"], label = tostring(SpellSaveDC1)})
+        self.editButton({index = displayNumberIndex["SpellSaveDC2DisplayIdx"], label = tostring(SpellSaveDC2)})
+        self.editButton({index = displayNumberIndex["SpellAtkBonus1DisplayIdx"], label = tostring(SpellAtkBonus1)})
+        self.editButton({index = displayNumberIndex["SpellAtkBonus2DisplayIdx"], label = tostring(SpellAtkBonus2)})
 
-        self.editButton({index = raceNameDisplayIdx, label = tostring(raceName)})
-        self.editButton({index = infoSizeDisplayIdx, label = tostring(infoSize)})
-        self.editButton({index = VisionDisplayIdx, label = tostring(Vision)})
-        self.editButton({index = Vision1DisplayIdx, label = tostring(Vision1)})
-        self.editButton({index = SpeedDisplayIdx, label = tostring(Speed)})
-        self.editButton({index = className1DisplayIdx, label = tostring(className1)})
-        self.editButton({index = className2DisplayIdx, label = tostring(className2)})
+        self.editButton({index = displayNumberIndex["raceNameDisplayIdx"], label = tostring(raceName)})
+        self.editButton({index = displayNumberIndex["infoSizeDisplayIdx"], label = tostring(infoSize)})
+        self.editButton({index = displayNumberIndex["VisionDisplayIdx"], label = tostring(Vision)})
+        self.editButton({index = displayNumberIndex["Vision1DisplayIdx"], label = tostring(Vision1)})
+        self.editButton({index = displayNumberIndex["SpeedDisplayIdx"], label = tostring(Speed)})
+        self.editButton({index = displayNumberIndex["className1DisplayIdx"], label = tostring(className1)})
+        self.editButton({index = displayNumberIndex["className2DisplayIdx"], label = tostring(className2)})
 
-        SaveCheckSTRIsChecked = savedDataTable[SaveCheckSTRCheckboxButtonIdx]
-        SaveCheckDEXIsChecked = savedDataTable[SaveCheckDEXCheckboxButtonIdx]
-        SaveCheckCONIsChecked = savedDataTable[SaveCheckCONCheckboxButtonIdx]
-        SaveCheckINTIsChecked = savedDataTable[SaveCheckINTCheckboxButtonIdx]
-        SaveCheckWISIsChecked = savedDataTable[SaveCheckWISCheckboxButtonIdx]
-        SaveCheckCHAIsChecked = savedDataTable[SaveCheckCHACheckboxButtonIdx]
+        SaveCheckSTRIsChecked = savedDataTable_KV["SaveCheckSTRCheckboxButtonIdx"]
+        SaveCheckDEXIsChecked = savedDataTable_KV["SaveCheckDEXCheckboxButtonIdx"]
+        SaveCheckCONIsChecked = savedDataTable_KV["SaveCheckCONCheckboxButtonIdx"]
+        SaveCheckINTIsChecked = savedDataTable_KV["SaveCheckINTCheckboxButtonIdx"]
+        SaveCheckWISIsChecked = savedDataTable_KV["SaveCheckWISCheckboxButtonIdx"]
+        SaveCheckCHAIsChecked = savedDataTable_KV["SaveCheckCHACheckboxButtonIdx"]
         if SaveCheckSTRIsChecked ~= nil and SaveCheckSTRIsChecked == true then RollSaveSelected = STRsaveTotal; messageSaveThrow = " )[/b] on their Strength Saving Throw!"
         elseif SaveCheckDEXIsChecked ~= nil and SaveCheckDEXIsChecked == true then RollSaveSelected = DEXsaveTotal; messageSaveThrow = " )[/b] on their Dexterity Saving Throw!"
         elseif SaveCheckCONIsChecked ~= nil and SaveCheckCONIsChecked == true then RollSaveSelected = CONsaveTotal; messageSaveThrow = " )[/b] on their Constitution Saving Throw!"
@@ -1563,24 +1141,24 @@ function updateCalculatedValues()
         elseif SaveCheckCHAIsChecked ~= nil and SaveCheckCHAIsChecked == true then RollSaveSelected = CHAsaveTotal; messageSaveThrow = " )[/b] on their Charisma Saving Throw!"
         end
 
-        AcrobaticsSkillIsChecked = savedDataTable[AcrobaticsSkillCheckCheckboxButtonIdx]
-        AnimalHandlingSkillIsChecked = savedDataTable[AnimalHandlingSkillCheckCheckboxButtonIdx]
-        ArcanaSkillIsChecked = savedDataTable[ArcanaSkillCheckCheckboxButtonIdx]
-        AthleticsSkillIsChecked = savedDataTable[AthleticsSkillCheckCheckboxButtonIdx]
-        DeceptionSkillIsChecked = savedDataTable[DeceptionSkillCheckCheckboxButtonIdx]
-        HistorySkillIsChecked = savedDataTable[HistorySkillCheckCheckboxButtonIdx]
-        InsightSkillIsChecked = savedDataTable[InsightSkillCheckCheckboxButtonIdx]
-        IntimidationSkillIsChecked = savedDataTable[IntimidationSkillCheckCheckboxButtonIdx]
-        InvestigationSkillIsChecked = savedDataTable[InvestigationSkillCheckCheckboxButtonIdx]
-        MedicineSkillIsChecked = savedDataTable[MedicineSkillCheckCheckboxButtonIdx]
-        NatureSkillIsChecked = savedDataTable[NatureSkillCheckCheckboxButtonIdx]
-        PerceptionSkillIsChecked = savedDataTable[PerceptionSkillCheckCheckboxButtonIdx]
-        PerformanceSkillIsChecked = savedDataTable[PerformanceSkillCheckCheckboxButtonIdx]
-        PersuasionSkillIsChecked = savedDataTable[PersuasionSkillCheckCheckboxButtonIdx]
-        ReligionSkillIsChecked = savedDataTable[ReligionSkillCheckCheckboxButtonIdx]
-        SleightofHandSkillIsChecked = savedDataTable[SleightofHandSkillCheckCheckboxButtonIdx]
-        StealthSkillIsChecked = savedDataTable[StealthSkillCheckCheckboxButtonIdx]
-        SurvivalSkillIsChecked = savedDataTable[SurvivalSkillCheckCheckboxButtonIdx]
+        AcrobaticsSkillIsChecked = savedDataTable_KV["AcrobaticsSkillCheckCheckboxButtonIdx"]
+        AnimalHandlingSkillIsChecked = savedDataTable_KV["AnimalHandlingSkillCheckCheckboxButtonIdx"]
+        ArcanaSkillIsChecked = savedDataTable_KV["ArcanaSkillCheckCheckboxButtonIdx"]
+        AthleticsSkillIsChecked = savedDataTable_KV["AthleticsSkillCheckCheckboxButtonIdx"]
+        DeceptionSkillIsChecked = savedDataTable_KV["DeceptionSkillCheckCheckboxButtonIdx"]
+        HistorySkillIsChecked = savedDataTable_KV["HistorySkillCheckCheckboxButtonIdx"]
+        InsightSkillIsChecked = savedDataTable_KV["InsightSkillCheckCheckboxButtonIdx"]
+        IntimidationSkillIsChecked = savedDataTable_KV["IntimidationSkillCheckCheckboxButtonIdx"]
+        InvestigationSkillIsChecked = savedDataTable_KV["InvestigationSkillCheckCheckboxButtonIdx"]
+        MedicineSkillIsChecked = savedDataTable_KV["MedicineSkillCheckCheckboxButtonIdx"]
+        NatureSkillIsChecked = savedDataTable_KV["NatureSkillCheckCheckboxButtonIdx"]
+        PerceptionSkillIsChecked = savedDataTable_KV["PerceptionSkillCheckCheckboxButtonIdx"]
+        PerformanceSkillIsChecked = savedDataTable_KV["PerformanceSkillCheckCheckboxButtonIdx"]
+        PersuasionSkillIsChecked = savedDataTable_KV["PersuasionSkillCheckCheckboxButtonIdx"]
+        ReligionSkillIsChecked = savedDataTable_KV["ReligionSkillCheckCheckboxButtonIdx"]
+        SleightofHandSkillIsChecked = savedDataTable_KV["SleightofHandSkillCheckCheckboxButtonIdx"]
+        StealthSkillIsChecked = savedDataTable_KV["StealthSkillCheckCheckboxButtonIdx"]
+        SurvivalSkillIsChecked = savedDataTable_KV["SurvivalSkillCheckCheckboxButtonIdx"]
         if AcrobaticsSkillIsChecked ~= nil and AcrobaticsSkillIsChecked == true then RollSkillSelected = AcrobaticsTotal; messageSkill = " )[/b] on their Acrobatics Check!"
         elseif AnimalHandlingSkillIsChecked ~= nil and AnimalHandlingSkillIsChecked == true then RollSkillSelected = AnimalHandlingTotal; messageSkill = " )[/b] on their Animal Handling Check!"
         elseif ArcanaSkillIsChecked ~= nil and ArcanaSkillIsChecked == true then RollSkillSelected = ArcanaTotal; messageSkill = " )[/b] on their Arcana Check!"
