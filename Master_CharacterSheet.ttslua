@@ -372,8 +372,18 @@ function onload(saved_data)
     updateSheet()
     createButtons()
     math.randomseed(os.time())
+    -- USED TO DEBUG BUTTONS
     -- buttons = self.getButtons()
     -- for key, value in pairs(buttons) do
+    --     for k, v in pairs(value) do
+    --         print(k, v)
+    --     end
+    --     print("=== STOP ===")
+    -- end
+
+    -- USED TO DEBUG INPUTS
+    -- inputs = self.getInputs()
+    -- for key, value in pairs(inputs) do
     --     for k, v in pairs(value) do
     --         print(k, v)
     --     end
@@ -535,110 +545,110 @@ function createAllDisplayNumbers()
     local SKILL_FONT_SIZE = 200
     local saveTOTALXcord = -9.2
     local saveMODXcord = -8.28
-    createDisplayNumber({-3.73, UI_Y_COORD, -4.04}, CHECK_FONT_SIZE, 160, 160)
-    createDisplayNumber({0.065, UI_Y_COORD, -3.8}, 140, 0, 0)
-    createDisplayNumber({3.45, UI_Y_COORD, -3.8}, 140, 0, 0)
-    createDisplayNumber({0.39, UI_Y_COORD, -4.42}, TOTAL_LEVEL_FONT_SIZE, 0, 0)
-    createDisplayNumber({0.34, UI_Y_COORD, -3.18}, 180, 0, 0)
-    createDisplayNumber({-1.17, UI_Y_COORD, -2.47}, 100, 0, 0)
-    createDisplayNumber({7.24, UI_Y_COORD, -2.59}, STANDARD_FONT_SIZE, 0, 0)
-    createDisplayNumber({-9.33, UI_Y_COORD, -5.47}, 400, 0, 0)
-    createDisplayNumber({abilityXcord, UI_Y_COORD, -4.98}, ABILITY_SCORE_FONT_SIZE, 0, 0)
-    createDisplayNumber({abilityXcord, UI_Y_COORD, -2.79}, ABILITY_SCORE_FONT_SIZE, 0, 0)
-    createDisplayNumber({abilityXcord, UI_Y_COORD, -0.62}, ABILITY_SCORE_FONT_SIZE, 0, 0)
-    createDisplayNumber({abilityXcord, UI_Y_COORD, 1.54}, ABILITY_SCORE_FONT_SIZE, 0, 0)
-    createDisplayNumber({abilityXcord, UI_Y_COORD, 3.72}, ABILITY_SCORE_FONT_SIZE, 0, 0)
-    createDisplayNumber({abilityXcord, UI_Y_COORD, 5.89}, ABILITY_SCORE_FONT_SIZE, 0, 0)
-    createDisplayNumber({abilityXcord, UI_Y_COORD, -5.7}, ABILITY_MOD_FONT_SIZE, 0, 0)
-    createDisplayNumber({abilityXcord, UI_Y_COORD, -3.52}, ABILITY_MOD_FONT_SIZE, 0, 0)
-    createDisplayNumber({abilityXcord, UI_Y_COORD, -1.34}, ABILITY_MOD_FONT_SIZE, 0, 0)
-    createDisplayNumber({abilityXcord, UI_Y_COORD, 0.84}, ABILITY_MOD_FONT_SIZE, 0, 0)
-    createDisplayNumber({abilityXcord, UI_Y_COORD, 3.02}, ABILITY_MOD_FONT_SIZE, 0, 0)
-    createDisplayNumber({abilityXcord, UI_Y_COORD, 5.2}, ABILITY_MOD_FONT_SIZE, 0, 0)
-    createDisplayNumber({saveCHECKXcord, UI_Y_COORD, -4.45}, CHECK_FONT_SIZE, 160, 160)
-    createDisplayNumber({saveCHECKXcord, UI_Y_COORD, -4.04}, CHECK_FONT_SIZE, 160, 160)
-    createDisplayNumber({saveCHECKXcord, UI_Y_COORD, -3.63}, CHECK_FONT_SIZE, 160, 160)
-    createDisplayNumber({saveCHECKXcord, UI_Y_COORD, -3.22}, CHECK_FONT_SIZE, 160, 160)
-    createDisplayNumber({saveCHECKXcord, UI_Y_COORD, -2.81}, CHECK_FONT_SIZE, 160, 160)
-    createDisplayNumber({saveCHECKXcord, UI_Y_COORD, -2.4}, CHECK_FONT_SIZE, 160, 160)
-    createDisplayNumber({saveTOTALXcord, UI_Y_COORD, -4.45}, SKILL_FONT_SIZE, 0, 0)
-    createDisplayNumber({saveTOTALXcord, UI_Y_COORD, -4.04}, SKILL_FONT_SIZE, 0, 0)
-    createDisplayNumber({saveTOTALXcord, UI_Y_COORD, -3.63}, SKILL_FONT_SIZE, 0, 0)
-    createDisplayNumber({saveTOTALXcord, UI_Y_COORD, -3.22}, SKILL_FONT_SIZE, 0, 0)
-    createDisplayNumber({saveTOTALXcord, UI_Y_COORD, -2.81}, SKILL_FONT_SIZE, 0, 0)
-    createDisplayNumber({saveTOTALXcord, UI_Y_COORD, -2.4}, SKILL_FONT_SIZE, 0, 0)
-    createDisplayNumber({saveMODXcord, UI_Y_COORD, -4.45}, SKILL_FONT_SIZE, 0, 0)
-    createDisplayNumber({saveMODXcord, UI_Y_COORD, -4.04}, SKILL_FONT_SIZE, 0, 0)
-    createDisplayNumber({saveMODXcord, UI_Y_COORD, -3.63}, SKILL_FONT_SIZE, 0, 0)
-    createDisplayNumber({saveMODXcord, UI_Y_COORD, -3.22}, SKILL_FONT_SIZE, 0, 0)
-    createDisplayNumber({saveMODXcord, UI_Y_COORD, -2.81}, SKILL_FONT_SIZE, 0, 0)
-    createDisplayNumber({saveMODXcord, UI_Y_COORD, -2.4}, SKILL_FONT_SIZE, 0, 0)
-    createDisplayNumber({saveCHECKXcord, UI_Y_COORD, -0.94}, CHECK_FONT_SIZE, 160, 160)
-    createDisplayNumber({saveCHECKXcord, UI_Y_COORD, -0.53}, CHECK_FONT_SIZE, 160, 160)
-    createDisplayNumber({saveCHECKXcord, UI_Y_COORD, -0.12}, CHECK_FONT_SIZE, 160, 160)
-    createDisplayNumber({saveCHECKXcord, UI_Y_COORD, 0.29}, CHECK_FONT_SIZE, 160, 160)
-    createDisplayNumber({saveCHECKXcord, UI_Y_COORD, 0.7}, CHECK_FONT_SIZE, 160, 160)
-    createDisplayNumber({saveCHECKXcord, UI_Y_COORD, 1.11}, CHECK_FONT_SIZE, 160, 160)
-    createDisplayNumber({saveCHECKXcord, UI_Y_COORD, 1.52}, CHECK_FONT_SIZE, 160, 160)
-    createDisplayNumber({saveCHECKXcord, UI_Y_COORD, 1.93}, CHECK_FONT_SIZE, 160, 160)
-    createDisplayNumber({saveCHECKXcord, UI_Y_COORD, 2.34}, CHECK_FONT_SIZE, 160, 160)
-    createDisplayNumber({saveCHECKXcord, UI_Y_COORD, 2.75}, CHECK_FONT_SIZE, 160, 160)
-    createDisplayNumber({saveCHECKXcord, UI_Y_COORD, 3.16}, CHECK_FONT_SIZE, 160, 160)
-    createDisplayNumber({saveCHECKXcord, UI_Y_COORD, 3.57}, CHECK_FONT_SIZE, 160, 160)
-    createDisplayNumber({saveCHECKXcord, UI_Y_COORD, 3.98}, CHECK_FONT_SIZE, 160, 160)
-    createDisplayNumber({saveCHECKXcord, UI_Y_COORD, 4.39}, CHECK_FONT_SIZE, 160, 160)
-    createDisplayNumber({saveCHECKXcord, UI_Y_COORD, 4.8}, CHECK_FONT_SIZE, 160, 160)
-    createDisplayNumber({saveCHECKXcord, UI_Y_COORD, 5.21}, CHECK_FONT_SIZE, 160, 160)
-    createDisplayNumber({saveCHECKXcord, UI_Y_COORD, 5.62}, CHECK_FONT_SIZE, 160, 160)
-    createDisplayNumber({saveCHECKXcord, UI_Y_COORD, 6.03}, CHECK_FONT_SIZE, 160, 160)
-    createDisplayNumber({saveTOTALXcord, UI_Y_COORD, -0.94}, SKILL_FONT_SIZE, 0, 0)
-    createDisplayNumber({saveTOTALXcord, UI_Y_COORD, -0.53}, SKILL_FONT_SIZE, 0, 0)
-    createDisplayNumber({saveTOTALXcord, UI_Y_COORD, -0.12}, SKILL_FONT_SIZE, 0, 0)
-    createDisplayNumber({saveTOTALXcord, UI_Y_COORD, 0.29}, SKILL_FONT_SIZE, 0, 0)
-    createDisplayNumber({saveTOTALXcord, UI_Y_COORD, 0.7}, SKILL_FONT_SIZE, 0, 0)
-    createDisplayNumber({saveTOTALXcord, UI_Y_COORD, 1.11}, SKILL_FONT_SIZE, 0, 0)
-    createDisplayNumber({saveTOTALXcord, UI_Y_COORD, 1.52}, SKILL_FONT_SIZE, 0, 0)
-    createDisplayNumber({saveTOTALXcord, UI_Y_COORD, 1.93}, SKILL_FONT_SIZE, 0, 0)
-    createDisplayNumber({saveTOTALXcord, UI_Y_COORD, 2.34}, SKILL_FONT_SIZE, 0, 0)
-    createDisplayNumber({saveTOTALXcord, UI_Y_COORD, 2.75}, SKILL_FONT_SIZE, 0, 0)
-    createDisplayNumber({saveTOTALXcord, UI_Y_COORD, 3.16}, SKILL_FONT_SIZE, 0, 0)
-    createDisplayNumber({saveTOTALXcord, UI_Y_COORD, 3.57}, SKILL_FONT_SIZE, 0, 0)
-    createDisplayNumber({saveTOTALXcord, UI_Y_COORD, 3.98}, SKILL_FONT_SIZE, 0, 0)
-    createDisplayNumber({saveTOTALXcord, UI_Y_COORD, 4.39}, SKILL_FONT_SIZE, 0, 0)
-    createDisplayNumber({saveTOTALXcord, UI_Y_COORD, 4.8}, SKILL_FONT_SIZE, 0, 0)
-    createDisplayNumber({saveTOTALXcord, UI_Y_COORD, 5.21}, SKILL_FONT_SIZE, 0, 0)
-    createDisplayNumber({saveTOTALXcord, UI_Y_COORD, 5.62}, SKILL_FONT_SIZE, 0, 0)
-    createDisplayNumber({saveTOTALXcord, UI_Y_COORD, 6.03}, SKILL_FONT_SIZE, 0, 0)
-    createDisplayNumber({saveMODXcord, UI_Y_COORD, -0.94}, SKILL_FONT_SIZE, 0, 0)
-    createDisplayNumber({saveMODXcord, UI_Y_COORD, -0.53}, SKILL_FONT_SIZE, 0, 0)
-    createDisplayNumber({saveMODXcord, UI_Y_COORD, -0.12}, SKILL_FONT_SIZE, 0, 0)
-    createDisplayNumber({saveMODXcord, UI_Y_COORD, 0.29}, SKILL_FONT_SIZE, 0, 0)
-    createDisplayNumber({saveMODXcord, UI_Y_COORD, 0.7}, SKILL_FONT_SIZE, 0, 0)
-    createDisplayNumber({saveMODXcord, UI_Y_COORD, 1.11}, SKILL_FONT_SIZE, 0, 0)
-    createDisplayNumber({saveMODXcord, UI_Y_COORD, 1.52}, SKILL_FONT_SIZE, 0, 0)
-    createDisplayNumber({saveMODXcord, UI_Y_COORD, 1.93}, SKILL_FONT_SIZE, 0, 0)
-    createDisplayNumber({saveMODXcord, UI_Y_COORD, 2.34}, SKILL_FONT_SIZE, 0, 0)
-    createDisplayNumber({saveMODXcord, UI_Y_COORD, 2.75}, SKILL_FONT_SIZE, 0, 0)
-    createDisplayNumber({saveMODXcord, UI_Y_COORD, 3.16}, SKILL_FONT_SIZE, 0, 0)
-    createDisplayNumber({saveMODXcord, UI_Y_COORD, 3.57}, SKILL_FONT_SIZE, 0, 0)
-    createDisplayNumber({saveMODXcord, UI_Y_COORD, 3.98}, SKILL_FONT_SIZE, 0, 0)
-    createDisplayNumber({saveMODXcord, UI_Y_COORD, 4.39}, SKILL_FONT_SIZE, 0, 0)
-    createDisplayNumber({saveMODXcord, UI_Y_COORD, 4.8}, SKILL_FONT_SIZE, 0, 0)
-    createDisplayNumber({saveMODXcord, UI_Y_COORD, 5.21}, SKILL_FONT_SIZE, 0, 0)
-    createDisplayNumber({saveMODXcord, UI_Y_COORD, 5.62}, SKILL_FONT_SIZE, 0, 0)
-    createDisplayNumber({saveMODXcord, UI_Y_COORD, 6.03}, SKILL_FONT_SIZE, 0, 0)
-    createDisplayNumber({-11.13, UI_Y_COORD, 7.24}, 400, 0, 0)
-    createDisplayNumber({-4.93, UI_Y_COORD, -3.55}, 500, 0, 0)
-    createDisplayNumber({-3.25, UI_Y_COORD, -3.55}, 500, 0, 0)
-    createDisplayNumber({-4.93, UI_Y_COORD, -2.05}, 500, 0, 0)
-    createDisplayNumber({-4.766, UI_Y_COORD, -0.705}, 180, 0, 0)
-    createDisplayNumber({-4.766, UI_Y_COORD, -0.186}, 180, 0, 0)
-    createDisplayNumber({-3.875, UI_Y_COORD, -0.705}, 180, 0, 0)
-    createDisplayNumber({-3.875, UI_Y_COORD, -0.186}, 180, 0, 0)
-    createDisplayNumber({-4.76, UI_Y_COORD, 2.83}, 250, 0, 0)
-    createDisplayNumber({-3.49, UI_Y_COORD, 2.83}, 250, 0, 0)
-    createDisplayNumber({-4.76, UI_Y_COORD, 3.96}, 250, 0, 0)
-    createDisplayNumber({-3.49, UI_Y_COORD, 3.96}, 250, 0, 0)
+    createDisplayNumber("Vision1DisplayIdx", {-3.73, UI_Y_COORD, -4.04}, CHECK_FONT_SIZE, 160, 160)
+    createDisplayNumber("className1DisplayIdx", {0.065, UI_Y_COORD, -3.8}, 140, 0, 0)
+    createDisplayNumber("className2DisplayIdx", {3.45, UI_Y_COORD, -3.8}, 140, 0, 0)
+    createDisplayNumber("totalLVLDisplayIdx", {0.39, UI_Y_COORD, -4.42}, TOTAL_LEVEL_FONT_SIZE, 0, 0)
+    createDisplayNumber("raceNameDisplayIdx", {0.34, UI_Y_COORD, -3.18}, 180, 0, 0)
+    createDisplayNumber("infoSizeDisplayIdx", {-1.17, UI_Y_COORD, -2.47}, 100, 0, 0)
+    createDisplayNumber("ExpLVLUPDisplayIdx", {7.24, UI_Y_COORD, -2.59}, STANDARD_FONT_SIZE, 0, 0)
+    createDisplayNumber("ProfBonusDisplayIdx", {-9.33, UI_Y_COORD, -5.47}, 400, 0, 0)
+    createDisplayNumber("STRscoreDisplayIdx", {abilityXcord, UI_Y_COORD, -4.98}, ABILITY_SCORE_FONT_SIZE, 0, 0)
+    createDisplayNumber("DEXscoreDisplayIdx", {abilityXcord, UI_Y_COORD, -2.79}, ABILITY_SCORE_FONT_SIZE, 0, 0)
+    createDisplayNumber("CONscoreDisplayIdx", {abilityXcord, UI_Y_COORD, -0.62}, ABILITY_SCORE_FONT_SIZE, 0, 0)
+    createDisplayNumber("INTscoreDisplayIdx", {abilityXcord, UI_Y_COORD, 1.54}, ABILITY_SCORE_FONT_SIZE, 0, 0)
+    createDisplayNumber("WISscoreDisplayIdx", {abilityXcord, UI_Y_COORD, 3.72}, ABILITY_SCORE_FONT_SIZE, 0, 0)
+    createDisplayNumber("CHAscoreDisplayIdx", {abilityXcord, UI_Y_COORD, 5.89}, ABILITY_SCORE_FONT_SIZE, 0, 0)
+    createDisplayNumber("STRmodDisplayIdx", {abilityXcord, UI_Y_COORD, -5.7}, ABILITY_MOD_FONT_SIZE, 0, 0)
+    createDisplayNumber("DEXmodDisplayIdx", {abilityXcord, UI_Y_COORD, -3.52}, ABILITY_MOD_FONT_SIZE, 0, 0)
+    createDisplayNumber("CONmodDisplayIdx", {abilityXcord, UI_Y_COORD, -1.34}, ABILITY_MOD_FONT_SIZE, 0, 0)
+    createDisplayNumber("INTmodDisplayIdx", {abilityXcord, UI_Y_COORD, 0.84}, ABILITY_MOD_FONT_SIZE, 0, 0)
+    createDisplayNumber("WISmodDisplayIdx", {abilityXcord, UI_Y_COORD, 3.02}, ABILITY_MOD_FONT_SIZE, 0, 0)
+    createDisplayNumber("CHAmodDisplayIdx", {abilityXcord, UI_Y_COORD, 5.2}, ABILITY_MOD_FONT_SIZE, 0, 0)
+    createDisplayNumber("STRsaveCheckDisplayIdx", {saveCHECKXcord, UI_Y_COORD, -4.45}, CHECK_FONT_SIZE, 160, 160)
+    createDisplayNumber("DEXsaveCheckDisplayIdx", {saveCHECKXcord, UI_Y_COORD, -4.04}, CHECK_FONT_SIZE, 160, 160)
+    createDisplayNumber("CONsaveCheckDisplayIdx", {saveCHECKXcord, UI_Y_COORD, -3.63}, CHECK_FONT_SIZE, 160, 160)
+    createDisplayNumber("INTsaveCheckDisplayIdx", {saveCHECKXcord, UI_Y_COORD, -3.22}, CHECK_FONT_SIZE, 160, 160)
+    createDisplayNumber("WISsaveCheckDisplayIdx", {saveCHECKXcord, UI_Y_COORD, -2.81}, CHECK_FONT_SIZE, 160, 160)
+    createDisplayNumber("CHAsaveCheckDisplayIdx", {saveCHECKXcord, UI_Y_COORD, -2.4}, CHECK_FONT_SIZE, 160, 160)
+    createDisplayNumber("STRsaveTotalDisplayIdx", {saveTOTALXcord, UI_Y_COORD, -4.45}, SKILL_FONT_SIZE, 0, 0)
+    createDisplayNumber("DEXsaveTotalDisplayIdx", {saveTOTALXcord, UI_Y_COORD, -4.04}, SKILL_FONT_SIZE, 0, 0)
+    createDisplayNumber("CONsaveTotalDisplayIdx", {saveTOTALXcord, UI_Y_COORD, -3.63}, SKILL_FONT_SIZE, 0, 0)
+    createDisplayNumber("INTsaveTotalDisplayIdx", {saveTOTALXcord, UI_Y_COORD, -3.22}, SKILL_FONT_SIZE, 0, 0)
+    createDisplayNumber("WISsaveTotalDisplayIdx", {saveTOTALXcord, UI_Y_COORD, -2.81}, SKILL_FONT_SIZE, 0, 0)
+    createDisplayNumber("CHAsaveTotalDisplayIdx", {saveTOTALXcord, UI_Y_COORD, -2.4}, SKILL_FONT_SIZE, 0, 0)
+    createDisplayNumber("STRsaveModDisplayIdx", {saveMODXcord, UI_Y_COORD, -4.45}, SKILL_FONT_SIZE, 0, 0)
+    createDisplayNumber("DEXsaveModDisplayIdx", {saveMODXcord, UI_Y_COORD, -4.04}, SKILL_FONT_SIZE, 0, 0)
+    createDisplayNumber("CONsaveModDisplayIdx", {saveMODXcord, UI_Y_COORD, -3.63}, SKILL_FONT_SIZE, 0, 0)
+    createDisplayNumber("INTsaveModDisplayIdx", {saveMODXcord, UI_Y_COORD, -3.22}, SKILL_FONT_SIZE, 0, 0)
+    createDisplayNumber("WISsaveModDisplayIdx", {saveMODXcord, UI_Y_COORD, -2.81}, SKILL_FONT_SIZE, 0, 0)
+    createDisplayNumber("CHAsaveModDisplayIdx", {saveMODXcord, UI_Y_COORD, -2.4}, SKILL_FONT_SIZE, 0, 0)
+    createDisplayNumber("AcrobaticsCheckDisplayIdx", {saveCHECKXcord, UI_Y_COORD, -0.94}, CHECK_FONT_SIZE, 160, 160)
+    createDisplayNumber("AnimalHandlingCheckDisplayIdx", {saveCHECKXcord, UI_Y_COORD, -0.53}, CHECK_FONT_SIZE, 160, 160)
+    createDisplayNumber("ArcanaCheckDisplayIdx", {saveCHECKXcord, UI_Y_COORD, -0.12}, CHECK_FONT_SIZE, 160, 160)
+    createDisplayNumber("AthleticsCheckDisplayIdx", {saveCHECKXcord, UI_Y_COORD, 0.29}, CHECK_FONT_SIZE, 160, 160)
+    createDisplayNumber("DeceptionCheckDisplayIdx", {saveCHECKXcord, UI_Y_COORD, 0.7}, CHECK_FONT_SIZE, 160, 160)
+    createDisplayNumber("HistoryCheckDisplayIdx", {saveCHECKXcord, UI_Y_COORD, 1.11}, CHECK_FONT_SIZE, 160, 160)
+    createDisplayNumber("InsightCheckDisplayIdx", {saveCHECKXcord, UI_Y_COORD, 1.52}, CHECK_FONT_SIZE, 160, 160)
+    createDisplayNumber("IntimidationCheckDisplayIdx", {saveCHECKXcord, UI_Y_COORD, 1.93}, CHECK_FONT_SIZE, 160, 160)
+    createDisplayNumber("InvestigationCheckDisplayIdx", {saveCHECKXcord, UI_Y_COORD, 2.34}, CHECK_FONT_SIZE, 160, 160)
+    createDisplayNumber("MedicineCheckDisplayIdx", {saveCHECKXcord, UI_Y_COORD, 2.75}, CHECK_FONT_SIZE, 160, 160)
+    createDisplayNumber("NatureCheckDisplayIdx", {saveCHECKXcord, UI_Y_COORD, 3.16}, CHECK_FONT_SIZE, 160, 160)
+    createDisplayNumber("PerceptionCheckDisplayIdx", {saveCHECKXcord, UI_Y_COORD, 3.57}, CHECK_FONT_SIZE, 160, 160)
+    createDisplayNumber("PerformanceCheckDisplayIdx", {saveCHECKXcord, UI_Y_COORD, 3.98}, CHECK_FONT_SIZE, 160, 160)
+    createDisplayNumber("PersuasionCheckDisplayIdx", {saveCHECKXcord, UI_Y_COORD, 4.39}, CHECK_FONT_SIZE, 160, 160)
+    createDisplayNumber("ReligionCheckDisplayIdx", {saveCHECKXcord, UI_Y_COORD, 4.8}, CHECK_FONT_SIZE, 160, 160)
+    createDisplayNumber("SleightofHandCheckDisplayIdx", {saveCHECKXcord, UI_Y_COORD, 5.21}, CHECK_FONT_SIZE, 160, 160)
+    createDisplayNumber("StealthCheckDisplayIdx", {saveCHECKXcord, UI_Y_COORD, 5.62}, CHECK_FONT_SIZE, 160, 160)
+    createDisplayNumber("SurvivalCheckDisplayIdx", {saveCHECKXcord, UI_Y_COORD, 6.03}, CHECK_FONT_SIZE, 160, 160)
+    createDisplayNumber("AcrobaticsTotalDisplayIdx", {saveTOTALXcord, UI_Y_COORD, -0.94}, SKILL_FONT_SIZE, 0, 0)
+    createDisplayNumber("AnimalHandlingTotalDisplayIdx", {saveTOTALXcord, UI_Y_COORD, -0.53}, SKILL_FONT_SIZE, 0, 0)
+    createDisplayNumber("ArcanaTotalDisplayIdx", {saveTOTALXcord, UI_Y_COORD, -0.12}, SKILL_FONT_SIZE, 0, 0)
+    createDisplayNumber("AthleticsTotalDisplayIdx", {saveTOTALXcord, UI_Y_COORD, 0.29}, SKILL_FONT_SIZE, 0, 0)
+    createDisplayNumber("DeceptionTotalDisplayIdx", {saveTOTALXcord, UI_Y_COORD, 0.7}, SKILL_FONT_SIZE, 0, 0)
+    createDisplayNumber("HistoryTotalDisplayIdx", {saveTOTALXcord, UI_Y_COORD, 1.11}, SKILL_FONT_SIZE, 0, 0)
+    createDisplayNumber("InsightTotalDisplayIdx", {saveTOTALXcord, UI_Y_COORD, 1.52}, SKILL_FONT_SIZE, 0, 0)
+    createDisplayNumber("IntimidationTotalDisplayIdx", {saveTOTALXcord, UI_Y_COORD, 1.93}, SKILL_FONT_SIZE, 0, 0)
+    createDisplayNumber("InvestigationTotalDisplayIdx", {saveTOTALXcord, UI_Y_COORD, 2.34}, SKILL_FONT_SIZE, 0, 0)
+    createDisplayNumber("MedicineTotalDisplayIdx", {saveTOTALXcord, UI_Y_COORD, 2.75}, SKILL_FONT_SIZE, 0, 0)
+    createDisplayNumber("NatureTotalDisplayIdx", {saveTOTALXcord, UI_Y_COORD, 3.16}, SKILL_FONT_SIZE, 0, 0)
+    createDisplayNumber("PerceptionTotalDisplayIdx", {saveTOTALXcord, UI_Y_COORD, 3.57}, SKILL_FONT_SIZE, 0, 0)
+    createDisplayNumber("PerformanceTotalDisplayIdx", {saveTOTALXcord, UI_Y_COORD, 3.98}, SKILL_FONT_SIZE, 0, 0)
+    createDisplayNumber("PersuasionTotalDisplayIdx", {saveTOTALXcord, UI_Y_COORD, 4.39}, SKILL_FONT_SIZE, 0, 0)
+    createDisplayNumber("ReligionTotalDisplayIdx", {saveTOTALXcord, UI_Y_COORD, 4.8}, SKILL_FONT_SIZE, 0, 0)
+    createDisplayNumber("SleightofHandTotalDisplayIdx", {saveTOTALXcord, UI_Y_COORD, 5.21}, SKILL_FONT_SIZE, 0, 0)
+    createDisplayNumber("StealthTotalDisplayIdx", {saveTOTALXcord, UI_Y_COORD, 5.62}, SKILL_FONT_SIZE, 0, 0)
+    createDisplayNumber("SurvivalTotalDisplayIdx", {saveTOTALXcord, UI_Y_COORD, 6.03}, SKILL_FONT_SIZE, 0, 0)
+    createDisplayNumber("AcrobaticsModDisplayIdx", {saveMODXcord, UI_Y_COORD, -0.94}, SKILL_FONT_SIZE, 0, 0)
+    createDisplayNumber("AnimalHandlingModDisplayIdx", {saveMODXcord, UI_Y_COORD, -0.53}, SKILL_FONT_SIZE, 0, 0)
+    createDisplayNumber("ArcanaModDisplayIdx", {saveMODXcord, UI_Y_COORD, -0.12}, SKILL_FONT_SIZE, 0, 0)
+    createDisplayNumber("AthleticsModDisplayIdx", {saveMODXcord, UI_Y_COORD, 0.29}, SKILL_FONT_SIZE, 0, 0)
+    createDisplayNumber("DeceptionModDisplayIdx", {saveMODXcord, UI_Y_COORD, 0.7}, SKILL_FONT_SIZE, 0, 0)
+    createDisplayNumber("HistoryModDisplayIdx", {saveMODXcord, UI_Y_COORD, 1.11}, SKILL_FONT_SIZE, 0, 0)
+    createDisplayNumber("InsightModDisplayIdx", {saveMODXcord, UI_Y_COORD, 1.52}, SKILL_FONT_SIZE, 0, 0)
+    createDisplayNumber("IntimidationModDisplayIdx", {saveMODXcord, UI_Y_COORD, 1.93}, SKILL_FONT_SIZE, 0, 0)
+    createDisplayNumber("InvestigationModDisplayIdx", {saveMODXcord, UI_Y_COORD, 2.34}, SKILL_FONT_SIZE, 0, 0)
+    createDisplayNumber("MedicineModDisplayIdx", {saveMODXcord, UI_Y_COORD, 2.75}, SKILL_FONT_SIZE, 0, 0)
+    createDisplayNumber("NatureModDisplayIdx", {saveMODXcord, UI_Y_COORD, 3.16}, SKILL_FONT_SIZE, 0, 0)
+    createDisplayNumber("PerceptionModDisplayIdx", {saveMODXcord, UI_Y_COORD, 3.57}, SKILL_FONT_SIZE, 0, 0)
+    createDisplayNumber("PerformanceModDisplayIdx", {saveMODXcord, UI_Y_COORD, 3.98}, SKILL_FONT_SIZE, 0, 0)
+    createDisplayNumber("PersuasionModDisplayIdx", {saveMODXcord, UI_Y_COORD, 4.39}, SKILL_FONT_SIZE, 0, 0)
+    createDisplayNumber("ReligionModDisplayIdx", {saveMODXcord, UI_Y_COORD, 4.8}, SKILL_FONT_SIZE, 0, 0)
+    createDisplayNumber("SleightofHandModDisplayIdx", {saveMODXcord, UI_Y_COORD, 5.21}, SKILL_FONT_SIZE, 0, 0)
+    createDisplayNumber("StealthModDisplayIdx", {saveMODXcord, UI_Y_COORD, 5.62}, SKILL_FONT_SIZE, 0, 0)
+    createDisplayNumber("SurvivalModDisplayIdx", {saveMODXcord, UI_Y_COORD, 6.03}, SKILL_FONT_SIZE, 0, 0)
+    createDisplayNumber("PassivePerceptionDisplayIdx", {-11.13, UI_Y_COORD, 7.24}, 400, 0, 0)
+    createDisplayNumber("InitiativeDisplayIdx", {-4.93, UI_Y_COORD, -3.55}, 500, 0, 0)
+    createDisplayNumber("VisionDisplayIdx", {-3.25, UI_Y_COORD, -3.55}, 500, 0, 0)
+    createDisplayNumber("SpeedDisplayIdx", {-4.93, UI_Y_COORD, -2.05}, 500, 0, 0)
+    createDisplayNumber("HitDiceClass1DisplayIdx", {-4.766, UI_Y_COORD, -0.705}, 180, 0, 0)
+    createDisplayNumber("HitDiceClass2DisplayIdx", {-4.766, UI_Y_COORD, -0.186}, 180, 0, 0)
+    createDisplayNumber("HitDiceClass1TotalDisplayIdx", {-3.875, UI_Y_COORD, -0.705}, 180, 0, 0)
+    createDisplayNumber("HitDiceClass2TotalDisplayIdx", {-3.875, UI_Y_COORD, -0.186}, 180, 0, 0)
+    createDisplayNumber("SpellSaveDC1DisplayIdx", {-4.76, UI_Y_COORD, 2.83}, 250, 0, 0)
+    createDisplayNumber("SpellAtkBonus1DisplayIdx", {-3.49, UI_Y_COORD, 2.83}, 250, 0, 0)
+    createDisplayNumber("SpellSaveDC2DisplayIdx", {-4.76, UI_Y_COORD, 3.96}, 250, 0, 0)
+    createDisplayNumber("SpellAtkBonus2DisplayIdx", {-3.49, UI_Y_COORD, 3.96}, 250, 0, 0)
 end
 
 -- Creates a textbox with the given parameters
@@ -682,9 +692,7 @@ end
 function createCheckbox(checkBoxKey, checkboxPos, checkboxSize)
     --Sets up reference function
     local funcName = "checkbox"..checkboxSpawnIndexTable[checkBoxKey]
-    local savedDataIdCopy = checkBoxKey --prevents spawnedUiElementsWhichSaveData from being passed by reference
-    local spawnedButtonCountCopy = checkboxSpawnIndexTable[checkBoxKey] -- prevents spawnedButtonCount from being passed by reference
-    local func = function(val,sel) click_checkbox(savedDataIdCopy, spawnedButtonCountCopy) end
+    local func = function(val,sel) click_checkbox(checkBoxKey, checkboxSpawnIndexTable[checkBoxKey]) end
     local checkTheBox = savedDataTable_KV[checkBoxKey]
     self.setVar(funcName, func)
 
@@ -712,7 +720,6 @@ end
 
 --Checks or unchecks the given box
 function click_checkbox(i, buttonIdx)
-
     if savedDataTable_KV[i] == true then
         savedDataTable_KV[i] = false
         self.editButton({index=buttonIdx, label=""})
@@ -720,20 +727,26 @@ function click_checkbox(i, buttonIdx)
         savedDataTable_KV[i] = true
         self.editButton({index=buttonIdx, label=string.char(10008)})
     end
-
     updateSheet()
 end
 
 --Checks or unchecks the given box
-function createDisplayNumber(displayNumPos, displayNumSize, txtBoxFontSize, txtBoxWidth, defaultTxtBoxLabel)
+function createDisplayNumber(displayKey, displayNumPos, displayNumSize, txtBoxFontSize, txtBoxWidth, defaultTxtBoxLabel)
     --Sets up label
-    local label = ""
+    local label = savedDataTable_KV[displayKey]
+    print(label)
     --height=200, width=270,
     self.createButton({
-    label=defaultTxtBoxLabel, click_function="click_none", function_owner=self,
-    position=displayNumPos, height=txtBoxFontSize, width=txtBoxWidth,
-    font_size=displayNumSize, scale=uiScale,
-    color=uiBackgroundColor, font_color=uiFontColor
+        label=defaultTxtBoxLabel,
+        click_function="click_none",
+        function_owner=self,
+        position=displayNumPos,
+        height=txtBoxFontSize,
+        width=txtBoxWidth,
+        font_size=displayNumSize,
+        scale=uiScale,
+        color=uiBackgroundColor,
+        font_color=uiFontColor
     })
 end
 
