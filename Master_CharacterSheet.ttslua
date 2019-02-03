@@ -442,6 +442,9 @@ end
 function updateSave()
     saved_data = JSON.encode(savedDataTable)
     self.script_state = saved_data
+    if savedDataTable.playerNameTxtEntry ~= "" then
+        print(savedDataTable.playerNameTxtEntry.." Saved Sheet")
+    end
 end
 
 function createAllCheckboxes()
