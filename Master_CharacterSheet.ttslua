@@ -739,7 +739,7 @@ function createCheckbox(checkBoxKey, checkboxPos, checkboxSize)
 
     --Sets up label
     local label = ""
-    if checkTheBox == false then label = "" else label = string.char(10008) end
+    if checkTheBox == false then label = "" elseif checkTheBox == true then label = string.char(10008) end
     -- USED ON STAT CHECKS???
     -- if checkTheBox == 0.5 then label=tostring("/2") end
     -- if checkTheBox == 1 then label=tostring("x") end
@@ -761,12 +761,12 @@ end
 
 --Checks or unchecks the given box
 function click_checkbox(i, buttonIdx)
-    if savedDataTable[i] == true then
-        savedDataTable[i] = false
-        self.editButton({index=buttonIdx, label=""})
-    else
+    if savedDataTable[i] == false then
         savedDataTable[i] = true
         self.editButton({index=buttonIdx, label=string.char(10008)})
+    else
+        savedDataTable[i] = false
+        self.editButton({index=buttonIdx, label=""})
     end
     updateSheet()
 end
@@ -774,6 +774,9 @@ end
 --Checks or unchecks the given box
 function createDisplayNumber(displayKey, displayNumPos, displayNumSize, txtBoxFontSize, txtBoxWidth, defaultTxtBoxLabel)
     --Sets up label
+    if savedDataTable[displayKey] == "?" then
+        savedDataTable[displayKey] = string.char(10008)
+    end
     local label = savedDataTable[displayKey]
     --height=200, width=270,
     self.createButton({
@@ -1311,6 +1314,12 @@ function createButtons()
     self.createButton({
         label="[b]"..string.char(8635)..' Roll '..string.char(8634).."[/b]", click_function="rollCheckSkill",
         function_owner=self, position={-6.7,0.04,6.5},
+        height=190, width=600, font_size=130
+    })
+-- Creates save button, to save fields on display values
+    self.createButton({
+        label="[b]"..string.char(9998)..' SAVE '..string.char(9998).."[/b]", click_function="updateSave",
+        function_owner=self, position={-10.9,0.04,-7.5},
         height=190, width=600, font_size=130
     })
 end
